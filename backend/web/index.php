@@ -15,4 +15,5 @@ $config = yii\helpers\ArrayHelper::merge(
 );
 
 $application = new yii\web\Application($config);
+$application->language = isset(\Yii::$app->session['language']) ? \Yii::$app->session['language'] : 'zh-CN';
 $application->run();

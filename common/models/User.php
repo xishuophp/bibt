@@ -23,8 +23,9 @@ use yii\web\IdentityInterface;
  */
 class User extends ActiveRecord implements IdentityInterface
 {
-    const STATUS_DELETED = 0;
-    const STATUS_ACTIVE = 10;
+    const STATUS_FREEZE     = 120;
+    const STATUS_ACTIVE     = 200;
+    const STATUS_DISABLE    = 110;
 
 
     /**
@@ -51,8 +52,13 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            ['status', 'default', 'value' => self::STATUS_ACTIVE],
-            ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
+            [['username','password_hash'], 'required'],
+            [['sex', 'status', 'created_at', 'updated_at'], 'integer'],
+            [['introduce'], 'string'],
+            [['username', 'nickname'], 'string', 'max' => 100],
+            [['avatar'], 'string', 'max' => 300],
+            [['email', 'mobile', 'city', 'qq'], 'string', 'max' => 60],
+            [['auth_key', 'password_reset_token', 'password_hash'], 'string', 'max' => 255],
         ];
     }
 
@@ -61,7 +67,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findIdentity($id)
     {
-        return static::findOne(['id' => $id, 'status' => self::STATUS_ACTIVE]);
+        return static::findOne(['user_id' => $id, 'status' => self::STATUS_ACTIVE]);
     }
 
     /**

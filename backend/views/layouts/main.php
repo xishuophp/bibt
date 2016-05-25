@@ -127,10 +127,15 @@ AppAsset::register($this);
                             <a data-toggle="dropdown" href="#" class="dropdown-toggle">
                             <?php
                             $user_img = json_decode(Yii::$app->user->identity->avatar,true);
+                            $sex = Yii::$app->user->identity->sex;
                             if(!empty($user_img)){
                                 echo '<img class="nav-user-photo" src="'.$user_img[0]['fileUrl'].'" alt="" />';
                             }else{
-                                echo '<img class="nav-user-photo" src="/static/avatars/user.jpg" alt="" />';
+                                if($sex==1){
+                                    echo '<img class="nav-user-photo" src="/static/avatars/avatar4.png" alt="" />';
+                                }else{
+                                    echo '<img class="nav-user-photo" src="/static/avatars/avatar3.png" alt="" />';
+                                }
                             }
                             
                             ?>
@@ -245,7 +250,7 @@ AppAsset::register($this);
 
                         <ul class="submenu">
                             <?php if(in_array('user_list',$leftNav['user'])):?>
-                            <li class="<?php if(strtolower($routeArr[0]) == 'user' && (strtolower($routeArr[1]) == 'list' || strtolower($routeArr[1]) == 'license-games')) echo 'active' ?>">
+                            <li class="<?php if(strtolower($routeArr[0]) == 'user' && (in_array(strtolower($routeArr[1]),['list','create','update']))) echo 'active' ?>">
                                 <a href="<?= Url::to(['user/list'])?>">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     <?=Yii::t('app','User List')?>

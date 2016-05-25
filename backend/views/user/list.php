@@ -43,10 +43,10 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <?=Yii::t('app', 'Search') ?>
                                 <i class="ace-icon fa fa-search icon-on-right bigger-110"></i>
                             </button>
-                            <!-- <a style="float:right" href="<?= Url::to(['user/create']) ?>" class="btn btn-sm btn-success">
+                            <a style="float:right" href="<?= Url::to(['user/create']) ?>" class="btn btn-sm btn-success">
                                 <i class=" ace-icon glyphicon glyphicon-plus"></i>
-                                <?= Yii::t('app', 'Create System User') ?>
-                            </a> -->
+                                <?= Yii::t('app', 'Create User') ?>
+                            </a>
                         <?php ActiveForm::end(); ?>  
                     </div>
                 </div>
@@ -75,26 +75,27 @@ $this->params['breadcrumbs'][] = $this->title;
                             <?php
                                 switch ($row['status']) {
                                     case '200':
-                                        echo '<span class="label label-sm label-success">正常</span>';
+                                        echo '<span class="label label-success arrowed">正常</span>';
                                         break;
                                     case '110':
-                                        echo '<span class="label label-sm label-warning">禁用</span>';
+                                        echo '<span class="label label-danger arrowed-in">禁用</span>';
                                         break;
                                     case '120':
-                                        echo '<span class="label label-sm label-danger">冻结</span>';
+                                        echo '<span class="label label-warning ">冻结</span>';
                                         break;
                                 }
                             ?>
                         </td>
                         <td>
-                            <?php if(YiiForum::checkAccess('user_license-games')):?>
-                                <a class="btn btn-xs btn-info"  href="<?php echo Url::to(['user/license-games','user_id'=>$row['user_id']]); ?>">
-                                    <?=Yii::t('app', 'Reset Password') ?>
-                                </a>&nbsp;
-                                <a class="btn btn-xs btn-danger"  onClick="user_del(<?= $row['user_id'] ?>)" href="javascript:void(0)" >
-                                    <?=Yii::t('app', 'Delete') ?>
-                                </a>&nbsp;
-                            <?php endif;?>
+                            <a class="btn btn-xs btn-info"  onClick="reset_pw(<?= $row['user_id'] ?>)" href="javascript:void(0)">
+                                <?=Yii::t('app', 'Reset Password') ?>
+                            </a>&nbsp;
+                            <a class="btn btn-xs btn-purple"  href="<?php echo Url::to(['user/update','id'=>$row['user_id']]); ?>">
+                                <?=Yii::t('app', 'Update') ?>
+                            </a>&nbsp;
+                            <a class="btn btn-xs btn-danger"  onClick="user_del(<?= $row['user_id'] ?>)" href="javascript:void(0)" >
+                                <?=Yii::t('app', 'Delete') ?>
+                            </a>&nbsp;
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -117,3 +118,70 @@ $this->params['breadcrumbs'][] = $this->title;
         <div>
     </div><!-- /.span -->							
 </div></div>
+<?php $this->beginBlock('cms') ?>
+    function user_del(id){
+        bootbox.confirm("您确定要删除此项吗?", function(result) {
+            if(result) {
+                $.ajax({
+                    url: "<?=Url::to(['user/delete'])?>",
+                    type:'POST',
+                    dataType: 'JSON',
+                    data : {<?=Yii::$app->request->csrfParam ?> : '<?=Yii::$app->request->getCsrfToken()?>',id:id},
+                    beforeSend: function(){
+                        spinner.spin($('body').get(0));
+                    },
+                    success: function(data){
+                        spinner.spin();
+                        if(data.errno != 0){
+                            bootbox.alert(data.errmsg);
+                        }else{
+                            // location.href = reload();
+                            location.reload();
+                        }
+                    },
+                    error:function(e, xhr, settings) {
+                        spinner.spin();
+                        if(e.status == 401){
+                            bootbox.alert("对不起，您现在还没获此操作的权限", function() {
+                            });
+                        }else{
+                            bootbox.alert("登录超时,请重新<a href='"+'<?=Url::to(['site/login'])?>'+"'>登录</a>", function() {
+                            });
+                        }
+                    }
+                });
+            }
+        });
+    }
+
+    function reset_pw(id){
+        bootbox.confirm("密码将重置为：123456,是否继续?", function(result) {
+            if(result) {
+                $.ajax({
+                    url: "<?=Url::to(['user/reset'])?>",
+                    type:'POST',
+                    dataType: 'JSON',
+                    data : {<?=Yii::$app->request->csrfParam ?> : '<?=Yii::$app->request->getCsrfToken()?>',id:id},
+                    beforeSend: function(){
+                        spinner.spin($('body').get(0));
+                    },
+                    success: function(data){
+                        spinner.spin();
+                        bootbox.alert(data.errmsg);
+                    },
+                    error:function(e, xhr, settings) {
+                        spinner.spin();
+                        if(e.status == 401){
+                            bootbox.alert("对不起，您现在还没获此操作的权限", function() {
+                            });
+                        }else{
+                            bootbox.alert("登录超时,请重新<a href='"+'<?=Url::to(['site/login'])?>'+"'>登录</a>", function() {
+                            });
+                        }
+                    }
+                });
+            }
+        });
+    }
+<?php $this->endBlock() ?>
+<?php $this->registerJs($this->blocks['cms'], \yii\web\View::POS_END); ?>

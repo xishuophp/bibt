@@ -8,6 +8,7 @@ use yii\filters\VerbFilter;
 use backend\models\User;
 use backend\models\YiiForum;
 use backend\models\ResetPasswordForm;
+use yii\web\NotFoundHttpException;
 
 
 class UserController extends BaseController
@@ -27,6 +28,58 @@ class UserController extends BaseController
 		return $this->render('list',$locals);
 	}
 
+    //创建用户
+    public function actionCreate()
+    {
+        $model = new User();
+        if ($model->load(Yii::$app->request->post()))
+        {
+            $model->setPassword('123456');
+            $model->generateAuthKey();
+            $model->signup();
+            if($model->save()){
+                return $this->redirect([
+                        'list' 
+                ]);             
+            }else{
+                return $this->render('create', [
+                        'model' => $model,
+                ]); 
+            }
+            
+        }else{
+            return $this->render('create', [
+                    'model' => $model,
+            ]);
+        }
+    }
+
+    //修改用户信息
+    public function actionUpdate($id)
+    {
+        $model = $this->findModel($id);
+        if ($model->load(Yii::$app->request->post()))
+        {
+            if(Yii::$app->request->post('reset_password') == 1){
+                $model->setPassword('123456');
+            }
+            if($model->save()){
+                return $this->redirect([
+                        'list' 
+                ]);                
+            }else{
+                return $this->render('update', [
+                        'model' => $model,
+                ]);                
+            }
+
+        }else{
+            return $this->render('update', [
+                    'model' => $model,
+            ]);
+        }
+    }
+
     //用户个人信息
     public function actionInfo(){
         $model = User::findOne(['user_id'=>Yii::$app->user->identity->user_id]);
@@ -37,7 +90,9 @@ class UserController extends BaseController
                     $model->avatar = json_encode($avatar['fileInfo']);
                 }
                 if($model->save()){
-                    echo '<script>location.href="/index.php?r=user/info"</script>';
+                    return $this->redirect([
+                        'info' 
+                    ]); 
                 }else{
                     return $this->render('info',['model'=>$model]);
                 }
@@ -71,17 +126,41 @@ class UserController extends BaseController
         $model = User::findOne(['user_id'=>$id]);
         if($model){
             $model->setPassword('123456');
-            // $model->generateAuthKey();
-            // $model->signup();
             if($model->save()){
-                return json_encode(['status'=>0,'content'=>'success']);
+                return json_encode(['errno'=>0,'errmsg'=>'重置成功']);
             }else{
-                return json_encode(['status'=>1,'content'=>'failed']);
+                return json_encode(['errno'=>1,'errmsg'=>'重置失败']);
             }
         }else{
-            return json_encode(['status'=>2,'content'=>'userid error']);
+            return json_encode(['errno'=>2,'errmsg'=>'userid error']);
         }
         
+    }
+
+    
+    //删除用户
+    public function actionDelete()
+    {
+        $id = Yii::$app->request->post('id');
+        $model = $this->findModel($id);
+        if($model->delete()){
+            return json_encode(['errno'=>0,'errmsg'=>'删除成功']);
+        }else{
+            return json_encode(['errno'=>1,'errmsg'=>'删除失败']);
+        }
+    }
+
+    protected function findModel($id)
+    {
+        // var_dump(User::findOne($id));die;
+        if (($model = User::findOne($id)) !== null)
+        {
+            return $model;
+        }
+        else
+        {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
     }
 
 	/**

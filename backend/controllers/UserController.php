@@ -20,8 +20,8 @@ class UserController extends BaseController
         $searchArr = $this->_getSearchCondition($searchUrlArr);
         $config = [
                 'pageSize' => Yii::$app->params['pageSize'],
-                'where'=>$searchArr[0],
-                'urlWhere'=>$searchArr[1],
+                'where'=>$searchArr,
+                'urlWhere'=>$searchUrlArr,
                 'order' => 'user_id desc',
             ];
         $locals = YiiForum::getPagedRows($query,$config);
@@ -166,7 +166,7 @@ class UserController extends BaseController
 	/**
      * 封装搜索条件
      */
-    private function _getSearchCondition($searchUrlArr)
+    private function _getSearchCondition(&$searchUrlArr)
     {
         $arr = ['and',];
 
@@ -182,7 +182,7 @@ class UserController extends BaseController
              $searchUrlArr['nickname'] = $nickname;
         }
 
-        return count($arr) > 1 ? [$arr,$searchUrlArr] : ['',$searchUrlArr];    
+        return count($arr) > 1 ? $arr : [];    
     }
 
 }

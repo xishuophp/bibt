@@ -188,6 +188,8 @@ AppAsset::register($this);
                         $leftNav = [
                             // 'task' => ['task_create','task_my-task'],
                             'user' => ['user_list','user_info','user_update-password'],
+                            'department' => ['department_list','department_create'],
+                            'apply-online' => ['apply-online_list'],
                             'auth' => [
                                 'role' => ['role_user-index','role_index','role_create'],
                                 'permission' => ['permission_index','permission_create'],
@@ -279,6 +281,65 @@ AppAsset::register($this);
                                 <b class="arrow"></b>
                             </li>
                             <?php endif;?>                    
+                        </ul>
+                    </li>
+                    <?php endif;?>
+                    <?php if(!empty($leftNav['department'])):?>
+                    <li class="<?php if(strtolower($routeArr[0]) == 'department') echo 'active open' ?>">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-pencil-square-o"></i>
+                            <span class="menu-text"><?=Yii::t('app','Dept Manage')?></span>
+
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
+
+                        <b class="arrow"></b>
+
+                        <ul class="submenu">
+                            <?php if(in_array('department_list',$leftNav['department'])):?>
+                            <li class="<?php if(strtolower($routeArr[0]) == 'department' && (in_array(strtolower($routeArr[1]),['list','update','view']))) echo 'active' ?>">
+                                <a href="<?= Url::to(['department/list'])?>">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    <?=Yii::t('app','Dept List')?>
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            <?php endif;?>
+                            <?php if(in_array('department_create',$leftNav['department'])):?>
+                            <li class="<?php if(strtolower($routeArr[0]) == 'department' && strtolower($routeArr[1]) == 'create') echo 'active' ?>">
+                                <a href="<?= Url::to(['department/create'])?>">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    <?=Yii::t('app','Create Dept')?>
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            <?php endif;?>                  
+                        </ul>
+                    </li>
+                    <?php endif;?>
+                    <?php if(!empty($leftNav['apply-online'])):?>
+                    <li class="<?php if(strtolower($routeArr[0]) == 'apply-online') echo 'active open' ?>">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-pencil-square-o"></i>
+                            <span class="menu-text"><?=Yii::t('app','Apply Manage')?></span>
+
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
+
+                        <b class="arrow"></b>
+
+                        <ul class="submenu">
+                            <?php if(in_array('apply-online_list',$leftNav['apply-online'])):?>
+                            <li class="<?php if(strtolower($routeArr[0]) == 'apply-online' && (in_array(strtolower($routeArr[1]),['list','view']))) echo 'active' ?>">
+                                <a href="<?= Url::to(['apply-online/list'])?>">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    <?=Yii::t('app','Apply List')?>
+                                </a>
+                                <b class="arrow"></b>
+                            </li>
+                            <?php endif;?>                 
                         </ul>
                     </li>
                     <?php endif;?>

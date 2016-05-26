@@ -86,7 +86,32 @@ return [
     'No'          => '否',
     'Yes'         => '是',
     
+    //部门管理
+    'Dept Manage' => '部门管理',
+    'Create Dept' => '创建部门',
+    'Dept List' => '部门列表',
+    'Update Dept' => '修改部门信息',
+    'View Dept' => '查看部门信息',
+    'Dept Name' => '部门名称',
+    'Dept Type' => '部门类型',
+    'Dept Phone' => '部门电话',
+    'Dept Leader' => '部门领导',
+    'Dept Intro' => '部门介绍',
+    'Dept Details' => '部门详情',
+    'Parent ID' => '上级部门ID',
 
-
+    //报名管理
+    'Apply Manage' => '报名管理',
+    'Apply List' => '报名列表',
+    'View Apply' => '查看报名信息',
+    'Real Name' => '姓名',
+    'Phone'=> '电话',
+    'Province'=>'省份',
+    'City'=>'城市',
+    'Graduate School'=> '毕业学校',
+    'Exam Number'=>'准考证号',
+    'Identity Card'=>'身份证号',
+    'Apply Major'=>'报考专业',
+    'Apply Time'=> '报名时间',
 
 ];

@@ -118,6 +118,8 @@ return [
     //员工管理
     'Staff Manage' => '员工管理',
     'Staff List' => '员工列表',
+    'Update Staff' => '修改员工信息',
+    'View Staff' => '查看员工信息',
     'Create Staff'=> '新增员工',
     'Staff Type'=> '员工类型',
     'Dept ID'=>'部门ID',
@@ -126,6 +128,11 @@ return [
     'Details'=> '详细介绍',
     'Staff Logo'=> '生活照',
     'Order No'=> '排序字段',
-    'Is Index'=> '是否首页显示'
+    'Is Index'=> '是否首页显示',
 
+    //录取管理
+    'Admission Manage'=> '录取管理',
+    'Admission List'=>'录取列表',
+    'Admission Major'=>'录取专业',
+    'Create Time'=> '创建时间',
 ];

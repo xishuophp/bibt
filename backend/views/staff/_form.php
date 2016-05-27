@@ -16,7 +16,7 @@ use yii\widgets\ActiveForm;
                 'role'=>'form',
             ],
             'fieldConfig' => [
-                'template' => "{label}\n<div class=\"col-sm-4 col-xs-12\">{input}</div><div class=\"help-block col-xs-12 col-sm-reset inline\">{error}</div>",
+                'template' => "{label}\n<div class=\"col-sm-8 col-xs-12\">{input}</div><div class=\"help-block col-xs-12 col-sm-reset inline\">{error}</div>",
                 'labelOptions' => ['class'=>'col-sm-2 control-label no-padding-right'],
             ],
     ]); ?>
@@ -83,9 +83,9 @@ use yii\widgets\ActiveForm;
         </div>
     </div>
 
-    <?= $form->field($model, 'intro')->textarea(['class' => 'col-xs-12 col-sm-12']) ?>
+    <?= $form->field($model, 'intro')->textarea(['class' => 'col-xs-12 col-sm-12','rows'=>4]) ?>
 
-    <?= $form->field($model, 'details')->textarea(['class' => 'col-xs-12 col-sm-12']) ?>
+    <?= $form->field($model,'details')->widget('pjkui\kindeditor\KindEditor',['clientOptions'=>['class'=>'col-sm-8 col-xs-12','allowFileManager'=>'true','allowUpload'=>'true']]) ?>
     <div class="clearfix form-actions">
         <div class="col-md-offset-2 col-md-9">
             <button class="btn btn-info" type="submit">

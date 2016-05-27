@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'enctype'=>'multipart/form-data',
                 ],
                 'fieldConfig' => [
-                    'template' => "{label}\n<div class=\"col-sm-4 col-xs-12\">{input}</div><div class=\"help-block col-xs-12 col-sm-reset inline\">{error}</div>",
+                    'template' => "{label}\n<div class=\"col-sm-8 col-xs-12\">{input}</div><div class=\"help-block col-xs-12 col-sm-reset inline\">{error}</div>",
                     'labelOptions' => ['class'=>'col-sm-2 control-label no-padding-right'],
                 ],
         ]); ?>

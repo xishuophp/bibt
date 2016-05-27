@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'enctype'=>'multipart/form-data',
                 ],
                 'fieldConfig' => [
-                    'template' => "{label}\n<div class=\"col-sm-4 col-xs-12\">{input}</div><div class=\"help-block col-xs-12 col-sm-reset inline\">{error}</div>",
+                    'template' => "{label}\n<div class=\"col-sm-8 col-xs-12\">{input}</div><div class=\"help-block col-xs-12 col-sm-reset inline\">{error}</div>",
                     'labelOptions' => ['class'=>'col-sm-2 control-label no-padding-right'],
                 ],
         ]); ?>
@@ -48,7 +48,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <?= $form->field($model, 'email')->textInput() ?>
             <?= $form->field($model, 'mobile')->textInput() ?>
             <?= $form->field($model, 'qq')->textInput() ?>
-            <?= $form->field($model, 'introduce')->textarea(['rows' => '5']) ?>
+            <?= $form->field($model, 'introduce')->textarea(['class' => 'col-xs-12 col-sm-12','rows' =>4]) ?>
             
             <div class="row">
                 <div class="col-md-2"></div>

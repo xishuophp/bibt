@@ -13,6 +13,15 @@ use yii\web\NotFoundHttpException;
 
 class DepartmentController extends BaseController
 {
+    public function actions()
+    {
+        return [
+            'Kupload' => [
+                'class' => 'pjkui\kindeditor\KindEditorAction',
+            ]
+        ];
+    }
+    
 	//部门列表
 	public function actionList(){
 		$query =  Department::find();

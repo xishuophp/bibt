@@ -6,8 +6,8 @@ use yii\widgets\LinkPager;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 
-$this->title = Yii::t('app', 'View Dept');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Dept List'), 'url' => ['list']];
+$this->title = Yii::t('app', 'View Staff');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Staff List'), 'url' => ['list']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="page-content">

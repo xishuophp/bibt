@@ -191,6 +191,7 @@ AppAsset::register($this);
                             'department' => ['department_list','department_create'],
                             'staff' => ['staff_list','staff_create'],
                             'apply-online' => ['apply-online_list'],
+                            'admission' => ['admission_list'],
                             'auth' => [
                                 'role' => ['role_user-index','role_index','role_create'],
                                 'permission' => ['permission_index','permission_create'],
@@ -372,6 +373,30 @@ AppAsset::register($this);
                                 <a href="<?= Url::to(['apply-online/list'])?>">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     <?=Yii::t('app','Apply List')?>
+                                </a>
+                                <b class="arrow"></b>
+                            </li>
+                            <?php endif;?>                 
+                        </ul>
+                    </li>
+                    <?php endif;?>
+                    <?php if(!empty($leftNav['admission'])):?>
+                    <li class="<?php if(strtolower($routeArr[0]) == 'admission') echo 'active open' ?>">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-pencil-square-o"></i>
+                            <span class="menu-text"><?=Yii::t('app','Admission Manage')?></span>
+
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
+
+                        <b class="arrow"></b>
+
+                        <ul class="submenu">
+                            <?php if(in_array('admission_list',$leftNav['admission'])):?>
+                            <li class="<?php if(strtolower($routeArr[0]) == 'admission' && (in_array(strtolower($routeArr[1]),['list','view']))) echo 'active' ?>">
+                                <a href="<?= Url::to(['admission/list'])?>">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    <?=Yii::t('app','Admission List')?>
                                 </a>
                                 <b class="arrow"></b>
                             </li>

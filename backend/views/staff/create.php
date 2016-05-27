@@ -8,7 +8,7 @@ use yii\helpers\Html;
  */
 
 $this->title = Yii::t('app','Create Staff');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Dept List'), 'url' => ['list']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Staff List'), 'url' => ['list']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 

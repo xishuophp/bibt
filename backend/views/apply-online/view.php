@@ -7,7 +7,7 @@ use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 
 $this->title = Yii::t('app', 'View Apply');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Dept List'), 'url' => ['list']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Apply List'), 'url' => ['list']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="page-content">

@@ -51,6 +51,7 @@ return [
     'User Info' => '个人中心',
     'Remember Me' => '记住我',
     'Project Detail' => '项目详情',
+    'Mobile' => '手机号',
 
     'Auth Manage' => '授权管理',
     'Role Manage' => '角色管理',
@@ -113,5 +114,18 @@ return [
     'Identity Card'=>'身份证号',
     'Apply Major'=>'报考专业',
     'Apply Time'=> '报名时间',
+
+    //员工管理
+    'Staff Manage' => '员工管理',
+    'Staff List' => '员工列表',
+    'Create Staff'=> '新增员工',
+    'Staff Type'=> '员工类型',
+    'Dept ID'=>'部门ID',
+    'Staff Title'=>'职称',
+    'Intro'=>'简介',
+    'Details'=> '详细介绍',
+    'Staff Logo'=> '生活照',
+    'Order No'=> '排序字段',
+    'Is Index'=> '是否首页显示'
 
 ];

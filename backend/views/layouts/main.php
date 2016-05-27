@@ -189,6 +189,7 @@ AppAsset::register($this);
                             // 'task' => ['task_create','task_my-task'],
                             'user' => ['user_list','user_info','user_update-password'],
                             'department' => ['department_list','department_create'],
+                            'staff' => ['staff_list','staff_create'],
                             'apply-online' => ['apply-online_list'],
                             'auth' => [
                                 'role' => ['role_user-index','role_index','role_create'],
@@ -311,6 +312,41 @@ AppAsset::register($this);
                                 <a href="<?= Url::to(['department/create'])?>">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     <?=Yii::t('app','Create Dept')?>
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            <?php endif;?>                  
+                        </ul>
+                    </li>
+                    <?php endif;?>
+                    <?php if(!empty($leftNav['staff'])):?>
+                    <li class="<?php if(strtolower($routeArr[0]) == 'staff') echo 'active open' ?>">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-pencil-square-o"></i>
+                            <span class="menu-text"><?=Yii::t('app','Staff Manage')?></span>
+
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
+
+                        <b class="arrow"></b>
+
+                        <ul class="submenu">
+                            <?php if(in_array('staff_list',$leftNav['staff'])):?>
+                            <li class="<?php if(strtolower($routeArr[0]) == 'staff' && (in_array(strtolower($routeArr[1]),['list','update','view']))) echo 'active' ?>">
+                                <a href="<?= Url::to(['staff/list'])?>">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    <?=Yii::t('app','Staff List')?>
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            <?php endif;?>
+                            <?php if(in_array('staff_create',$leftNav['staff'])):?>
+                            <li class="<?php if(strtolower($routeArr[0]) == 'staff' && strtolower($routeArr[1]) == 'create') echo 'active' ?>">
+                                <a href="<?= Url::to(['staff/create'])?>">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    <?=Yii::t('app','Create Staff')?>
                                 </a>
 
                                 <b class="arrow"></b>

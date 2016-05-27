@@ -41,7 +41,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?php }else{ ?>
                             <image id="logo" height="50" src=<?= $image[0]['fileUrl'] ?>>
                             <a onclick="update_image()">点击修改</a>
-                            <input type="hidden" name="imageInfo[]" value=<?= $image[0]['fileUrl']; ?>>
                     <?php } ?>
                 </div>
             </div>
@@ -73,7 +72,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <script type="text/javascript">
     function update_image(){
         $('#logo').siblings().remove();
-        $('#logo').after("<div id='logo2'></br><div class='radio inline no-padding'>修改为：</div><div class='radio inline'><input type='file' name='image_url' /></div><a class='middle' onclick='del()'><i class='ace-icon fa fa-trash-o red bigger-130 middle'></i></a></div>");
+        $('#logo').after("<div id='logo2'></br><div class='radio inline no-padding'>修改为：</div><div class='radio inline'><input type='file' name='avatar' /></div><a class='middle' onclick='del()'><i class='ace-icon fa fa-trash-o red bigger-130 middle'></i></a></div>");
     }
     function del(){
         $('#logo2').remove();

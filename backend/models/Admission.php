@@ -7,7 +7,7 @@ use Yii;
 /**
  * This is the model class for table "admission".
  *
- * @property string $admission_id
+ * @property integer $admission_id
  * @property string $real_name
  * @property string $exam_number
  * @property string $identity_card

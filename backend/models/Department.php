@@ -35,6 +35,7 @@ class Department extends \yii\db\ActiveRecord
     {
         return [
             [['parent_id', 'dept_type', 'dept_leader', 'is_index', 'order_no'], 'integer'],
+            [['dept_name'], 'required'],
             [['dept_intro', 'dept_details'], 'string'],
             [['dept_name'], 'string', 'max' => 300],
             [['dept_phone'], 'string', 'max' => 100],

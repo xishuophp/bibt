@@ -99,7 +99,7 @@ return [
     'Dept Leader' => '部门领导',
     'Dept Intro' => '部门介绍',
     'Dept Details' => '部门详情',
-    'Parent ID' => '上级部门ID',
+    'Parent ID' => '父级ID',
 
     //报名管理
     'Apply Manage' => '报名管理',
@@ -133,6 +133,18 @@ return [
     //录取管理
     'Admission Manage'=> '录取管理',
     'Admission List'=>'录取列表',
-    'Admission Major'=>'录取专业',
+    'Accept Major'=>'录取专业',
     'Create Time'=> '创建时间',
+    'Create Admission'=> '新增录取',
+    'Update Admission'=> '修改录取信息',
+
+    //导航管理
+    'Nav Manage'=>'导航管理',
+    'Nav List'=>'导航列表',
+    'Create Nav'=>'添加导航',
+    'Update Nav'=>'修改导航信息',
+    'Nav Name'=>'导航名称',
+    'Nav Type'=>'导航类型',
+    'Nav Logo'=>'导航Logo',
+    'Nav Link'=>'导航链接',
 ];

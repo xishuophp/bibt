@@ -35,14 +35,18 @@ $this->params['breadcrumbs'][] = $this->title;
                             <div class="form-group">
                                 <input type="text" name="real_name" class="input-sm" style="width:150px;">
                             </div>
-                            <label class="inline"><?php echo Yii::t('app', 'Admission Major'); ?> : </label>
+                            <label class="inline"><?php echo Yii::t('app', 'Accept Major'); ?> : </label>
                             <div class="form-group">
-                                <input type="text" name="apply_major" class="input-sm" style="width:150px;">
+                                <input type="text" name="accept_major" class="input-sm" style="width:150px;">
                             </div>
                             <button type="submit" class="btn btn-purple btn-sm">
                                 <?=Yii::t('app', 'Search') ?>
                                 <i class="ace-icon fa fa-search icon-on-right bigger-110"></i>
                             </button>
+                            <a style="float:right" href="<?= Url::to(['admission/create']) ?>" class="btn btn-sm btn-success">
+                                <i class=" ace-icon glyphicon glyphicon-plus"></i>
+                                <?= Yii::t('app', 'Create Admission') ?>
+                            </a>
                         <?php ActiveForm::end(); ?>  
                     </div>
                 </div>
@@ -53,7 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <th ><?=Yii::t('app', 'Real Name') ?></th>
                         <th ><?=Yii::t('app', 'Exam Number') ?></th>
                         <th ><?=Yii::t('app', 'Identity Card') ?></th>
-                        <th ><?=Yii::t('app', 'Admission Major') ?></th>
+                        <th ><?=Yii::t('app', 'Accept Major') ?></th>
                         <th ><?=Yii::t('app', 'Create Time') ?></th>
                         <th><?=Yii::t('app', 'Operation') ?></th>
                     </tr>
@@ -66,9 +70,12 @@ $this->params['breadcrumbs'][] = $this->title;
                         <td><?= $row['real_name'] ?></td>
                         <td><?= $row['exam_number'] ?></td>
                         <td><?= $row['identity_card'] ?></td>
-                        <td><?= $row['admission_major'] ?></td>
+                        <td><?= $row['accept_major'] ?></td>
                         <td><?= $row['create_time'] ?></td>
                         <td>
+                            <a class="btn btn-xs btn-purple"  href="<?php echo Url::to(['admission/update','id'=>$row['admission_id']]); ?>">
+                                <?=Yii::t('app', 'Update') ?>
+                            </a>&nbsp;
                             <a class="btn btn-xs btn-danger"  onClick="admission_del(<?= $row['admission_id'] ?>)" href="javascript:void(0)" >
                                 <?=Yii::t('app', 'Delete') ?>
                             </a>&nbsp;

@@ -28,6 +28,53 @@ class AdmissionController extends BaseController
 		return $this->render('list',$locals);
 	}
 
+    //新增录取
+    public function actionCreate()
+    {
+        $model = new Admission();
+        if ($model->load(Yii::$app->request->post()))
+        {
+            $model->create_time = date('Y-m-d H:i:s');
+            if($model->save()){
+                return $this->redirect([
+                        'list' 
+                ]);             
+            }else{
+                return $this->render('create', [
+                        'model' => $model,
+                ]); 
+            }
+            
+        }else{
+            return $this->render('create', [
+                    'model' => $model,
+            ]);
+        }
+    }
+
+    //修改录取信息
+    public function actionUpdate($id)
+    {
+        $model = $this->findModel($id);
+        if ($model->load(Yii::$app->request->post()))
+        {
+            if($model->save()){
+                return $this->redirect([
+                        'list' 
+                ]);                
+            }else{
+                return $this->render('update', [
+                        'model' => $model,
+                ]);                
+            }
+
+        }else{
+            return $this->render('update', [
+                    'model' => $model,
+            ]);
+        }
+    }
+
     //查看录取信息
     public function actionView($id){
         $model = $this->findModel($id);

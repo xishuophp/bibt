@@ -1,2 +1,4 @@
 backend/web/upload/attachment/
 backend/web/upload/image/
+backend/web/upload/file/
+vendor/

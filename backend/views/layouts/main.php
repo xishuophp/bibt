@@ -360,7 +360,7 @@ AppAsset::register($this);
                     <?php if(!empty($leftNav['staff'])):?>
                     <li class="<?php if(strtolower($routeArr[0]) == 'staff') echo 'active open' ?>">
                         <a href="#" class="dropdown-toggle">
-                            <i class="menu-icon fa fa-pencil-square-o"></i>
+                            <i class="menu-icon glyphicon glyphicon-user"></i>
                             <span class="menu-text"><?=Yii::t('app','Staff Manage')?></span>
 
                             <b class="arrow fa fa-angle-down"></b>
@@ -429,7 +429,7 @@ AppAsset::register($this);
 
                         <ul class="submenu">
                             <?php if(in_array('admission_list',$leftNav['admission'])):?>
-                            <li class="<?php if(strtolower($routeArr[0]) == 'admission' && (in_array(strtolower($routeArr[1]),['list','view']))) echo 'active' ?>">
+                            <li class="<?php if(strtolower($routeArr[0]) == 'admission' && (in_array(strtolower($routeArr[1]),['list','update']))) echo 'active' ?>">
                                 <a href="<?= Url::to(['admission/list'])?>">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     <?=Yii::t('app','Admission List')?>
@@ -618,38 +618,6 @@ AppAsset::register($this);
         <script type="text/javascript">
             if('ontouchstart' in document.documentElement) document.write("<script src='/static/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
         </script>
-        <div id="modal-form" class="modal" tabindex="-1">
-    <div class="modal-dialog" style="width:700px">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="blue bigger"><?=Yii::t('app', 'Chose Game') ?></h4>
-            </div>
-
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <table id="choseGame" class="table table-bordered" style="width:auto;border:0px;margin:0 auto" cellspacing='10' cellpadding='10'>
-                            
-                        </table>        
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div>
-
-            <div class="modal-footer">
-                <button class="btn btn-sm" data-dismiss="modal">
-                    <i class="ace-icon fa fa-times"></i>
-                    <?=Yii::t('app', 'Cancel') ?>
-                </button>
-
-                <button id="sub" class="btn btn-sm btn-primary" value="" onclick="choseGame()">
-                    <i class="ace-icon fa fa-check"></i>
-                    <?=Yii::t('app', 'Submit') ?>
-                </button>
-            </div>
-        </div>
-    </div>
-</div><!-- PAGE CONTENT ENDS -->
         
     <?php $this->endBody() ?>
     </body>
@@ -683,7 +651,7 @@ AppAsset::register($this);
     };
     var spinner = new Spinner(opts);
 </script>
-<?php $this->beginBlock('gbox') ?>
+<?php $this->beginBlock('cms') ?>
     $(document).ready(function () {
         $('#modal-form').on('shown.bs.modal', function () {
             $(this).find('.chosen-container').each(function(){
@@ -694,5 +662,5 @@ AppAsset::register($this);
         });
     });  
 <?php $this->endBlock() ?>
-<?php $this->registerJs($this->blocks['gbox'], \yii\web\View::POS_END); ?>
+<?php $this->registerJs($this->blocks['cms'], \yii\web\View::POS_END); ?>
 <?php $this->endPage() ?>

@@ -50,6 +50,18 @@ $this->params['breadcrumbs'][] = $this->title;
 					</div>
 				</div>
 				<div class="form-group">
+					<label class="col-sm-2 control-label no-padding-right"><?= Yii::t('app','Order No')?></label>
+					<div class="col-sm-8 col-xs-12">
+						<div class="form-control"><?= $model->order_no?></div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label no-padding-right"><?= Yii::t('app','Is Index')?></label>
+					<div class="col-sm-8 col-xs-12">
+						<div class="form-control"><?= $model->is_index?></div>
+					</div>
+				</div>
+				<div class="form-group">
 					<label class="col-sm-2 control-label no-padding-right"><?= Yii::t('app','Dept Intro')?></label>
 					<div class="col-sm-8 col-xs-12">
 						<div class="form-control" style="height:auto;min-height:80px"><?= $model->dept_intro?></div>

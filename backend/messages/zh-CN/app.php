@@ -67,6 +67,8 @@ return [
     'Chinese' => '中文',
     'English' => '英文',
     'Current Game' => '当前游戏',
+    'Export'=>'导出',
+    'Import'=>'导入',
 
     //数据库
     'Username' => '用户名',
@@ -89,7 +91,7 @@ return [
     
     //部门管理
     'Dept Manage' => '部门管理',
-    'Create Dept' => '创建部门',
+    'Create Dept' => '添加部门',
     'Dept List' => '部门列表',
     'Update Dept' => '修改部门信息',
     'View Dept' => '查看部门信息',
@@ -137,6 +139,7 @@ return [
     'Create Time'=> '创建时间',
     'Create Admission'=> '新增录取',
     'Update Admission'=> '修改录取信息',
+    'Admission Import'=> '导入录取信息',
 
     //导航管理
     'Nav Manage'=>'导航管理',

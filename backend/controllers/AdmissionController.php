@@ -80,6 +80,66 @@ class AdmissionController extends BaseController
         $model = $this->findModel($id);
         return $this->render('view',['model'=>$model]);
     }
+
+    public function actionImport(){
+        $fileType = $_FILES['admission']['type'];
+        if($fileType!='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'){
+            return json_encode(['errno'=>2,'errmsg'=>'文件格式不正确']);
+        }
+        $uploadInfo = YiiForum::uploadFiles('admission');
+        if($uploadInfo['errno']==0){
+            $fileUrl = $uploadInfo['fileInfo'][0]['fileUrl'];
+            $admissions = $this->formatAdmission('.'.$fileUrl);
+            if($admissions){
+                foreach ($admissions as $key => $value) {
+                    $model = new Admission();
+                    $model->attributes = $value;
+                    $model->create_time = date('Y-m-d H:i:s');
+                    $ret = $model->save();
+                    if(!$ret){
+                        Yii::error('insert admission faild,insertArr='.json_encode($value).',error='.json_encode($model->getErrors()));
+                    }
+                }
+            }
+            return json_encode(['errno'=>0,'errmsg'=>'导入完成']);
+        }
+
+        return json_encode(['errno'=>1,'errmsg'=>'导入失败']);
+    }
+
+
+    public function formatAdmission($fileUrl)
+    {
+        if(!file_exists($fileUrl))
+            return [];
+        $reader = \PHPExcel_IOFactory::createReader('Excel2007');
+        $reader->setReadDataOnly(true);
+        $objPHPExcel = $reader->load($fileUrl);
+        $all = $objPHPExcel->getActiveSheet()->getHighestRow();
+        $sheetData = $objPHPExcel->getActiveSheet()->toArray(null,true,true,true);
+        //var_dump($sheetData);
+        if($sheetData){
+            $columnArr = [
+                'A' => 'real_name',
+                'B' => 'exam_number',
+                'C' => 'identity_card',
+                'D' => 'accept_major',
+            ];
+            $resArr = [];
+            for($i=2;$i<=$all;$i++){
+                $arr = [];
+                foreach ($columnArr as $k=>$v) {
+                    if(!empty($sheetData[$i][$k])){
+                        $arr[$v] = (string)$sheetData[$i][$k];
+                    }
+                }
+                $resArr[] = $arr;
+            }
+            return $resArr;
+        }else{
+            return [];
+        }
+    }
     
     //删除录取信息
     public function actionDelete()

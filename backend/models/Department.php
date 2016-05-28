@@ -15,6 +15,8 @@ use Yii;
  * @property string $dept_details
  * @property string $dept_phone
  * @property integer $dept_leader
+ * @property integer $is_index
+ * @property integer $order_no
  */
 class Department extends \yii\db\ActiveRecord
 {
@@ -32,8 +34,7 @@ class Department extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['parent_id', 'dept_type', 'dept_leader'], 'integer'],
-            [['dept_name'], 'required'],
+            [['parent_id', 'dept_type', 'dept_leader', 'is_index', 'order_no'], 'integer'],
             [['dept_intro', 'dept_details'], 'string'],
             [['dept_name'], 'string', 'max' => 300],
             [['dept_phone'], 'string', 'max' => 100],
@@ -54,6 +55,8 @@ class Department extends \yii\db\ActiveRecord
             'dept_details' => Yii::t('app', 'Dept Details'),
             'dept_phone' => Yii::t('app', 'Dept Phone'),
             'dept_leader' => Yii::t('app', 'Dept Leader'),
+            'is_index' => Yii::t('app', 'Is Index'),
+            'order_no' => Yii::t('app', 'Order No'),
         ];
     }
 }

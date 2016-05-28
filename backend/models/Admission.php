@@ -31,6 +31,7 @@ class Admission extends \yii\db\ActiveRecord
     {
         return [
             [['create_time'], 'safe'],
+            [['real_name', 'identity_card'], 'required'],
             [['real_name'], 'string', 'max' => 100],
             [['exam_number'], 'string', 'max' => 32],
             [['identity_card'], 'string', 'max' => 64],

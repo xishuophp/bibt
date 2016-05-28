@@ -43,6 +43,9 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <?=Yii::t('app', 'Search') ?>
                                 <i class="ace-icon fa fa-search icon-on-right bigger-110"></i>
                             </button>
+                            <a style="margin-left:30px;" class="btn btn-sm btn-success" onClick='export_info()' >
+                                <i class="ace-icon glyphicon glyphicon-share"></i><?=Yii::t('app', 'Export') ?>
+                            </a>
                         <?php ActiveForm::end(); ?>  
                     </div>
                 </div>
@@ -134,6 +137,38 @@ $this->params['breadcrumbs'][] = $this->title;
                     }
                 });
             }
+        });
+    }
+    function export_info(){
+        $.ajax({
+            url: "<?= Url::to(['apply-online/export']) ?>",
+            type:'POST',
+            dataType: 'JSON',
+            beforeSend: function(){
+                spinner.spin($('body').get(0));
+            },
+            success: function(data){
+                // alert(data);
+                spinner.spin();
+                if(data.status==0){
+                    location.href = "/index.php?r=apply-online/download&path="+data.info;
+                }else if(data.status==1){
+                    bootbox.alert(data.info);
+                }else if(data.status==2){
+                    bootbox.alert(data.info);
+                }
+            },
+            error:function(e, xhr, settings) {
+                    spinner.spin();
+                    if(e.status == 401){
+                        bootbox.alert("对不起，您现在还没获此操作的权限", function() {
+                        });
+                    }else{
+                        bootbox.alert("登录超时,请重新<a href='"+'<?=Url::to(['site/login'])?>'+"'>登录</a>", function() {
+                        });
+                    }
+                }
+
         });
     }
 <?php $this->endBlock() ?>

@@ -30,6 +30,26 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'dept_phone')->textInput(['class'=>'col-xs-12']) ?>
 
     <?= $form->field($model, 'dept_leader')->textInput(['class'=>'col-xs-12']) ?>
+    
+    <?php if($model->isNewRecord){$model->order_no=100;} ?>
+    <?= $form->field($model, 'order_no')->textInput(['class'=>'form-control']) ?>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label no-padding-right"><?=Yii::t('app','Is Index')?></label>
+
+        <div class="radio inline">
+            <label>
+                <input name="Department[is_index]" value="1" type="radio" class="ace" <?php if($model->is_index==1){echo "checked";} ?> />
+                <span class="lbl"> <?=Yii::t('app','Yes')?></span>
+            </label>
+        </div>
+        <div class="radio inline">
+            <label>
+                <input name="Department[is_index]" value="0" type="radio" class="ace" <?php if($model->is_index==0){echo "checked";} ?> />
+                <span class="lbl"> <?=Yii::t('app','No')?></span>
+            </label>
+        </div>
+    </div>
 
     <?= $form->field($model, 'dept_intro')->textarea(['class' => 'col-xs-12 col-sm-12','rows'=>4]) ?>
 

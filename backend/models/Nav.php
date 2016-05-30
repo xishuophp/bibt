@@ -31,6 +31,7 @@ class Nav extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['nav_name'], 'required'],
             [['nav_type', 'parent_id', 'order_no'], 'integer'],
             [['nav_name'], 'string', 'max' => 100],
             [['nav_link', 'nav_logo'], 'string', 'max' => 300],

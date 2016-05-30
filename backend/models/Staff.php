@@ -35,6 +35,7 @@ class Staff extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['sex', 'real_name'], 'required'],
             [['sex', 'dept_id', 'is_index', 'order_no', 'staff_type'], 'integer'],
             [['intro', 'details'], 'string'],
             [['real_name', 'staff_title'], 'string', 'max' => 100],

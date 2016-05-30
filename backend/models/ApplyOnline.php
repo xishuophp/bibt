@@ -18,6 +18,7 @@ use Yii;
  * @property string $exam_number
  * @property string $apply_major
  * @property string $create_time
+ * @property string $notes
  */
 class ApplyOnline extends \yii\db\ActiveRecord
 {
@@ -37,6 +38,8 @@ class ApplyOnline extends \yii\db\ActiveRecord
         return [
             [['sex'], 'integer'],
             [['create_time'], 'safe'],
+            [['real_name', 'identity_card', 'apply_major'], 'required'],
+            [['notes'], 'string'],
             [['real_name', 'province', 'city'], 'string', 'max' => 100],
             [['phone'], 'string', 'max' => 150],
             [['graduate_school'], 'string', 'max' => 300],
@@ -62,7 +65,8 @@ class ApplyOnline extends \yii\db\ActiveRecord
             'identity_card' => Yii::t('app', 'Identity Card'),
             'exam_number' => Yii::t('app', 'Exam Number'),
             'apply_major' => Yii::t('app', 'Apply Major'),
-            'create_time' => Yii::t('app', 'Apply Time'),
+            'create_time' => Yii::t('app', 'Create Time'),
+            'notes' => Yii::t('app', 'Notes'),
         ];
     }
 }

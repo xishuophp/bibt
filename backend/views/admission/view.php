@@ -6,8 +6,8 @@ use yii\widgets\LinkPager;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 
-$this->title = Yii::t('app', 'View Apply');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Apply List'), 'url' => ['list']];
+$this->title = Yii::t('app', 'View Admission');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Admission List'), 'url' => ['list']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="page-content">
@@ -71,12 +71,6 @@ $this->params['breadcrumbs'][] = $this->title;
 					<label class="col-sm-2 control-label no-padding-right"><?= Yii::t('app','Apply Time')?></label>
 					<div class="col-sm-8 col-xs-12">
 						<div class="form-control"><?= $model->create_time?></div>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-2 control-label no-padding-right"><?= Yii::t('app','Notes')?></label>
-					<div class="col-sm-8 col-xs-12">
-						<div class="form-control" style="height:auto;min-height:80px"><?= $model->notes?></div>
 					</div>
 				</div>
             </div>

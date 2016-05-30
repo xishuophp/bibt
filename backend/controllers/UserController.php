@@ -86,6 +86,7 @@ class UserController extends BaseController
         if($model){
             if($model->load(Yii::$app->request->post())){
                 $avatar = YiiForum::uploadFiles('avatar');
+                var_dump($_FILES['avatar']);die;
                 if($avatar['errno']==0){
                     $model->avatar = json_encode($avatar['fileInfo']);
                 }

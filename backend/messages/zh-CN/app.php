@@ -103,6 +103,26 @@ return [
     'Dept Details' => '部门详情',
     'Parent ID' => '父级ID',
 
+    //文章管理
+    'Article Manage'=>'文章管理',
+    'Article List'=>'文章列表',
+    'Publish Article'=>'发布文章',
+    'Update Article'=>'修改文章信息',
+    'View Article'=>'查看文章信息',
+    'Article Title'=>'文章标题',
+    'Title Color'=>'标题颜色',
+    'Publish Date'=>'发布日期',
+    'Article Excerpt'=>'文章摘要',
+    'Article Status'=>'文章状态',
+    'Article Author'=>'文章作者',
+    'Article Content'=>'文章内容',
+    'Article Alias'=>'文章副标题',
+    'Article Category'=>'文章分类',
+    'Hit Count'=>'点击次数',
+    'Article Attachment'=>'文章附件',
+    'Update Time'=>'修改时间',
+
+
     //报名管理
     'Apply Manage' => '报名管理',
     'Apply List' => '报名列表',
@@ -116,6 +136,7 @@ return [
     'Identity Card'=>'身份证号',
     'Apply Major'=>'报考专业',
     'Apply Time'=> '报名时间',
+    'Notes'=>'备注',
 
     //员工管理
     'Staff Manage' => '员工管理',

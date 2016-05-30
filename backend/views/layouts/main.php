@@ -189,6 +189,7 @@ AppAsset::register($this);
                             // 'task' => ['task_create','task_my-task'],
                             'user' => ['user_list','user_info','user_update-password'],
                             'department' => ['department_list','department_create'],
+                            'article' => ['article_list','article_create'],
                             'nav' => ['nav_list','nav_create'],
                             'staff' => ['staff_list','staff_create'],
                             'apply-online' => ['apply-online_list'],
@@ -314,6 +315,41 @@ AppAsset::register($this);
                                 <a href="<?= Url::to(['department/create'])?>">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     <?=Yii::t('app','Create Dept')?>
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            <?php endif;?>                  
+                        </ul>
+                    </li>
+                    <?php endif;?>
+                    <?php if(!empty($leftNav['article'])):?>
+                    <li class="<?php if(strtolower($routeArr[0]) == 'article') echo 'active open' ?>">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-pencil-square-o"></i>
+                            <span class="menu-text"><?=Yii::t('app','Article Manage')?></span>
+
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
+
+                        <b class="arrow"></b>
+
+                        <ul class="submenu">
+                            <?php if(in_array('article_list',$leftNav['article'])):?>
+                            <li class="<?php if(strtolower($routeArr[0]) == 'article' && (in_array(strtolower($routeArr[1]),['list','update','view']))) echo 'active' ?>">
+                                <a href="<?= Url::to(['article/list'])?>">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    <?=Yii::t('app','Article List')?>
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            <?php endif;?>
+                            <?php if(in_array('article_create',$leftNav['article'])):?>
+                            <li class="<?php if(strtolower($routeArr[0]) == 'article' && strtolower($routeArr[1]) == 'create') echo 'active' ?>">
+                                <a href="<?= Url::to(['article/create'])?>">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    <?=Yii::t('app','Publish Article')?>
                                 </a>
 
                                 <b class="arrow"></b>

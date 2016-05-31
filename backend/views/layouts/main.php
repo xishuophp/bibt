@@ -194,6 +194,7 @@ AppAsset::register($this);
                             'staff' => ['staff_list','staff_create'],
                             'apply-online' => ['apply-online_list'],
                             'admission' => ['admission_list','admission_create'],
+                            'conf' => ['conf_index'],
                             'auth' => [
                                 'role' => ['role_user-index','role_index','role_create'],
                                 'permission' => ['permission_index','permission_create'],
@@ -478,6 +479,30 @@ AppAsset::register($this);
                                 <a href="<?= Url::to(['admission/create'])?>">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     <?=Yii::t('app','Create Admission')?>
+                                </a>
+                                <b class="arrow"></b>
+                            </li>
+                            <?php endif;?>                 
+                        </ul>
+                    </li>
+                    <?php endif;?>
+                    <?php if(!empty($leftNav['conf'])):?>
+                    <li class="<?php if(strtolower($routeArr[0]) == 'conf') echo 'active open' ?>">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-cogs"></i>
+                            <span class="menu-text"><?=Yii::t('app','Conf Manage')?></span>
+
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
+
+                        <b class="arrow"></b>
+
+                        <ul class="submenu">
+                            <?php if(in_array('conf_index',$leftNav['conf'])):?>
+                            <li class="<?php if(strtolower($routeArr[0]) == 'conf' && strtolower($routeArr[1])=='index') echo 'active' ?>">
+                                <a href="<?= Url::to(['conf/index'])?>">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    <?=Yii::t('app','Conf List')?>
                                 </a>
                                 <b class="arrow"></b>
                             </li>

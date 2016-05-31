@@ -171,4 +171,8 @@ return [
     'Nav Type'=>'导航类型',
     'Nav Logo'=>'导航Logo',
     'Nav Link'=>'导航链接',
+
+    //配置管理
+    'Conf Manage' => '配置管理',
+    'Conf List' => '系统配置',
 ];

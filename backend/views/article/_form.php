@@ -39,6 +39,8 @@ use yii\widgets\ActiveForm;
     <?php if($model->isNewRecord){$model->order_no=100;} ?>
     <?= $form->field($model, 'order_no')->textInput(['class'=>'col-xs-12',]) ?>
 
+    <?= $form->field($model, 'article_category')->dropDownList($categorys,['class'=>'col-xs-12','prompt'=>'请选择分类']) ?>
+
     <?= $form->field($model, 'article_status')->dropDownList(Yii::$app->params['articleStatus'],['class'=>'col-xs-12']) ?>
 
     <?php if($model->publish_date){$model->publish_date = '';} ?>

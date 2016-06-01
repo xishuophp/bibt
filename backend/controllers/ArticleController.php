@@ -5,8 +5,10 @@ use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
-use backend\models\Article;
+use common\models\Article;
+use common\models\ArticleCategory;
 use backend\models\YiiForum;
+use backend\models\ServiceArticle;
 use backend\models\ResetPasswordForm;
 use yii\web\NotFoundHttpException;
 
@@ -40,6 +42,8 @@ class ArticleController extends BaseController
     //发布文章
     public function actionCreate() {
         $model = new Article;
+        $ServiceArticleModel = new ServiceArticle();
+        $categorys = $ServiceArticleModel->getCategoryList();
         if($model->load(Yii::$app->request->post())){
             $attachment = YiiForum::uploadFiles('attachment');
             if($attachment['errno']==0){
@@ -62,11 +66,11 @@ class ArticleController extends BaseController
             if($model->save()){
                 return $this->redirect(['list']);
             }else{
-                return $this->render('create',['model'=>$model]);
+                return $this->render('create',['model'=>$model,'categorys'=>$categorys]);
             }
 
         }else{
-            return $this->render('create',['model'=>$model]);
+            return $this->render('create',['model'=>$model,'categorys'=>$categorys]);
         }
     }
 
@@ -74,6 +78,8 @@ class ArticleController extends BaseController
     public function actionUpdate($id) {
         $model = $this->findModel($id);
         $publish_date = $model->publish_date;
+        $ServiceArticleModel = new ServiceArticle();
+        $categorys = $ServiceArticleModel->getCategoryList();
         if($model->load(Yii::$app->request->post())){
             $attachment = YiiForum::uploadFiles('attachment');
             $attachment2 = [];
@@ -106,10 +112,10 @@ class ArticleController extends BaseController
             if($model->save()){
                 return $this->redirect(['list']);
             }else{
-                return $this->render('update',['model'=>$model]);
+                return $this->render('update',['model'=>$model,'categorys'=>$categorys]);
             }
         }else{
-            return $this->render('update',['model'=>$model]);
+            return $this->render('update',['model'=>$model,'categorys'=>$categorys]);
         }
     }
 
@@ -143,6 +149,76 @@ class ArticleController extends BaseController
         }
     }
 
+    //文章分类列表
+    public function actionCategoryList()
+    {
+        $query =  ArticleCategory::find();
+        $searchUrlArr = [];
+        $searchArr = $this->_getSearchCondition($searchUrlArr);
+        $config = [
+                'pageSize' => Yii::$app->params['pageSize'],
+                'where'=>$searchArr,
+                'urlWhere'=>$searchUrlArr,
+                'order' => 'category_id desc',
+            ];
+        $locals = YiiForum::getPagedRows($query,$config);
+        return $this->render('category_list',$locals);
+    }
+
+    //添加文章分类
+    public function actionCategoryCreate()
+    {
+        $model = new ArticleCategory();
+        $ServiceArticleModel = new ServiceArticle();
+        $categorys = $ServiceArticleModel->getCategoryList();
+        if ($model->load(Yii::$app->request->post()))
+        {
+            if($model->save()){
+                return $this->redirect([
+                        'category-list' 
+                ]);             
+            }else{
+                return $this->render('category_create', [
+                        'model'=>$model,'categorys'=>$categorys
+                ]); 
+            }
+            
+        }else{
+            return $this->render('category_create', [
+                    'model'=>$model,'categorys'=>$categorys
+            ]);
+        }
+    }
+
+    //修改文章分类
+    public function actionCategoryUpdate($id)
+    {
+        $model = ArticleCategory::findOne($id);
+        if ($model === null){
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+
+        $ServiceArticleModel = new ServiceArticle();
+        $categorys = $ServiceArticleModel->getCategoryList();
+        if ($model->load(Yii::$app->request->post()))
+        {
+            if($model->save()){
+                return $this->redirect([
+                        'category-list' 
+                ]);             
+            }else{
+                return $this->render('category_update', [
+                        'model'=>$model,'categorys'=>$categorys
+                ]); 
+            }
+            
+        }else{
+            return $this->render('category_update', [
+                    'model'=>$model,'categorys'=>$categorys
+            ]);
+        }
+    }
+
 	/**
      * 封装搜索条件
      */
@@ -152,14 +228,20 @@ class ArticleController extends BaseController
 
         $article_author = Yii::$app->request->post('article_author') ? Yii::$app->request->post('article_author') : Yii::$app->request->get('article_author');
         if($article_author){
-             $arr[] = "article_author='{$article_author}'";
-             $searchUrlArr['article_author'] = $article_author;
+            $arr[] = "article_author='{$article_author}'";
+            $searchUrlArr['article_author'] = $article_author;
         }
 
         $article_title = Yii::$app->request->post('article_title') ? Yii::$app->request->post('article_title') : Yii::$app->request->get('article_title');
         if($article_title){
-             $arr[] = ['like', 'article_title', $article_title];
-             $searchUrlArr['article_title'] = $article_title;
+            $arr[] = ['like', 'article_title', $article_title];
+            $searchUrlArr['article_title'] = $article_title;
+        }
+
+        $category_name = Yii::$app->request->post('category_name') ? Yii::$app->request->post('category_name') : Yii::$app->request->get('category_name');
+        if($category_name){
+            $arr[] = ['like', 'category_name', $category_name];
+            $searchUrlArr['category_name'] = $category_name;
         }
 
         return count($arr) > 1 ? $arr : [];   

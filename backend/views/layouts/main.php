@@ -357,7 +357,7 @@ AppAsset::register($this);
                             </li>
                             <?php endif;?>
                             <?php if(in_array('article_category-list',$leftNav['article'])):?>
-                            <li class="<?php if(strtolower($routeArr[0]) == 'article' && strtolower($routeArr[1]) == 'category-list,category-update') echo 'active' ?>">
+                            <li class="<?php if(strtolower($routeArr[0]) == 'article' && (in_array(strtolower($routeArr[1]),['category-list','category-update']))) echo 'active' ?>">
                                 <a href="<?= Url::to(['article/category-list'])?>">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     <?=Yii::t('app','Category List')?>

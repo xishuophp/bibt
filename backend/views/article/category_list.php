@@ -8,7 +8,7 @@ use yii\helpers\ArrayHelper;
 use common\base\YiiForum;
 use backend\models\ServiceArticle;
 
-$this->title = Yii::t('app', 'Article List');
+$this->title = Yii::t('app', 'Category List');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="page-content">
@@ -30,23 +30,19 @@ $this->params['breadcrumbs'][] = $this->title;
                                     'class'=>'form-inline',
                                     'role'=>'form',
                                 ],
-                                'action'=>Url::to(['article/list']),
+                                'action'=>Url::to(['article/category-list']),
                         ]); ?>
-                            <label class="inline"><?php echo Yii::t('app', 'Article Title'); ?> : </label>
+                            <label class="inline"><?php echo Yii::t('app', 'Category Name'); ?> : </label>
                             <div class="form-group">
-                                <input type="text" name="article_title" class="input-sm" style="width:150px;">
-                            </div>
-                            <label class="inline"><?php echo Yii::t('app', 'Article Author'); ?> : </label>
-                            <div class="form-group">
-                                <input type="text" name="article_author" class="input-sm" style="width:150px;">
+                                <input type="text" name="category_name" class="input-sm" style="width:150px;">
                             </div>
                             <button type="submit" class="btn btn-purple btn-sm">
                                 <?=Yii::t('app', 'Search') ?>
                                 <i class="ace-icon fa fa-search icon-on-right bigger-110"></i>
                             </button>
-                            <a style="float:right" href="<?= Url::to(['article/create']) ?>" class="btn btn-sm btn-success">
+                            <a style="float:right" href="<?= Url::to(['article/category-create']) ?>" class="btn btn-sm btn-success">
                                 <i class=" ace-icon glyphicon glyphicon-plus"></i>
-                                <?= Yii::t('app', 'Publish Article') ?>
+                                <?= Yii::t('app', 'Create Category') ?>
                             </a>
                         <?php ActiveForm::end(); ?>  
                     </div>
@@ -56,11 +52,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 <thead>
                     <tr>
                         <th ><?=Yii::t('app', 'ID') ?></th>
-                        <th ><?=Yii::t('app', 'Article Title') ?></th>
-                        <th ><?=Yii::t('app', 'Article Category') ?></th>
-                        <th ><?=Yii::t('app', 'Article Author') ?></th>
-                        <th ><?=Yii::t('app', 'Article Status') ?></th>
-                        <th ><?=Yii::t('app', 'Publish Date') ?></th>
+                        <th ><?=Yii::t('app', 'Category Name') ?></th>
+                        <th ><?=Yii::t('app', 'Parent Category') ?></th>
+                        <th ><?=Yii::t('app', 'Article Count') ?></th>
+                        <th ><?=Yii::t('app', 'Order No') ?></th>
+                        <th ><?=Yii::t('app', 'Query Tag') ?></th>
                         <th><?=Yii::t('app', 'Operation') ?></th>
                     </tr>
                 </thead>
@@ -69,20 +65,17 @@ $this->params['breadcrumbs'][] = $this->title;
                     foreach ($rows as $row):
                 ?>
                     <tr>
-                        <td><?= $row['article_id'] ?></td>
-                        <td><?= $row['article_title'] ?></td>
-                        <td><?= ServiceArticle::getCategoryName($row['article_category']) ?></td>
-                        <td><?= $row['article_author'] ?></td>
-                        <td><?= Yii::$app->params['articleStatus'][$row['article_status']] ?></td>
-                        <td><?= $row['publish_date'] ?></td>
+                        <td><?= $row['category_id'] ?></td>
+                        <td><?= $row['category_name'] ?></td>
+                        <td><?= ServiceArticle::getCategoryName($row['parent_id']) ?></td>
+                        <td><?= $row['article_count'] ?></td>
+                        <td><?= $row['order_no']?></td>
+                        <td><?= $row['query_tag'] ?></td>
                         <td>
-                            <a class="btn btn-xs btn-info"  href="<?php echo Url::to(['article/view','id'=>$row['article_id']]); ?>">
-                                <?=Yii::t('app', 'View') ?>
-                            </a>&nbsp;
-                            <a class="btn btn-xs btn-purple"  href="<?php echo Url::to(['article/update','id'=>$row['article_id']]); ?>">
+                            <a class="btn btn-xs btn-purple"  href="<?php echo Url::to(['article/category-update','id'=>$row['category_id']]); ?>">
                                 <?=Yii::t('app', 'Update') ?>
                             </a>&nbsp;
-                            <a class="btn btn-xs btn-danger"  onClick="article_del(<?= $row['article_id'] ?>)" href="javascript:void(0)" >
+                            <a class="btn btn-xs btn-danger"  onClick="category_del(<?= $row['category_id'] ?>)" href="javascript:void(0)" >
                                 <?=Yii::t('app', 'Delete') ?>
                             </a>&nbsp;
                         </td>
@@ -108,11 +101,11 @@ $this->params['breadcrumbs'][] = $this->title;
     </div><!-- /.span -->							
 </div></div>
 <?php $this->beginBlock('cms') ?>
-    function article_del(id){
+    function category_del(id){
         bootbox.confirm("您确定要删除此项吗?", function(result) {
             if(result) {
                 $.ajax({
-                    url: "<?=Url::to(['article/delete'])?>",
+                    url: "<?=Url::to(['article/category-delete'])?>",
                     type:'POST',
                     dataType: 'JSON',
                     data : {<?=Yii::$app->request->csrfParam ?> : '<?=Yii::$app->request->getCsrfToken()?>',id:id},

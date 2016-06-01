@@ -7,8 +7,8 @@ use yii\helpers\Html;
  * @var common\models\User $model
  */
 
-$this->title = Yii::t('app','Publish Article');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Article List'), 'url' => ['list']];
+$this->title = Yii::t('app','Create Category');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Category List'), 'url' => ['category-list']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -21,8 +21,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
 	<div class="row">
 		<div class="col-xs-12">
-			<?= $this->render('_form', [
-				'model' => $model,'categorys'=>$categorys
+			<?= $this->render('_form_category', [
+				'model'=>$model,'categorys'=>$categorys
 			])	?>
 		</div>
 	</div>

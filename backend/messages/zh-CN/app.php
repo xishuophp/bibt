@@ -121,6 +121,13 @@ return [
     'Hit Count'=>'点击次数',
     'Article Attachment'=>'文章附件',
     'Update Time'=>'修改时间',
+    'Category List'=>'分类列表',
+    'Create Category'=>'添加分类',
+    'Uopdate Category'=>'修改分类信息',
+    'Category Name'=>'分类名称',
+    'Article Count'=>'文章数量',
+    'Query Tag'=>'唯一标识',
+    'Parent Category'=>'父级分类',
 
 
     //报名管理

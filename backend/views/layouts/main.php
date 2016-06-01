@@ -189,7 +189,7 @@ AppAsset::register($this);
                             // 'task' => ['task_create','task_my-task'],
                             'user' => ['user_list','user_info','user_update-password'],
                             'department' => ['department_list','department_create'],
-                            'article' => ['article_list','article_create'],
+                            'article' => ['article_list','article_create','article_category-list','article_category-create'],
                             'nav' => ['nav_list','nav_create'],
                             'staff' => ['staff_list','staff_create'],
                             'apply-online' => ['apply-online_list'],
@@ -351,6 +351,26 @@ AppAsset::register($this);
                                 <a href="<?= Url::to(['article/create'])?>">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     <?=Yii::t('app','Publish Article')?>
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            <?php endif;?>
+                            <?php if(in_array('article_category-list',$leftNav['article'])):?>
+                            <li class="<?php if(strtolower($routeArr[0]) == 'article' && strtolower($routeArr[1]) == 'category-list,category-update') echo 'active' ?>">
+                                <a href="<?= Url::to(['article/category-list'])?>">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    <?=Yii::t('app','Category List')?>
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            <?php endif;?>
+                            <?php if(in_array('article_category-create',$leftNav['article'])):?>
+                            <li class="<?php if(strtolower($routeArr[0]) == 'article' && strtolower($routeArr[1]) == 'category-create') echo 'active' ?>">
+                                <a href="<?= Url::to(['article/category-create'])?>">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    <?=Yii::t('app','Create Category')?>
                                 </a>
 
                                 <b class="arrow"></b>

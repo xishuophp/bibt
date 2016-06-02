@@ -14,9 +14,8 @@ $this->params['breadcrumbs'][] = $this->title;
     .switch{
         color:red;
         width:20px;
-    }
-    .line{
-        margin-bottom:65px;
+        margin-right: 8px;
+        margin-left: 2px;
     }
     .deploy{
         padding:20px;
@@ -57,9 +56,9 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="profile-activity clearfix config">
                             <div class="ids" id="<?= $res['sysname1'][0]?>"></div>
                             <div class="form-group" style="margin-top:15px;">
-                                <label class="col-sm-2 control-label no-padding-right" for="form-field-1">配置1: </label>
+                                <label class="col-sm-2 control-label no-padding-right" for="form-field-1">fgdsh配置1: </label>
                                 <div class="col-sm-9">
-                                    <input type="text" id="form-field-1"  class="col-xs-10 col-sm-5 SysConfigValue" name="sysname1" value="<?= $res['sysname1'][1]?>" />
+                                    <input type="text" id="form-field-1"  class="col-xs-10 col-sm-6 SysConfigValue" name="sysname1" value="<?= $res['sysname1'][1]?>" />
                                 </div>
                             </div> 
                         </div>
@@ -69,7 +68,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             <div class="form-group" style="margin-top:15px;">
                                 <label class="col-sm-2 control-label no-padding-right" for="form-field-1">配置1: </label>
                                 <div class="col-sm-9">
-                                    <input type="text" id="form-field-1"  class="col-xs-10 col-sm-5 SysConfigValue" name="sysname1" value="" />
+                                    <input type="text" id="form-field-1"  class="col-xs-10 col-sm-6 SysConfigValue" name="sysname1" value="" />
                                 </div>
                             </div> 
                         </div>
@@ -80,7 +79,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             <div class="form-group" style="margin-top:15px;">
                                 <label class="col-sm-2 control-label no-padding-right" for="form-field-1">配置2: </label>
                                 <div class="col-sm-9">
-                                    <input type="text" id="form-field-1"  class="col-xs-10 col-sm-5 SysConfigValue" name="sysname2" value="<?= $res['sysname2'][1]?>" />
+                                    <input type="text" id="form-field-1"  class="col-xs-10 col-sm-6 SysConfigValue" name="sysname2" value="<?= $res['sysname2'][1]?>" />
                                 </div>
                             </div> 
                         </div>
@@ -90,7 +89,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             <div class="form-group" style="margin-top:15px;">
                                 <label class="col-sm-2 control-label no-padding-right" for="form-field-1">配置2: </label>
                                 <div class="col-sm-9">
-                                    <input type="text" id="form-field-1"  class="col-xs-10 col-sm-5 SysConfigValue" name="sysname2" value="" />
+                                    <input type="text" id="form-field-1"  class="col-xs-10 col-sm-6 SysConfigValue" name="sysname2" value="" />
                                 </div>
                             </div> 
                         </div>
@@ -101,7 +100,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="form-group" style="margin-top:15px;">
                             <label class="col-sm-2 control-label no-padding-right" for="form-field-1">配置3: </label>
                             <div class="col-sm-9">
-                                <input type="text" id="form-field-1"  class="col-xs-10 col-sm-5 SysConfigValue" name="sysname3" value="<?= $res['sysname3'][1]?>" />
+                                <input type="text" id="form-field-1"  class="col-xs-10 col-sm-6 SysConfigValue" name="sysname3" value="<?= $res['sysname3'][1]?>" />
                             </div>
                         </div> 
                     </div>
@@ -111,7 +110,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="form-group" style="margin-top:15px;">
                             <label class="col-sm-2 control-label no-padding-right" for="form-field-1">配置3: </label>
                             <div class="col-sm-9">
-                                <input type="text" id="form-field-1"  class="col-xs-10 col-sm-5 SysConfigValue" name="sysname3" value="" />
+                                <input type="text" id="form-field-1"  class="col-xs-10 col-sm-6 SysConfigValue" name="sysname3" value="" />
                             </div>
                         </div> 
                     </div>
@@ -122,7 +121,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="form-group" style="margin-top:15px;">
                             <label class="col-sm-2 control-label no-padding-right" for="form-field-1">配置4: </label>
                             <div class="col-sm-9">
-                                <input type="text" id="form-field-1"  class="col-xs-10 col-sm-5 SysConfigValue" name="sysname4" value="<?= $res['sysname4'][1]?>" />
+                                <textarea type="text" name="sysname4" class="col-xs-10 col-sm-6 SysConfigValue" id="form-field-1"><?= $res['sysname4'][1]?></textarea>
                             </div>
                         </div> 
                     </div>
@@ -132,7 +131,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="form-group" style="margin-top:15px;">
                             <label class="col-sm-2 control-label no-padding-right" for="form-field-1">配置4: </label>
                             <div class="col-sm-9">
-                                <input type="text" id="form-field-1"  class="col-xs-10 col-sm-5 SysConfigValue" name="sysname4" value="" />
+                                <textarea rows="4" type="text" name="sysname4" class="col-xs-10 col-sm-6 SysConfigValue" id="form-field-1"></textarea>
                             </div>
                         </div> 
                     </div>
@@ -141,12 +140,12 @@ $this->params['breadcrumbs'][] = $this->title;
   
                 <div id="tabs-2">
                     <div class="form-group">
-                        <div class="controls col-xs-12 col-sm-9" style="margin-left:110px;margin-top:70px;">
+                        <div class="controls col-xs-12 col-sm-9" style="margin-left:12%;margin-top:10px;">
                             <!-- #section:custom/checkbox.switch -->
                             <div class="row line">
                                 <?php if (isset($res['start_config1'][0])) { ?>
-                                <div class="col-xs-3 deploy">
-                                    <label>
+                                <div class="col-xs-10 deploy">
+                                    <label class="col-xs-10">
                                     <div class="ids" id="<?= $res['start_config1'][0]?>"></div>
                                         <input name="start_config1" value="" class="ace ace-switch ace-switch-3" type="checkbox" <?php if($res['start_config1'][1] == 1) echo 'checked';?> />
                                         <span class="lbl">
@@ -155,8 +154,8 @@ $this->params['breadcrumbs'][] = $this->title;
                                     </label>
                                 </div>
                                 <?php }else{ ?>
-                                    <div class="col-xs-3 deploy">
-                                        <label>
+                                    <div class="col-xs-10 deploy">
+                                        <label class="col-xs-10">
                                         <div class="ids" id=""></div>
                                             <input name="start_config1" value="" class="ace ace-switch ace-switch-3" type="checkbox" />
                                             <span class="lbl">
@@ -166,8 +165,8 @@ $this->params['breadcrumbs'][] = $this->title;
                                     </div> 
                                 <?php } ?>
                                 <?php if (isset($res['start_config2'][0])) { ?>
-                                    <div class="col-xs-3 deploy">
-                                        <label>
+                                    <div class="col-xs-10 deploy">
+                                        <label class="col-xs-10">
                                         <div class="ids" id="<?= $res['start_config2'][0]?>"></div>
                                             <input name="start_config2" value="" class="ace ace-switch ace-switch-3" type="checkbox" <?php if($res['start_config2'][1] == 1) echo 'checked';?> />
                                             <span class="lbl">
@@ -176,8 +175,8 @@ $this->params['breadcrumbs'][] = $this->title;
                                         </label>
                                     </div>
                                 <?php }else{ ?>
-                                    <div class="col-xs-3 deploy">
-                                        <label>
+                                    <div class="col-xs-10 deploy">
+                                        <label class="col-xs-10">
                                         <div class="ids" id=""></div>
                                             <input name="start_config2" value="" class="ace ace-switch ace-switch-3" type="checkbox" />
                                             <span class="lbl">
@@ -187,8 +186,8 @@ $this->params['breadcrumbs'][] = $this->title;
                                     </div>
                                 <?php } ?>
                                 <?php if (isset($res['start_config3'][0])) { ?>
-                                    <div class="col-xs-3 deploy">
-                                        <label>
+                                    <div class="col-xs-10 deploy">
+                                        <label class="col-xs-10">
                                         <div class="ids" id="<?= $res['start_config3'][0]?>"></div>
                                             <input name="start_config2" value="" class="ace ace-switch ace-switch-3" type="checkbox" <?php if($res['start_config3'][1] == 1) echo 'checked';?> />
                                             <span class="lbl">
@@ -197,8 +196,8 @@ $this->params['breadcrumbs'][] = $this->title;
                                         </label>
                                     </div>
                                 <?php }else{ ?>
-                                    <div class="col-xs-3 deploy">
-                                        <label>
+                                    <div class="col-xs-10 deploy">
+                                        <label class="col-xs-10">
                                         <div class="ids" id=""></div>
                                             <input name="start_config3" value="" class="ace ace-switch ace-switch-3" type="checkbox" />
                                             <span class="lbl">
@@ -271,6 +270,21 @@ $this->params['breadcrumbs'][] = $this->title;
                 spinner.spin();
                 if(data.data==1){
                     window.location.reload();
+                }else if(data.data==2){
+                    bootbox.dialog({
+                        message: "<span class='bigger-110'>"+data.errmsg+"</span>",
+                        buttons:            
+                        {
+                            "button" :
+                             {
+                                "label" : "确定",
+                                "className" : "btn-sm btn-primary",
+                                callback: function () {  
+                                    window.location.reload();  
+                                }
+                            }
+                        }
+                    });
                 }else{
                     bootbox.alert("操作失败!!!");
                 }

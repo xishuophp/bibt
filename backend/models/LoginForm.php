@@ -11,6 +11,7 @@ class LoginForm extends Model
 {
     public $username;
     public $password;
+    public $verifyCode;
     public $rememberMe = true;
 
     private $_user;
@@ -26,6 +27,8 @@ class LoginForm extends Model
             [['username', 'password'], 'required'],
             // rememberMe must be a boolean value
             ['rememberMe', 'boolean'],
+            ['verifyCode', 'required','message'=>\Yii::t('app','Please enter verifyCode')],
+            ['verifyCode', 'captcha','message'=>\Yii::t('app','This is wrong verifyCode')],
             // password is validated by validatePassword()
             ['password', 'validatePassword'],
         ];

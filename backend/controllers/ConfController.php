@@ -38,6 +38,7 @@ class ConfController extends BaseController
 				}elseif($config[2] == 'false'){
 					$model->config_value = '0';
 				}else{
+					if(empty($config[2])) return json_encode(['data'=>2,'errmsg'=>'配置项的值不能为空!']);
 					$model->config_value = $config[2];
 				}
 				$model->save();

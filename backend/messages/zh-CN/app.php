@@ -182,4 +182,6 @@ return [
     //配置管理
     'Conf Manage' => '配置管理',
     'Conf List' => '系统配置',
+    'Please enter verifyCode' => '请输入验证码',
+    'This is wrong verifyCode' => '验证码错误',
 ];

@@ -2,10 +2,14 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Url;
+use yii\captcha\Captcha; 
 
 ?>
 
 <!DOCTYPE html>
+<?php $this->beginPage() ?>
+<?php $this->beginBody() ?>
+
 <html lang="en">
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -95,6 +99,19 @@ use yii\helpers\Url;
 															<i class="ace-icon fa fa-lock"></i>
 														</span>
 													</label>
+
+													<?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
+								                        'captchaAction'=>'site/captcha',
+								                        'template' => '
+								                            <div class="row"></div>
+								                            <label class="block clearfix">
+								                                <span class="block input-icon input-icon-right ">
+								                                    <div class="col-lg-6" style="padding-left:0px;">{input}</div><div class="col-lg-6">{image}</div>
+								                                </span>
+								                             </label>
+								                         ',
+								                         'imageOptions'=>['alt'=>'点击换图','title'=>'点击换图', 'style'=>'cursor:pointer','id'=>'captchaimg',],
+								                    ])->label(false) ?>
 
 													<div class="space"></div>
 
@@ -367,3 +384,5 @@ use yii\helpers\Url;
 		</script>
 	</body>
 </html>
+<?php $this->endBody() ?>
+<?php $this->endPage() ?>

@@ -19,10 +19,21 @@ class SiteController extends Controller
     public function actions()
     {
         return [
-            'error' => [
+            /*'error' => [
                 'class' => 'yii\web\ErrorAction',
+                'layout' => false,
+            ],*/
+            'captcha' => [
+                'class' => 'yii\captcha\CaptchaAction',
+                'maxLength' => 4,
+                'minLength' => 4,
+                'transparent'=>true,  //显示为透明
+                'width'=>100,
+                'height' => 34,
+                'padding' => 1,//间距
             ],
         ];
+
     }
 
     public function actionIndex()

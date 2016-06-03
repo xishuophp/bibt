@@ -76,6 +76,12 @@ class SiteController extends Controller
         ]);
     }
 
+    public function actionSysError()
+    {
+        $this->layout = false;
+        return $this->render('error_detail');
+    }
+
     public function actionLogout()
     {
         Yii::$app->user->logout();

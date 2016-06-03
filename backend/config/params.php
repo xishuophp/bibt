@@ -1,28 +1,28 @@
 <?php
-return [
+$params = [
     'adminEmail' => 'admin@example.com',
-    'systemAdmin'=>['junjie.feng'],
+    'systemAdmin'=>['junjie.feng','haiwy'],
     'languageArr' => ['zh-CN', 'en'],
     'pageSize' => 20,
     'userStatus'=>[
-    	200=>'正常',
-    	110=>'禁用',
-    	120=>'冻结',
+        200=>'正常',
+        110=>'禁用',
+        120=>'冻结',
     ],
 
     'sex'=>[
-    	0=>'女',
-    	1=>'男',
+        0=>'女',
+        1=>'男',
     ],
 
     'deptType'=>[
-    	1=>'行政',
-    	2=>'教学',
+        1=>'行政',
+        2=>'教学',
     ],
 
     'staffType' =>[
-    	1=>'教师',
-    	2=>'行政',
+        1=>'教师',
+        2=>'行政',
     ],
 
     'navType'=>[
@@ -63,3 +63,11 @@ return [
         "#a47ae2"=>"#a47ae2",
     ],
 ];
+
+//将缓存的数据加载进来
+$params = array_merge(
+        $params,
+        require(__DIR__ . '/../../data/cache/cachedData.php')
+);
+
+return $params;

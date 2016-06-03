@@ -81,7 +81,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     </div>
                     <div class="form-actions center">
-                        <button type="submit" name="submit" class="btn btn-success">
+                        <button type="submit" name="confirm" class="btn btn-success">
                             <i class="ace-icon fa fa-check bigger-110"></i>
                             <?=Yii::t('app','Submit')?>
                         </button>

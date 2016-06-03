@@ -60,6 +60,8 @@ return [
     'Permission Manage' => '权限管理',
     'Permission List' => '权限列表',
     'Create Permission' => '添加权限',
+    'Set Permission' => '设置权限',
+    'Set User Role' => '设置用户角色',
     'Reply User' => '受理人',
     'System Conf' => '系统配置',
     'Chose Game' => '游戏切换',
@@ -182,6 +184,8 @@ return [
     //配置管理
     'Conf Manage' => '配置管理',
     'Conf List' => '系统配置',
+    'Basic Config' => '基本配置',
+    'Senior Config' => '高级配置',
     'Please enter verifyCode' => '请输入验证码',
     'This is wrong verifyCode' => '验证码错误',
 ];

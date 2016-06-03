@@ -179,21 +179,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 spinner.spin();
                 if(data.data==1){
                     window.location.reload();
-                }else if(data.data==2){
-                    bootbox.dialog({
-                        message: "<span class='bigger-110'>"+data.errmsg+"</span>",
-                        buttons:            
-                        {
-                            "button" :
-                             {
-                                "label" : "确定",
-                                "className" : "btn-sm btn-primary",
-                                callback: function () {  
-                                    window.location.reload();  
-                                }
-                            }
-                        }
-                    });
                 }else{
                     bootbox.alert("操作失败!!!");
                 }

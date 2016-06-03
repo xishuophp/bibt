@@ -9,7 +9,9 @@ use yii\widgets\ActiveForm;
  * @var yii\widgets\ActiveForm $form
  */
 ?>
-
+<link rel="stylesheet" href="/static/css/chosen.css" />       
+<link rel="stylesheet" href="/static/css/ace.min.css" />
+<link rel="stylesheet" href="/static/css/jquery-ui.min.css" />
 <?php $form = ActiveForm::begin([
             'options' => [
                 'class'=>'form-horizontal',
@@ -24,12 +26,18 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'dept_name')->textInput(['class'=>'col-xs-12']) ?>
 
     <?= $form->field($model, 'dept_type')->dropdownList(Yii::$app->params['deptType'],['class'=>'form-control']) ?>
-
-    <?= $form->field($model, 'parent_id')->textInput(['class'=>'col-xs-12']) ?>
+    
+    <?= $form->field($model, 'parent_id')->dropDownList($departments,['class'=>'col-xs-12','prompt'=>'无上级部门']) ?>
 
     <?= $form->field($model, 'dept_phone')->textInput(['class'=>'col-xs-12']) ?>
+    <div class="form-group">
+        <label class="col-sm-2 control-label no-padding-right"><?=Yii::t('app','Dept Leader')?></label>
+        
+        <div class="col-sm-8 col-xs-12" style="width:66%">
 
-    <?= $form->field($model, 'dept_leader')->textInput(['class'=>'col-xs-12']) ?>
+            <?=Html::dropDownList("Department[dept_leader]",$model->dept_leader,Yii::$app->cache->get(Yii::$app->params['staffList']),['class'=>'chosen-select','prompt'=>'请选择']) ?>
+        </div>
+    </div>
     
     <?php if($model->isNewRecord){$model->order_no=100;} ?>
     <?= $form->field($model, 'order_no')->textInput(['class'=>'form-control']) ?>
@@ -69,3 +77,23 @@ use yii\widgets\ActiveForm;
         </div>
     </div>
 <?php ActiveForm::end(); ?>
+<?php $this->registerJsFile('/static/js/chosen.jquery.min.js', ['depends'=>['backend\assets\AppAsset']]); ?>
+<?php $this->registerJsFile('/static/js/jquery-ui.min.js', ['depends'=>['backend\assets\AppAsset']]); ?>
+<?php $this->beginBlock('cms') ?>
+    jQuery(function($){
+        $('.chosen-select').chosen({allow_single_deselect:true}); 
+                //resize the chosen on window resize
+                $(window).on('resize.chosen', function() {
+                    var w = $('.chosen-select').parent().width();
+                    $('.chosen-select').next().css({'width':w});
+                }).trigger('resize.chosen');
+
+        $('.chosen-select').chosen({allow_single_deselect:true}); 
+                //resize the chosen on window resize
+        $(window).on('resize.chosen', function() {
+            var w = $('.chosen-select').parent().width();
+            $('.chosen-select').next().css({'width':w});
+        }).trigger('resize.chosen');
+    });
+<?php $this->endBlock() ?>
+<?php $this->registerJs($this->blocks['cms'], \yii\web\View::POS_END); ?>

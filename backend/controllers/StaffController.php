@@ -7,6 +7,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use backend\models\Staff;
 use backend\models\YiiForum;
+use backend\models\ServiceStaff;
 use backend\models\ResetPasswordForm;
 use yii\web\NotFoundHttpException;
 
@@ -44,13 +45,11 @@ class StaffController extends BaseController
         if ($model->load(Yii::$app->request->post()))
         {
             if($model->save()){
-                return $this->redirect([
-                        'list' 
-                ]);             
+                //更新员工缓存信息
+                ServiceStaff::updateCateForStaff();
+                return $this->redirect(['list']);             
             }else{
-                return $this->render('create', [
-                        'model' => $model,
-                ]); 
+                return $this->render('create', ['model' => $model,]); 
             }
             
         }else{
@@ -67,13 +66,11 @@ class StaffController extends BaseController
         if ($model->load(Yii::$app->request->post()))
         {
             if($model->save()){
-                return $this->redirect([
-                        'list' 
-                ]);                
+                //更新员工缓存信息
+                ServiceStaff::updateCateForStaff();
+                return $this->redirect(['list']);                
             }else{
-                return $this->render('update', [
-                        'model' => $model,
-                ]);                
+                return $this->render('update', ['model' => $model,]);                
             }
 
         }else{

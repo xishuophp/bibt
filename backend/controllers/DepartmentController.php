@@ -6,6 +6,7 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use backend\models\Department;
+use backend\models\ServiceDepartment;
 use backend\models\YiiForum;
 use backend\models\ResetPasswordForm;
 use yii\web\NotFoundHttpException;
@@ -40,22 +41,25 @@ class DepartmentController extends BaseController
     //创建部门
     public function actionCreate()
     {
+        $ServiceDepartmentModel = new ServiceDepartment();
+        $departments = $ServiceDepartmentModel->getDepartmentList();
         $model = new Department();
         if ($model->load(Yii::$app->request->post()))
         {
+            if(empty($model->parent_id)){
+                $model->parent_id=0;
+            }
             if($model->save()){
-                return $this->redirect([
-                        'list' 
-                ]);             
+                return $this->redirect(['list']);             
             }else{
                 return $this->render('create', [
-                        'model' => $model,
+                        'model' => $model,'departments'=>$departments
                 ]); 
             }
             
         }else{
             return $this->render('create', [
-                    'model' => $model,
+                    'model' => $model,'departments'=>$departments
             ]);
         }
     }
@@ -64,22 +68,22 @@ class DepartmentController extends BaseController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $ServiceDepartmentModel = new ServiceDepartment();
+        $departments = $ServiceDepartmentModel->getDepartmentList();
+        unset($departments[$model->dept_id]);
         if ($model->load(Yii::$app->request->post()))
         {
+            if(empty($model->parent_id)){
+                $model->parent_id=0;
+            }
             if($model->save()){
-                return $this->redirect([
-                        'list' 
-                ]);                
+                return $this->redirect(['list']);                
             }else{
-                return $this->render('update', [
-                        'model' => $model,
-                ]);                
+                return $this->render('update', ['model' => $model,'departments'=>$departments]);                
             }
 
         }else{
-            return $this->render('update', [
-                    'model' => $model,
-            ]);
+            return $this->render('update', ['model' => $model,'departments'=>$departments]);
         }
     }
 

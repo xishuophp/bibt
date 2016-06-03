@@ -63,11 +63,14 @@ class ArticleController extends BaseController
 
             $model->article_author = Yii::$app->user->identity->username;
 
-            if($model->save()){
-                return $this->redirect(['list']);
-            }else{
+            if(!$model->save()){
                 return $this->render('create',['model'=>$model,'categorys'=>$categorys]);
             }
+
+            $categoryModel = ArticleCategory::findOne($model->article_category);
+            $categoryModel->article_count+=1;
+            $categoryModel->save();
+            return $this->redirect(['list']);
 
         }else{
             return $this->render('create',['model'=>$model,'categorys'=>$categorys]);
@@ -80,6 +83,7 @@ class ArticleController extends BaseController
         $publish_date = $model->publish_date;
         $ServiceArticleModel = new ServiceArticle();
         $categorys = $ServiceArticleModel->getCategoryList();
+        $article_category = $model->article_category;
         if($model->load(Yii::$app->request->post())){
             $attachment = YiiForum::uploadFiles('attachment');
             $attachment2 = [];
@@ -88,7 +92,6 @@ class ArticleController extends BaseController
                     $attachment2[] = json_decode($value,true);
                 }
             }
-
             if($attachment['errno']==0){
                 $model->article_attachment = json_encode(array_merge($attachment['fileInfo'],$attachment2));
             }else if($attachment2){
@@ -109,11 +112,23 @@ class ArticleController extends BaseController
 
             $model->update_time = date('Y-m-d H:i:s');
 
-            if($model->save()){
-                return $this->redirect(['list']);
-            }else{
+            if(!$model->save()){
                 return $this->render('update',['model'=>$model,'categorys'=>$categorys]);
             }
+
+            if($article_category!=$model->article_category){
+                $categoryModel1 = ArticleCategory::findOne($article_category);
+                $categoryModel1->article_count -=1;
+                if($categoryModel1->article_count<0){
+                    $categoryModel1->article_count = 0;
+                }
+                $categoryModel1->save();
+
+                $categoryModel2 = ArticleCategory::findOne($model->article_category);
+                $categoryModel2->article_count +=1;
+                $categoryModel2->save();
+            }
+            return $this->redirect(['list']);
         }else{
             return $this->render('update',['model'=>$model,'categorys'=>$categorys]);
         }
@@ -173,20 +188,17 @@ class ArticleController extends BaseController
         $categorys = $ServiceArticleModel->getCategoryList();
         if ($model->load(Yii::$app->request->post()))
         {
+            if(empty($model->parent_id)){
+                $model->parent_id = 0;
+            }
             if($model->save()){
-                return $this->redirect([
-                        'category-list' 
-                ]);             
+                return $this->redirect(['category-list']);             
             }else{
-                return $this->render('category_create', [
-                        'model'=>$model,'categorys'=>$categorys
-                ]); 
+                return $this->render('category_create', ['model'=>$model,'categorys'=>$categorys]); 
             }
             
         }else{
-            return $this->render('category_create', [
-                    'model'=>$model,'categorys'=>$categorys
-            ]);
+            return $this->render('category_create', ['model'=>$model,'categorys'=>$categorys]);
         }
     }
 
@@ -200,22 +212,20 @@ class ArticleController extends BaseController
 
         $ServiceArticleModel = new ServiceArticle();
         $categorys = $ServiceArticleModel->getCategoryList();
+        unset($categorys[$model->category_id]);
         if ($model->load(Yii::$app->request->post()))
         {
+            if(empty($model->parent_id)){
+                $model->parent_id = 0;
+            }
             if($model->save()){
-                return $this->redirect([
-                        'category-list' 
-                ]);             
+                return $this->redirect(['category-list']);             
             }else{
-                return $this->render('category_update', [
-                        'model'=>$model,'categorys'=>$categorys
-                ]); 
+                return $this->render('category_update', ['model'=>$model,'categorys'=>$categorys]); 
             }
             
         }else{
-            return $this->render('category_update', [
-                    'model'=>$model,'categorys'=>$categorys
-            ]);
+            return $this->render('category_update', ['model'=>$model,'categorys'=>$categorys]);
         }
     }
 

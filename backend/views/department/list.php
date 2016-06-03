@@ -71,7 +71,12 @@ $this->params['breadcrumbs'][] = $this->title;
                         <td><?= $row['dept_name'] ?></td>
                         <td><?= Yii::$app->params['deptType'][$row['dept_type']] ?></td>
                         <td><?= $row['dept_phone'] ?></td>
-                        <td><?= $row['dept_leader'] ?></td>
+                        <td><?php
+                                if($row['dept_leader']){
+                                    echo Yii::$app->cache->get(Yii::$app->params['staffList'])[$row['dept_leader']];
+                                }
+                            ?>
+                        </td>
                         <td>
                             <a class="btn btn-xs btn-info"  href="<?php echo Url::to(['department/view','id'=>$row['dept_id']]); ?>">
                                 <?=Yii::t('app', 'View') ?>

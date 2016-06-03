@@ -28,45 +28,39 @@ class ConfController extends BaseController
 	public function actionUpdate(){
 		$configs = Yii::$app->request->post('config');
 		$data = array_filter(explode('@',$configs));
+		$config_names = [];
+        $ret = SysConfig::find()->asArray()->all();
+        foreach ($ret as $key => $value) {
+        	$config_names[] = $value['config_name'];
+        }
 		foreach ($data as $key => $value) {
 			$config = explode('#',$value);
-			if(!empty($config[0])){
+			if(!empty($config_names) && in_array($config[0], $config_names)){
 				//如果配置已存在,修改配置
-				$model = $this->findModel($config[0]);
-				if($config[2] == "true"){
+				$model = SysConfig::findOne(['config_name'=>$config[0]]);
+				if($config[1] == "true"){
 					$model->config_value = '1';
-				}elseif($config[2] == 'false'){
+				}elseif($config[1] == 'false'){
 					$model->config_value = '0';
 				}else{
-					if(empty($config[2])) return json_encode(['data'=>2,'errmsg'=>'配置项的值不能为空!']);
-					$model->config_value = $config[2];
+					$model->config_value = $config[1];
 				}
 				$model->save();
 			}else{
 				//如果配置不存在,添加配置
 				$newModel = new SysConfig();
-				$newModel->config_name = $config[1];
-				if($config[2] == "true"){
+				$newModel->config_name = $config[0];
+				if($config[1] == "true"){
 					$newModel->config_value = '1';
-				}elseif($config[2] == 'false'){
+				}elseif($config[1] == 'false'){
 					$newModel->config_value = '0';
 				}else{
-					$newModel->config_value = $config[2];
+					$newModel->config_value = $config[1];
 				}
 				$newModel->save();
 			}
-			// var_dump($config);
 		}
 		return json_encode(['data'=>1]);
 	}
 
-	//配置表单查询
-	protected function findModel($id)
-    {
-        if (($model = SysConfig::findOne(['config_id'=>$id])) !== null) {
-            return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
-    }
 }

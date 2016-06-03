@@ -27,7 +27,7 @@ class SysConfig extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['config_name', 'config_value'], 'required'],
+            [['config_name'], 'required'],
             [['config_value'], 'string'],
             [['config_name'], 'string', 'max' => 100],
         ];
@@ -39,9 +39,9 @@ class SysConfig extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'config_id' => 'Config ID',
-            'config_name' => 'Config Name',
-            'config_value' => 'Config Value',
+            'config_id' => Yii::t('app', 'Config ID'),
+            'config_name' => Yii::t('app', 'Config Name'),
+            'config_value' => Yii::t('app', 'Config Value'),
         ];
     }
 }

@@ -52,90 +52,38 @@ $this->params['breadcrumbs'][] = $this->title;
                 </ul>
 
                 <div id="tabs-1">
-                    <?php if (isset($res['sysname1'][0])) { ?>
-                        <div class="profile-activity clearfix config">
-                            <div class="ids" id="<?= $res['sysname1'][0]?>"></div>
-                            <div class="form-group" style="margin-top:15px;">
-                                <label class="col-sm-2 control-label no-padding-right" for="form-field-1">fgdsh配置1: </label>
-                                <div class="col-sm-9">
-                                    <input type="text" id="form-field-1"  class="col-xs-10 col-sm-6 SysConfigValue" name="sysname1" value="<?= $res['sysname1'][1]?>" />
-                                </div>
-                            </div> 
-                        </div>
-                    <?php }else{ ?>
-                        <div class="profile-activity clearfix config">
-                            <div class="ids" id=""></div>
-                            <div class="form-group" style="margin-top:15px;">
-                                <label class="col-sm-2 control-label no-padding-right" for="form-field-1">配置1: </label>
-                                <div class="col-sm-9">
-                                    <input type="text" id="form-field-1"  class="col-xs-10 col-sm-6 SysConfigValue" name="sysname1" value="" />
-                                </div>
-                            </div> 
-                        </div>
-                    <?php } ?>
-                    <?php if (isset($res['sysname2'][0])) { ?>
-                        <div class="profile-activity clearfix config">
-                            <div class="ids" id="<?= $res['sysname2'][0]?>"></div>
-                            <div class="form-group" style="margin-top:15px;">
-                                <label class="col-sm-2 control-label no-padding-right" for="form-field-1">配置2: </label>
-                                <div class="col-sm-9">
-                                    <input type="text" id="form-field-1"  class="col-xs-10 col-sm-6 SysConfigValue" name="sysname2" value="<?= $res['sysname2'][1]?>" />
-                                </div>
-                            </div> 
-                        </div>
-                    <?php }else{ ?>
-                        <div class="profile-activity clearfix config">
-                            <div class="ids" id=""></div>
-                            <div class="form-group" style="margin-top:15px;">
-                                <label class="col-sm-2 control-label no-padding-right" for="form-field-1">配置2: </label>
-                                <div class="col-sm-9">
-                                    <input type="text" id="form-field-1"  class="col-xs-10 col-sm-6 SysConfigValue" name="sysname2" value="" />
-                                </div>
-                            </div> 
-                        </div>
-                    <?php } ?>
-                    <?php if (isset($res['sysname3'][0])) { ?>
                     <div class="profile-activity clearfix config">
-                        <div class="ids" id="<?= $res['sysname3'][0]?>"></div>
+                        <div class="form-group" style="margin-top:15px;">
+                            <label class="col-sm-2 control-label no-padding-right" for="form-field-1">fgdsh配置1: </label>
+                            <div class="col-sm-9">
+                                <input type="text" id="form-field-1"  class="col-xs-10 col-sm-6 SysConfigValue" name="sysname1" value="<?= isset($res['sysname1'][0])?$res['sysname1'][1]:''?>" />
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="profile-activity clearfix config">
+                        <div class="form-group" style="margin-top:15px;">
+                            <label class="col-sm-2 control-label no-padding-right" for="form-field-1">配置2: </label>
+                            <div class="col-sm-9">
+                                <input type="text" id="form-field-1"  class="col-xs-10 col-sm-6 SysConfigValue" name="sysname2" value="<?= isset($res['sysname2'][0])?$res['sysname2'][1]:''?>" />
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="profile-activity clearfix config">
                         <div class="form-group" style="margin-top:15px;">
                             <label class="col-sm-2 control-label no-padding-right" for="form-field-1">配置3: </label>
                             <div class="col-sm-9">
-                                <input type="text" id="form-field-1"  class="col-xs-10 col-sm-6 SysConfigValue" name="sysname3" value="<?= $res['sysname3'][1]?>" />
+                                <input type="text" id="form-field-1"  class="col-xs-10 col-sm-6 SysConfigValue" name="sysname3" value="<?= isset($res['sysname3'][0])?$res['sysname3'][1]:''?>" />
                             </div>
                         </div> 
                     </div>
-                    <?php }else{ ?>
-                        <div class="profile-activity clearfix config">
-                        <div class="ids" id=""></div>
-                        <div class="form-group" style="margin-top:15px;">
-                            <label class="col-sm-2 control-label no-padding-right" for="form-field-1">配置3: </label>
-                            <div class="col-sm-9">
-                                <input type="text" id="form-field-1"  class="col-xs-10 col-sm-6 SysConfigValue" name="sysname3" value="" />
-                            </div>
-                        </div> 
-                    </div>
-                    <?php } ?>
-                    <?php if (isset($res['sysname4'][0])) { ?>
                     <div class="profile-activity clearfix config">
-                        <div class="ids" id="<?= $res['sysname4'][0]?>"></div>
                         <div class="form-group" style="margin-top:15px;">
                             <label class="col-sm-2 control-label no-padding-right" for="form-field-1">配置4: </label>
                             <div class="col-sm-9">
-                                <textarea type="text" name="sysname4" class="col-xs-10 col-sm-6 SysConfigValue" id="form-field-1"><?= $res['sysname4'][1]?></textarea>
+                                <textarea type="text" name="sysname4" class="col-xs-10 col-sm-6 SysConfigValue" id="form-field-1"><?= isset($res['sysname4'][0])?$res['sysname4'][1]:''?></textarea>
                             </div>
                         </div> 
-                    </div>
-                    <?php }else{ ?>
-                        <div class="profile-activity clearfix config">
-                        <div class="ids" id=""></div>
-                        <div class="form-group" style="margin-top:15px;">
-                            <label class="col-sm-2 control-label no-padding-right" for="form-field-1">配置4: </label>
-                            <div class="col-sm-9">
-                                <textarea rows="4" type="text" name="sysname4" class="col-xs-10 col-sm-6 SysConfigValue" id="form-field-1"></textarea>
-                            </div>
-                        </div> 
-                    </div>
-                    <?php } ?>                                       
+                    </div>                                       
                 </div>
   
                 <div id="tabs-2">
@@ -143,69 +91,30 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="controls col-xs-12 col-sm-9" style="margin-left:12%;margin-top:10px;">
                             <!-- #section:custom/checkbox.switch -->
                             <div class="row line">
-                                <?php if (isset($res['start_config1'][0])) { ?>
                                 <div class="col-xs-10 deploy">
                                     <label class="col-xs-10">
-                                    <div class="ids" id="<?= $res['start_config1'][0]?>"></div>
-                                        <input name="start_config1" value="" class="ace ace-switch ace-switch-3" type="checkbox" <?php if($res['start_config1'][1] == 1) echo 'checked';?> />
+                                        <input name="start_config1" value="" class="ace ace-switch ace-switch-3" type="checkbox" <?php if(isset($res['start_config1'][1]) && $res['start_config1'][1] == 1) echo 'checked';?> />
                                         <span class="lbl">
                                             <i class="ace-icon fa fa-arrow-right icon-on-right switch"></i>是否开启配置1
                                         </span>
                                     </label>
                                 </div>
-                                <?php }else{ ?>
-                                    <div class="col-xs-10 deploy">
-                                        <label class="col-xs-10">
-                                        <div class="ids" id=""></div>
-                                            <input name="start_config1" value="" class="ace ace-switch ace-switch-3" type="checkbox" />
-                                            <span class="lbl">
-                                                <i class="ace-icon fa fa-arrow-right icon-on-right switch"></i>是否开启配置1
-                                            </span>
-                                        </label>
-                                    </div> 
-                                <?php } ?>
-                                <?php if (isset($res['start_config2'][0])) { ?>
-                                    <div class="col-xs-10 deploy">
-                                        <label class="col-xs-10">
-                                        <div class="ids" id="<?= $res['start_config2'][0]?>"></div>
-                                            <input name="start_config2" value="" class="ace ace-switch ace-switch-3" type="checkbox" <?php if($res['start_config2'][1] == 1) echo 'checked';?> />
-                                            <span class="lbl">
-                                                <i class="ace-icon fa fa-arrow-right icon-on-right switch"></i>是否开启配置2
-                                            </span>
-                                        </label>
-                                    </div>
-                                <?php }else{ ?>
-                                    <div class="col-xs-10 deploy">
-                                        <label class="col-xs-10">
-                                        <div class="ids" id=""></div>
-                                            <input name="start_config2" value="" class="ace ace-switch ace-switch-3" type="checkbox" />
-                                            <span class="lbl">
-                                                <i class="ace-icon fa fa-arrow-right icon-on-right switch"></i>是否开启配置2
-                                            </span>
-                                        </label>
-                                    </div>
-                                <?php } ?>
-                                <?php if (isset($res['start_config3'][0])) { ?>
-                                    <div class="col-xs-10 deploy">
-                                        <label class="col-xs-10">
-                                        <div class="ids" id="<?= $res['start_config3'][0]?>"></div>
-                                            <input name="start_config2" value="" class="ace ace-switch ace-switch-3" type="checkbox" <?php if($res['start_config3'][1] == 1) echo 'checked';?> />
-                                            <span class="lbl">
-                                                <i class="ace-icon fa fa-arrow-right icon-on-right switch"></i>是否开启配置3
-                                            </span>
-                                        </label>
-                                    </div>
-                                <?php }else{ ?>
-                                    <div class="col-xs-10 deploy">
-                                        <label class="col-xs-10">
-                                        <div class="ids" id=""></div>
-                                            <input name="start_config3" value="" class="ace ace-switch ace-switch-3" type="checkbox" />
-                                            <span class="lbl">
-                                                <i class="ace-icon fa fa-arrow-right icon-on-right switch"></i>是否开启配置3
-                                            </span>
-                                        </label>
-                                    </div>
-                                <?php } ?>
+                                <div class="col-xs-10 deploy">
+                                    <label class="col-xs-10">
+                                        <input name="start_config2" value="" class="ace ace-switch ace-switch-3" type="checkbox" <?php if(isset($res['start_config2'][1]) && $res['start_config2'][1] == 1) echo 'checked';?> />
+                                        <span class="lbl">
+                                            <i class="ace-icon fa fa-arrow-right icon-on-right switch"></i>是否开启配置2
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="col-xs-10 deploy">
+                                    <label class="col-xs-10">
+                                        <input name="start_config3" value="" class="ace ace-switch ace-switch-3" type="checkbox" <?php if(isset($res['start_config3'][1]) && $res['start_config3'][1] == 1) echo 'checked';?> />
+                                        <span class="lbl">
+                                            <i class="ace-icon fa fa-arrow-right icon-on-right switch"></i>是否开启配置3
+                                        </span>
+                                    </label>
+                                </div>
                             </div>  
                             <!-- /section:custom/checkbox.switch -->
                         </div>
@@ -248,16 +157,16 @@ $this->params['breadcrumbs'][] = $this->title;
         var name=$('.SysConfigValue').attr('name');
         var value=$.trim($('.SysConfigValue').val());
 
-        var id=$('.ids').attr('id');
+        <!-- var id=$('.ids').attr('id'); -->
         var data="";
         for(var i=0;i< total;i++){
-            data+=$('.ids:eq('+i+')').attr('id')+"#"+$('.SysConfigValue:eq('+i+')').attr('name')+"#"+$('.SysConfigValue:eq('+i+')').val()+"@";
+            data+=$('.SysConfigValue:eq('+i+')').attr('name')+"#"+$('.SysConfigValue:eq('+i+')').val()+"@";
         }
         <!-- 复选框中的值 -->
         $('input[type="checkbox"]').each(function(){
-           data+=$(this).siblings('.ids').attr('id')+"#"+$(this).attr('name')+"#"+$(this).is(':checked')+"@";
+           data+=$(this).attr('name')+"#"+$(this).is(':checked')+"@";
         });
-        <!-- alert(data); -->
+        <!-- alert(data);return false; -->
           $.ajax({
             url: "<?=Url::to(['conf/update'])?>",
             type:'POST',

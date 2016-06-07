@@ -8,6 +8,7 @@ use yii\filters\VerbFilter;
 use backend\models\Staff;
 use backend\models\YiiForum;
 use backend\models\ServiceStaff;
+use backend\models\ServiceDepartment;
 use backend\models\ResetPasswordForm;
 use yii\web\NotFoundHttpException;
 
@@ -42,6 +43,8 @@ class StaffController extends BaseController
     public function actionCreate()
     {
         $model = new Staff();
+        $ServiceDepartmentModel = new ServiceDepartment();
+        $departments = $ServiceDepartmentModel->getDepartmentList();
         if ($model->load(Yii::$app->request->post()))
         {
             if($model->save()){
@@ -49,12 +52,12 @@ class StaffController extends BaseController
                 ServiceStaff::updateCateForStaff();
                 return $this->redirect(['list']);             
             }else{
-                return $this->render('create', ['model' => $model,]); 
+                return $this->render('create', ['model' => $model,'departments'=>$departments]); 
             }
             
         }else{
             return $this->render('create', [
-                    'model' => $model,
+                    'model' => $model,'departments'=>$departments
             ]);
         }
     }
@@ -63,6 +66,8 @@ class StaffController extends BaseController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $ServiceDepartmentModel = new ServiceDepartment();
+        $departments = $ServiceDepartmentModel->getDepartmentList();
         if ($model->load(Yii::$app->request->post()))
         {
             if($model->save()){
@@ -70,12 +75,12 @@ class StaffController extends BaseController
                 ServiceStaff::updateCateForStaff();
                 return $this->redirect(['list']);                
             }else{
-                return $this->render('update', ['model' => $model,]);                
+                return $this->render('update', ['model' => $model,'departments'=>$departments]);                
             }
 
         }else{
             return $this->render('update', [
-                    'model' => $model,
+                    'model' => $model,'departments'=>$departments
             ]);
         }
     }

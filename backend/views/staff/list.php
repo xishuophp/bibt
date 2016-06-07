@@ -58,7 +58,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <th ><?=Yii::t('app', 'ID') ?></th>
                         <th ><?=Yii::t('app', 'Real Name') ?></th>
                         <th ><?=Yii::t('app', 'Staff Type') ?></th>
-                        <th ><?=Yii::t('app', 'Dept ID') ?></th>
+                        <th ><?=Yii::t('app','Dept Name') ?></th>
                         <th ><?=Yii::t('app', 'Staff Title') ?></th>
                         <th><?=Yii::t('app', 'Operation') ?></th>
                     </tr>
@@ -71,7 +71,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <td><?= $row['staff_id'] ?></td>
                         <td><?= $row['real_name'] ?></td>
                         <td><?= Yii::$app->params['staffType'][$row['staff_type']] ?></td>
-                        <td><?= $row['dept_id'] ?></td>
+                        <td><?= \backend\models\ServiceDepartment::getDepartmentName($row['dept_id']) ?></td>
                         <td><?= $row['staff_title'] ?></td>
                         <td>
                             <a class="btn btn-xs btn-info"  href="<?php echo Url::to(['staff/view','id'=>$row['staff_id']]); ?>">

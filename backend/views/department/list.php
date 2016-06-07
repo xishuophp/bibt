@@ -6,6 +6,7 @@ use yii\widgets\LinkPager;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use common\base\YiiForum;
+use backend\models\ServiceDepartment;
 
 $this->title = Yii::t('app', 'Dept List');
 $this->params['breadcrumbs'][] = $this->title;
@@ -57,7 +58,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <th ><?=Yii::t('app', 'ID') ?></th>
                         <th ><?=Yii::t('app', 'Dept Name') ?></th>
                         <th ><?=Yii::t('app', 'Dept Type') ?></th>
-                        <th ><?=Yii::t('app', 'Dept Phone') ?></th>
+                        <th ><?=Yii::t('app', 'Parent Dept') ?></th>
                         <th ><?=Yii::t('app', 'Dept Leader') ?></th>
                         <th><?=Yii::t('app', 'Operation') ?></th>
                     </tr>
@@ -70,7 +71,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <td><?= $row['dept_id'] ?></td>
                         <td><?= $row['dept_name'] ?></td>
                         <td><?= Yii::$app->params['deptType'][$row['dept_type']] ?></td>
-                        <td><?= $row['dept_phone'] ?></td>
+                        <td><?= ServiceDepartment::getDepartmentName($row['parent_id']) ?></td>
                         <td><?php
                                 if($row['dept_leader']){
                                     echo Yii::$app->cache->get(Yii::$app->params['staffList'])[$row['dept_leader']];

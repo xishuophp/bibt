@@ -103,7 +103,7 @@ return [
     'Dept Leader' => '部门领导',
     'Dept Intro' => '部门介绍',
     'Dept Details' => '部门详情',
-    'Parent ID' => '父级ID',
+    'Parent Dept' => '上级部门',
 
     //文章管理
     'Article Manage'=>'文章管理',

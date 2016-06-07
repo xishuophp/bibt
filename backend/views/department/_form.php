@@ -27,7 +27,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'dept_type')->dropdownList(Yii::$app->params['deptType'],['class'=>'form-control']) ?>
     
-    <?= $form->field($model, 'parent_id')->dropDownList($departments,['class'=>'col-xs-12','prompt'=>'无上级部门']) ?>
+    <?= $form->field($model, 'parent_id')->dropDownList($departments,['class'=>'col-xs-12','prompt'=>'无上级部门'])->label(Yii::t('app','Parent Dept')) ?>
 
     <?= $form->field($model, 'dept_phone')->textInput(['class'=>'col-xs-12']) ?>
     <div class="form-group">

@@ -49,17 +49,13 @@ class ArticleController extends BaseController
             if($attachment['errno']==0){
                 $model->article_attachment = json_encode($attachment['fileInfo']);
             }
-            $model->create_time = date('Y-m-d H:i:s');
-            $dateStr = substr($model->publish_date,-2);
-            $dateStr2 = substr($model->publish_date,0,-3);
 
-            if($dateStr == "AM"){
-                $model->publish_date = date("Y-m-d H:i:s",strtotime($dateStr2));
-            }elseif($dateStr == "PM"){
-                $model->publish_date = date("Y-m-d H:i:s",strtotime("+12hours",strtotime($dateStr2)));
-            }else{
-                $model->publish_date = date("Y-m-d H:i:s");
+            $article_logo = YiiForum::uploadFiles('article_logo');
+            if($article_logo['errno']==0){
+                $model->article_logo = json_encode($article_logo['fileInfo']);
             }
+
+            $model->create_time = date('Y-m-d H:i:s');
 
             $model->article_author = Yii::$app->user->identity->username;
 
@@ -99,17 +95,12 @@ class ArticleController extends BaseController
             }else{
                 $model->article_attachment = '';
             }
-            $dateStr = substr($model->publish_date,-2);
-            $dateStr2 = substr($model->publish_date,0,-3);
 
-            if($dateStr == "AM"){
-                $model->publish_date = date("Y-m-d H:i:s",strtotime($dateStr2));
-            }elseif($dateStr == "PM"){
-                $model->publish_date = date("Y-m-d H:i:s",strtotime("+12hours",strtotime($dateStr2)));
-            }else{
-                $model->publish_date = $publish_date;
+            $article_logo = YiiForum::uploadFiles('article_logo');
+            if($article_logo['errno']==0){
+                $model->article_logo = json_encode($article_logo['fileInfo']);
             }
-
+            
             $model->update_time = date('Y-m-d H:i:s');
 
             if(!$model->save()){

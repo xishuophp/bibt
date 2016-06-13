@@ -130,6 +130,7 @@ return [
     'Article Count'=>'文章数量',
     'Query Tag'=>'唯一标识',
     'Parent Category'=>'父级分类',
+    'Article Logo'=>'文章Logo',
 
 
     //报名管理

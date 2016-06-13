@@ -9,7 +9,6 @@ use yii\widgets\ActiveForm;
  * @var yii\widgets\ActiveForm $form
  */
 ?>
-
 <?php $form = ActiveForm::begin([
             'options' => [
                 'class'=>'form-horizontal',
@@ -34,6 +33,30 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'article_alias')->textInput(['class'=>'col-xs-12',]) ?>
 
+    <div class="form-group">
+        <label class="col-sm-2 control-label no-padding-right"><?= yii::t('app','Article Logo')?></label>
+        <div class="col-sm-8 col-xs-12" style="padding-top:5px">
+            <?php if($model->article_logo){
+                $article_logo = !empty(json_decode($model->article_logo,true)[0])?json_decode($model->article_logo,true)[0]:null;
+                if($article_logo){
+            ?>
+            <div class="col-xs-6 no-padding-left">
+                <ul class="ace-thumbnails clearfix">
+                    <li style="border:0px">
+                        <a data-rel="colorbox" href="<?= $article_logo['fileUrl']?>" class="cboxElement">
+                            <img height="50px" src="<?= $article_logo['fileUrl']?>" alt="50x50">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <br/><br/><br/>
+            <?php }} ?>
+            <div class="col-xs-6 no-padding-left">
+                <input type="file" id="id-input-file-2" name="article_logo" />
+            </div>
+        </div>
+    </div>
+
     <?= $form->field($model, 'article_excerpt')->textarea(['class'=>'col-xs-12',]) ?>
 
     <?php if($model->isNewRecord){$model->order_no=100;} ?>
@@ -42,9 +65,9 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'article_category')->dropDownList($categorys,['class'=>'col-xs-12','prompt'=>'请选择分类']) ?>
 
     <?= $form->field($model, 'article_status')->dropDownList(Yii::$app->params['articleStatus'],['class'=>'col-xs-12']) ?>
-
-    <?php if($model->publish_date){$model->publish_date = '';} ?>
-    <?= $form->field($model, 'publish_date')->textInput(['class'=>'col-xs-12','id'=>'date-timepicker1','placeholder'=>date('Y-m-d H:i:s')]) ?>
+    
+    <?php if(!$model->publish_date){$model->publish_date = '';} ?>
+    <?= $form->field($model, 'publish_date')->textInput(['class'=>'col-xs-12 laydate-icon','style'=>'height:30px;list-style:none','onClick'=>"laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})"]) ?>
 
     <?= $form->field($model,'article_content')->widget('pjkui\kindeditor\KindEditor',['clientOptions'=>['class'=>'col-sm-8 col-xs-12','allowFileManager'=>'true','allowUpload'=>'true']]) ?>
 
@@ -104,12 +127,18 @@ use yii\widgets\ActiveForm;
         </div>
     </div>
 <?php ActiveForm::end(); ?>
+<!-- 图片预览样式 --> 
+<link rel="stylesheet" href="/static/css/colorbox.css" />
+<link rel="stylesheet" href="/static/css/ace.min.css" />
+
 <link rel="stylesheet" href="/static/css/bootstrap-datetimepicker.css" />
 
 <?php $this->registerJsFile("/static/js/date-time/bootstrap-datepicker.min.js", ['depends'=>['backend\assets\AppAsset']]); ?>
 <?php $this->registerJsFile("/static/js/date-time/moment.min.js", ['depends'=>['backend\assets\AppAsset']]); ?>
 <?php $this->registerJsFile("/static/js/date-time/bootstrap-datetimepicker.min.js", ['depends'=>['backend\assets\AppAsset']]); ?>
 <?php $this->registerJsFile("/static/js/jquery.colorbox-min.js", ['depends'=>['backend\assets\AppAsset']]); ?>
+
+<?php $this->registerJsFile("/static/js/datejs/laydate.js", ['depends'=>['backend\assets\AppAsset']]); ?>
 <?php $this->beginBlock('cms') ?>
     jQuery(function($){
         function showErrorAlert (reason, detail) {
@@ -129,6 +158,11 @@ use yii\widgets\ActiveForm;
         $('#date-timepicker1').datetimepicker().next().on(ace.click_event, function(){
             $(this).prev().focus();
         });
+
+        !function(){
+            laydate.skin('danlan');//切换皮肤，请查看skins下面皮肤库
+            laydate({elem: '#demo'});//绑定元素
+        }();
 
         $('#id-add-attachment').on('click', function(){
                 var file = $('<input type="file" name="attachment[]" />').appendTo('#form-attachments');
@@ -158,6 +192,58 @@ use yii\widgets\ActiveForm;
                 }
             });
         })
+        var $overflow = '';
+                var colorbox_params = {
+                rel: 'colorbox',
+                reposition:true,
+                scalePhotos:true,
+                scrolling:false,
+                previous:'<i class="ace-icon fa fa-arrow-left"></i>',
+                next:'<i class="ace-icon fa fa-arrow-right"></i>',
+                close:'&times;',
+                current:'{current} of {total}',
+                maxWidth:'100%',
+                maxHeight:'100%',
+                onOpen:function(){
+                    $overflow = document.body.style.overflow;
+                    document.body.style.overflow = 'hidden';
+                },
+                onClosed:function(){
+                    document.body.style.overflow = $overflow;
+                },
+                onComplete:function(){
+                    $.colorbox.resize();
+                }
+            };
+
+    $('.ace-thumbnails [data-rel="colorbox"]').colorbox(colorbox_params);
+
+    $("#cboxLoadingGraphic").append("<i class='ace-icon fa fa-spinner orange'></i>");//let's add a custom loading icon
+
+        function showErrorAlert (reason, detail) {
+            var msg='';
+            if (reason==='unsupported-file-type') { msg = "Unsupported format " +detail; }
+            else {
+                //console.log("error uploading file", reason, detail);
+            }
+            $('<div class="alert"> <button type="button" class="close" data-dismiss="alert">&times;</button>'+ 
+             '<strong>File upload error</strong> '+msg+' </div>').prependTo('#alerts');
+        }
+        $('#simple-colorpicker-1').ace_colorpicker();
+
+        $('#id-input-file-1 , #id-input-file-2').ace_file_input({
+            no_file:'No File ...',
+            btn_choose:'Choose',
+            btn_change:'Change',
+            droppable:false,
+            onchange:null,
+            thumbnail:false //| true | large
+            //whitelist:'gif|png|jpg|jpeg'
+            //blacklist:'exe|php'
+            //onchange:''
+            //
+        });
+
 
     });
 <?php $this->endBlock() ?>

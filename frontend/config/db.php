@@ -14,7 +14,7 @@ if(YII_ENV_PROD){
 }else{
     $db = [
             'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=123.59.57.129;dbname=bibt',
+            'dsn' => 'mysql:host=192.168.22.249;dbname=bibt',
             'username' => 'root',
             'password' => 'GAEA123!@#',
             'charset' => 'utf8',

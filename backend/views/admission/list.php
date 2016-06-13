@@ -62,6 +62,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <th ><?=Yii::t('app', 'Exam Number') ?></th>
                         <th ><?=Yii::t('app', 'Identity Card') ?></th>
                         <th ><?=Yii::t('app', 'Accept Major') ?></th>
+                        <th ><?=Yii::t('app', 'Accept Year') ?></th>
                         <th ><?=Yii::t('app', 'Create Time') ?></th>
                         <th><?=Yii::t('app', 'Operation') ?></th>
                     </tr>
@@ -76,6 +77,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <td><?= $row['exam_number'] ?></td>
                         <td><?= $row['identity_card'] ?></td>
                         <td><?= $row['accept_major'] ?></td>
+                        <td><?= $row['accept_year'] ?></td>
                         <td><?= $row['create_time'] ?></td>
                         <td>
                             <a class="btn btn-xs btn-purple"  href="<?php echo Url::to(['admission/update','id'=>$row['admission_id']]); ?>">

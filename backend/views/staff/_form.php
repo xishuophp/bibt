@@ -22,7 +22,7 @@ use yii\widgets\ActiveForm;
     ]); ?>
         
     <?= $form->field($model, 'real_name')->textInput(['class'=>'col-xs-12']) ?>
-
+    
     <div class="form-group">
         <label class="col-sm-2 control-label no-padding-right"><?=Yii::t('app','Sex')?></label>
 
@@ -57,7 +57,7 @@ use yii\widgets\ActiveForm;
         </div>
     </div>
     
-    <?= $form->field($model, 'dept_id')->textInput(['class'=>'form-control']) ?>
+    <?= $form->field($model, 'dept_id')->dropDownList($departments,['class'=>'col-xs-12','prompt'=>'请选择'])->label(Yii::t('app','Dept Name')) ?>
 
     <?= $form->field($model, 'staff_type')->dropdownList(Yii::$app->params['staffType'],['class'=>'form-control']) ?>
 

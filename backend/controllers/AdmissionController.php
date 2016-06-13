@@ -83,7 +83,7 @@ class AdmissionController extends BaseController
 
     public function actionImport(){
         $fileType = $_FILES['admission']['type'];
-        if($fileType!='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'){
+        if($fileType!='text/csv'){
             return json_encode(['errno'=>2,'errmsg'=>'文件格式不正确']);
         }
         $uploadInfo = YiiForum::uploadFiles('admission');
@@ -95,6 +95,7 @@ class AdmissionController extends BaseController
                     $model = new Admission();
                     $model->attributes = $value;
                     $model->create_time = date('Y-m-d H:i:s');
+                    $model->accept_year = (int)date('Y');
                     $ret = $model->save();
                     if(!$ret){
                         Yii::error('insert admission faild,insertArr='.json_encode($value).',error='.json_encode($model->getErrors()));

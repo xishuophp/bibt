@@ -51,7 +51,7 @@ class ServiceDepartment extends Model
                     $info[$value['dept_id']]=$value['dept_name'];
                 }
                 $value['em'] .= "　　";
-                $info = self::getCategoryTree($value['child'],$info,$value['em']);
+                $info = $this->getDeparmentTree($value['child'],$info,$value['em']);
             }else{
                 if(strlen($em)>1){
                     $info[$value['dept_id']]=$em.'|--'.$value['dept_name'];   

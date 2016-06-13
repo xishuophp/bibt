@@ -28,13 +28,13 @@ $this->params['breadcrumbs'][] = $this->title;
 				<div class="form-group">
 					<label class="col-sm-2 control-label no-padding-right"><?= Yii::t('app','Dept Type')?></label>
 					<div class="col-sm-8 col-xs-12">
-						<div class="form-control"><?= $model->dept_type?></div>
+						<div class="form-control"><?= Yii::$app->params['deptType'][$model->dept_type] ?></div>
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-2 control-label no-padding-right"><?= Yii::t('app','Parent ID')?></label>
+					<label class="col-sm-2 control-label no-padding-right"><?= Yii::t('app','Parent Dept')?></label>
 					<div class="col-sm-8 col-xs-12">
-						<div class="form-control"><?= $model->parent_id?></div>
+						<div class="form-control"><?= \backend\models\ServiceDepartment::getDepartmentName($model->parent_id) ?></div>
 					</div>
 				</div>
 				<div class="form-group">
@@ -46,7 +46,13 @@ $this->params['breadcrumbs'][] = $this->title;
 				<div class="form-group">
 					<label class="col-sm-2 control-label no-padding-right"><?= Yii::t('app','Dept Leader')?></label>
 					<div class="col-sm-8 col-xs-12">
-						<div class="form-control"><?= $model->dept_leader?></div>
+						<div class="form-control">
+							<?php 
+							if($model->dept_leader){
+                                echo Yii::$app->cache->get(Yii::$app->params['staffList'])[$model->dept_leader];
+                            }
+                            ?>
+                        </div>
 					</div>
 				</div>
 				<div class="form-group">

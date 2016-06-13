@@ -103,7 +103,7 @@ return [
     'Dept Leader' => '部门领导',
     'Dept Intro' => '部门介绍',
     'Dept Details' => '部门详情',
-    'Parent ID' => '父级ID',
+    'Parent Dept' => '上级部门',
 
     //文章管理
     'Article Manage'=>'文章管理',
@@ -167,6 +167,7 @@ return [
     'Admission List'=>'录取列表',
     'Accept Major'=>'录取专业',
     'Create Time'=> '创建时间',
+    'Accept Year'=>'录取年份',
     'Create Admission'=> '新增录取',
     'Update Admission'=> '修改录取信息',
     'Admission Import'=> '导入录取信息',

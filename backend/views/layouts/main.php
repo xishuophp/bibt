@@ -292,7 +292,7 @@ AppAsset::register($this);
                     <?php if(!empty($leftNav['department'])):?>
                     <li class="<?php if(strtolower($routeArr[0]) == 'department') echo 'active open' ?>">
                         <a href="#" class="dropdown-toggle">
-                            <i class="menu-icon fa fa-pencil-square-o"></i>
+                            <i class="menu-icon fa fa-institution"></i>
                             <span class="menu-text"><?=Yii::t('app','Dept Manage')?></span>
 
                             <b class="arrow fa fa-angle-down"></b>
@@ -327,7 +327,7 @@ AppAsset::register($this);
                     <?php if(!empty($leftNav['article'])):?>
                     <li class="<?php if(strtolower($routeArr[0]) == 'article') echo 'active open' ?>">
                         <a href="#" class="dropdown-toggle">
-                            <i class="menu-icon fa fa-pencil-square-o"></i>
+                            <i class="menu-icon fa fa-file-o"></i>
                             <span class="menu-text"><?=Yii::t('app','Article Manage')?></span>
 
                             <b class="arrow fa fa-angle-down"></b>
@@ -382,7 +382,7 @@ AppAsset::register($this);
                     <?php if(!empty($leftNav['nav'])):?>
                     <li class="<?php if(strtolower($routeArr[0]) == 'nav') echo 'active open' ?>">
                         <a href="#" class="dropdown-toggle">
-                            <i class="menu-icon fa fa-pencil-square-o"></i>
+                            <i class="menu-icon fa fa-map-marker"></i>
                             <span class="menu-text"><?=Yii::t('app','Nav Manage')?></span>
 
                             <b class="arrow fa fa-angle-down"></b>
@@ -476,7 +476,7 @@ AppAsset::register($this);
                     <?php if(!empty($leftNav['admission'])):?>
                     <li class="<?php if(strtolower($routeArr[0]) == 'admission') echo 'active open' ?>">
                         <a href="#" class="dropdown-toggle">
-                            <i class="menu-icon fa fa-pencil-square-o"></i>
+                            <i class="menu-icon fa fa-sign-in"></i>
                             <span class="menu-text"><?=Yii::t('app','Admission Manage')?></span>
 
                             <b class="arrow fa fa-angle-down"></b>

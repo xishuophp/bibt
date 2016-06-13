@@ -7,7 +7,9 @@ use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-
+use backend\models\SysConfig;
+use common\models\Article;
+use backend\models\YiiForum;
 
 /**
  * Site controller
@@ -20,7 +22,117 @@ class MobileController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $locals = [
+            'bannerArr' => [],
+            'bannerIndex' => 2,
+        ];
+        //查询查询banner图
+        $configModel = SysConfig::findOne(['config_name'=>'index_banner1']);
+        $config1 = $configModel->config_value;
+        $configArr = [];
+        if($config1){
+            $configArr = explode(',', $config1);
+        }
+        if($configArr){
+            $queryModel = new \yii\db\Query;
+            $where = ['in', 'article_id', $configArr];
+            $articleArr = $queryModel->from(Article::tableName())->select('article_id,article_title,article_logo')->all();
+            if(!$articleArr){
+                $locals['bannerArr'] = $this->getBannerArr2();
+            }else{
+                $locals['bannerArr'] = $articleArr;
+                $locals['bannerIndex'] = 1;
+            }
+            
+        }else{
+            $locals['bannerArr'] = $this->getBannerArr2();
+        }
+        
+        return $this->render('index', $locals);
+    }
+    /**
+     * 学院简介
+     * @return [type] [description]
+     */
+    public function actionIntro()
+    {
+        $configModel = SysConfig::findOne(['config_name'=>'index_intro']);
+        $postid = $configModel ? (int)$configModel->config_value : 0;
+        $postModel = null;
+        if($postid > 0){
+            $postModel = Article::findOne($postid);
+        }
+        return $this->render('article_detail', ['model'=>$postModel]);
+    }
+    /**
+     * 校园风光
+     */
+    public function actionCampus()
+    {
+        $configModel = SysConfig::findOne(['config_name'=>'index_campus']);
+        $postid = $configModel ? (int)$configModel->config_value : 0;
+        $postModel = null;
+        if($postid > 0){
+            $postModel = Article::findOne($postid);
+        }
+        return $this->render('article_detail', ['model'=>$postModel]);        
+    }
+    /**
+     * 新闻公告
+     * @return [type] [description]
+     */
+    public function actionNotice()
+    {
+        return $this->render('notice_list');
+    }
+
+    /**
+     * 获取资讯详情
+     */
+    public function actionGetNoticeList()
+    {
+        $this->layout = false;
+        $configModel = SysConfig::findOne(['config_name'=>'index_notice']);
+        $cateid = $configModel ? (int)$configModel->config_value : 0;
+        $query =  Article::find();
+        $searchUrlArr = [];
+        $searchArr = [
+            'article_category' => $cateid,
+        ];
+        $config = [
+                'pageSize' => 10,
+                'where'=>$searchArr,
+                'urlWhere'=>$searchUrlArr,
+                'order' => 'article_id desc',
+            ];
+        $locals = YiiForum::getPagedRows($query,$config);
+        
+        $content = $this->render('get_notice',$locals);
+        $resArr = [
+            'status' => 0,
+            'rows' => $content,
+        ];
+        $page = Yii::$app->request->get('page');
+        $total = $locals['pages']->totalCount;
+        if( $total > $page ){
+            $nextPage = $page + 1;
+        }else{
+            $nextPage = 0;
+        }
+        $resArr['nextPage'] = $nextPage;
+        return json_encode($resArr);
+    }
+    /**
+     * 资讯详情
+     * @param  [type] $aid [description]
+     * @return [type]      [description]
+     */
+    public function actionArticleDetail($aid)
+    {
+        $postModel = Article::findOne(intval($aid));
+        return $this->render('article_detail', [
+                'model' => $postModel,
+            ]);
     }
     /**
      * 师资队伍
@@ -94,4 +206,63 @@ class MobileController extends Controller
                 'model' => $model,
             ]);
     }
+    /**
+     * 录取查询
+     * @return [type] [description]
+     */
+    public function actionAccept()
+    {
+        //查询录取查询状态
+        $configModel = SysConfig::findOne(['config_name'=>'index_accept']);
+        $acceptStatus = $configModel ? (int)$configModel->config_value : 0;
+        if(!$acceptStatus){
+            return $this->sysError('录取查询暂未开启，请稍后再试');
+        }
+        $model = new \frontend\models\AcceptForm;
+        if ($model->load(Yii::$app->request->post()) && $model->validate())
+        {
+            //执行查询操作
+            $where = [
+                'real_name' => trim($model->real_name),
+                'exam_number' => trim($model->exam_number),
+                'identity_card' => trim($model->identity_card),
+            ];
+            $acceptModel = \backend\models\Admission::findOne($where);
+            return $this->render('accept_result',[
+                    'model' => $acceptModel,
+                ]);
+            
+        }
+        return $this->render('accept',[
+                'model' => $model,
+            ]);
+    }
+
+
+    public function sysError($errorMsg)
+    {
+        $this->layout = false;
+        $locals = [];
+        $locals['errorMsg'] = $errorMsg;
+        return $this->render('error', $locals);
+    }
+
+    private function getBannerArr2()
+    {
+        $configModel = SysConfig::findOne(['config_name'=>'index_banner2']);
+        $config2 = $configModel->config_value;
+        $bannerArr = explode("\n", $config2);
+        if(!$bannerArr){
+            $bannerArr = [
+                '/static/images/show01.jpg',
+                '/static/images/show02.jpg',
+                '/static/images/show03.jpg',
+                '/static/images/show04.jpg',
+                '/static/images/show05.jpg',
+            ];
+        }
+        return $bannerArr;
+    }
+
+
 }

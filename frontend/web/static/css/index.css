@@ -8,7 +8,7 @@ nova-carousel.carousel-1 .controls.nova-carousel span.nova-carousel{width:43px;h
 nova-carousel.carousel-1 .controls.nova-carousel span.current.nova-carousel{background-color: #bd0e33;}
 
 .bg{width:100%;height:100%;background: url(../images/bg.png) no-repeat; background-size: 100%;}
-.part01{ width: 100%; height:1000px;margin: 10px 0; position: relative;}
+.part01{ width: 100%; height:1100px;margin: 10px 0; position: relative;}
 .part01 .line{ width:100px; height: 0px;overflow: hidden;position:absolute;left:50%;top:0; margin-left: -50px;-webkit-animation:line01 3s linear forwards;animation:line01 3s linear forwards;}
 .thumb{position: absolute; opacity: 0;}
 .thumb .box{width: 250px; height: 150px; box-shadow:3px 2px 10px rgba(165,165,165,0.7);background:#dcdddd;border-radius:8px;}
@@ -20,26 +20,29 @@ nova-carousel.carousel-1 .controls.nova-carousel span.current.nova-carousel{back
 .thumb.t04{left:28px;top:465px;-webkit-animation: flipInX 1s  linear 2s forwards;animation: flipInX 1s linear 2s forwards;}
 .thumb.t05{left:28px;top:760px;-webkit-animation: flipInX 1s  linear 3s forwards;animation: flipInX 1s linear 3s forwards;}
 .thumb.t06{left:350px;top:610px;-webkit-animation: flipInX 1s  linear 2.5s forwards;animation: flipInX 1s linear 2.5s forwards;}
+.thumb.t07{left:350px;top:900px;-webkit-animation: flipInX 1s  linear 3.5s forwards;animation: flipInX 1s linear 3.5s forwards;}
 
 footer p{font-size: 24px; text-align: center;line-height: 30px; color: #000; margin: 10px 0;}
 
 @-webkit-keyframes line01 {
   0%{ height: 0;}
-  15%{height:100px;}
-  30%{height:266px;}
-  45%{height:405px;}
-  60%{height:555px;}
-  75%{height:693px;}
-  100%{height:1000px;}
+  14%{height:157px;}
+  28%{height:314px;}
+  42%{height:471px;}
+  56%{height:628px;}
+  70%{height:785px;}
+  84%{height:942px;}
+  100%{height:1100px;}
 }
 @keyframes line01 {
   0%{ height: 0;}
-  15%{height:100px;}
-  30%{height:266px;}
-  45%{height:405px;}
-  60%{height:555px;}
-  75%{height:693px;}
-  100%{height:1000px;}
+  14%{height:157px;}
+  28%{height:314px;}
+  42%{height:471px;}
+  56%{height:628px;}
+  70%{height:785px;}
+  84%{height:942px;}
+  100%{height:1100px;}
 }
 
 @-webkit-keyframes rotateNm{0%{-webkit-transform-origin:center;transform-origin:center;-webkit-transform:rotate3d(0,0,1,-360deg);transform:rotate3d(0,0,1,-360deg)}50%{-webkit-transform-origin:center;transform-origin:center;-webkit-transform:rotate3d(0,0,1,-180deg);transform:rotate3d(0,0,1,-180deg)}100%{-webkit-transform-origin:center;transform-origin:center;-webkit-transform:none;transform:none}}@keyframes rotateNm{0%{-webkit-transform-origin:center;transform-origin:center;-webkit-transform:rotate3d(0,0,1,-360deg);transform:rotate3d(0,0,1,-360deg)}50%{-webkit-transform-origin:center;transform-origin:center;-webkit-transform:rotate3d(0,0,1,-180deg);transform:rotate3d(0,0,1,-180deg)}100%{-webkit-transform-origin:center;transform-origin:center;-webkit-transform:none;transform:none}}.rotateNm{-webkit-animation-name:rotateNm;animation-name:rotateNm;-webkit-animation-timing-function:linear;animation-timing-function:linear}
@@ -106,9 +109,19 @@ footer p{font-size: 24px; text-align: center;line-height: 30px; color: #000; mar
 .input_box{ float: left; width: 65%; overflow: hidden;}
 .input_skin{position: relative;width: 99%;height: 40px;border: 1px solid #6f6d6d; line-height:40px;overflow: hidden;margin-right: 1%;text-indent:10px;background: #fff;box-shadow: 0px 0px 5px #cccccc inset;}
 .input_box .tips{color:#f24f3c!important; font-size: 19px; display: none;}
-.input_box select {width: 100%;height: 40px;line-height: 40px;border: 1px solid #6f6d6d;text-indent:10px;background: none;color: #5d5a58;outline: none;font-family: "Microsoft YaHei","Hiragino Sans GB","微软雅黑","宋体",Arial,Verdana,sans-serif;position: relative;margin: 0;padding: 0;border-radius: 0;-webkit-appearance: none;appearance: none; font-size: 20px;}
+.input_box select {width: 100%;height: 40px;line-height: 40px;border: 1px solid #6f6d6d;text-indent:10px;background: none;color: #5d5a58;outline: none;font-family: "Microsoft YaHei","Hiragino Sans GB","微软雅黑","宋体",Arial,Verdana,sans-serif;position: relative;margin: 0;padding: 0;border-radius: 0;-webkit-appearance: none;appearance: none; font-size: 20px; }
 .input_box option {width: 100%;text-indent: 5px; font-size: 12px;}
 .input_box textarea{border: 1px solid #6f6d6d; width: 98%;text-indent:10px;}
 .btn{ width: 90%; margin: 5% auto; text-align: center;}
 .btn_sure{width: 100%;height: 50px;line-height: 50px;border-radius: 4px;background: #ae0a29;text-align: center;color: #fff; font-size: 20px;}
 .article p .more{font-size: 20px;color: #ae0a29;}
+
+.new_list{ display: block; overflow: hidden; margin: 5% 0 10%;}
+.new_list li{ display: block; padding: 10px 0; border-bottom: 1px dotted #ccc;line-height: 30px; height: 30px;}
+.new_list li a{font-size: 20px;color: #2e2d2d;width: 75%; display: inline-block;overflow: hidden; text-overflow:ellipsis;white-space: nowrap;line-height: 30px;}
+.new_list li span{font-size: 16px;color: #555;display: inline-block;line-height: 30px; float: right;}
+
+.error_404{ width: 100%; height: 100%; background: #f5f5f5;}
+.text-jumbo{ text-align: center; margin: 40% 0 0;}
+.text-oops{text-align: center; font-size: 25px; line-height: 40px; margin: 5% 0;}
+.btn_back{ width: 25%; height: 50px; background: #ed710c; margin: 0 auto; border-radius: 10px; display:block; text-align:center; line-height: 50px; font-size: 25px; color: #fff;}

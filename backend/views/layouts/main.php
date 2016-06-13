@@ -79,7 +79,7 @@ AppAsset::register($this);
                     <!-- #section:basics/navbar.layout.brand -->
                     <a href="#" class="navbar-brand">
                         <small>
-                            管理平台
+                            北京经济技术职业学院网站手机端后台
                         </small>
                     </a>
 

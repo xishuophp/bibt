@@ -28,11 +28,18 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+        // 'db' => [
+        //     'class' => 'yii\db\Connection',
+        //     'dsn' => 'mysql:host=192.168.22.249;dbname=bibt',
+        //     'username' => 'root',
+        //     'password' => 'GAEA123!@#',
+        //     'charset' => 'utf8',
+        // ],
         'db' => [
             'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=192.168.22.249;dbname=bibt',
+            'dsn' => 'mysql:host=localhost;dbname=bibt',
             'username' => 'root',
-            'password' => 'GAEA123!@#',
+            'password' => '123456',
             'charset' => 'utf8',
         ],
         /*

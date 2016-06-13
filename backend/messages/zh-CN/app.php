@@ -186,6 +186,9 @@ return [
     'Conf List' => '系统配置',
     'Basic Config' => '基本配置',
     'Senior Config' => '高级配置',
+    'Index Campus' => '首页校园风光',
+    'Index Intro' => '首页学院概况',
+
     'Please enter verifyCode' => '请输入验证码',
     'This is wrong verifyCode' => '验证码错误',
 ];

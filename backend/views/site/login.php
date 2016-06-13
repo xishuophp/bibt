@@ -14,7 +14,7 @@ use yii\captcha\Captcha;
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>Login Page - GaeaMobile GCS</title>
+		<title>北京经济技术职业学院网站手机端后台</title>
 
 		<meta name="description" content="User login page" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -54,12 +54,12 @@ use yii\captcha\Captcha;
 					<div class="col-sm-10 col-sm-offset-1">
 						<div class="login-container">
 							<div class="center">
-								<h1>
-									<i class="ace-icon fa fa-leaf green"></i>
-									<span class="red">GCS</span>
-									<span class="white" id="id-text2">Application</span>
-								</h1>
-								<h4 class="blue" id="id-company-text">&copy; GAEAMOBILE CO. LTD </h4>
+								<h2>
+									<!--<i class="ace-icon fa fa-leaf green"></i>-->
+									<span class="red">北京经济技术职业学院</span><br/>
+									<span class="white" id="id-text2">手机端后台</span>
+								</h2>
+								<h4 class="blue" id="id-company-text">&copy; BIBTEDU.CN </h4>
 							</div>
 
 							<div class="space-6"></div>
@@ -153,7 +153,7 @@ use yii\captcha\Captcha;
 											</div>
 										</div><!-- /.widget-main -->
 
-										<div class="toolbar clearfix">
+										<!-- <div class="toolbar clearfix">
 											<div>
 												<a href="#"  class="forgot-password-link">
 													
@@ -166,7 +166,7 @@ use yii\captcha\Captcha;
 													&nbsp;
 												</a>
 											</div>
-										</div>
+										</div> -->
 									</div><!-- /.widget-body -->
 								</div><!-- /.login-box -->
 

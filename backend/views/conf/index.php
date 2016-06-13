@@ -54,36 +54,53 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div id="tabs-1">
                     <div class="profile-activity clearfix config">
                         <div class="form-group" style="margin-top:15px;">
-                            <label class="col-sm-2 control-label no-padding-right" for="form-field-1">fgdsh配置1: </label>
+                            <label class="col-sm-2 control-label no-padding-right" for="form-field-1"><?=Yii::t('app','Index Campus')?>: </label>
                             <div class="col-sm-9">
-                                <input type="text" id="form-field-1"  class="col-xs-10 col-sm-6 SysConfigValue" name="sysname1" value="<?= isset($res['sysname1'][0])?$res['sysname1'][1]:''?>" />
+                                <input type="text" id="form-field-1"  class="col-xs-10 col-sm-6 SysConfigValue" name="index_campus" value="<?= isset($res['index_campus'][0])?$res['index_campus'][1]:''?>" />
+                                <span style="color:red">请输入对应的文章ID</span>
                             </div>
                         </div> 
                     </div>
                     <div class="profile-activity clearfix config">
                         <div class="form-group" style="margin-top:15px;">
-                            <label class="col-sm-2 control-label no-padding-right" for="form-field-1">配置2: </label>
+                            <label class="col-sm-2 control-label no-padding-right" for="form-field-1"><?=Yii::t('app','Index Intro')?>: </label>
                             <div class="col-sm-9">
-                                <input type="text" id="form-field-1"  class="col-xs-10 col-sm-6 SysConfigValue" name="sysname2" value="<?= isset($res['sysname2'][0])?$res['sysname2'][1]:''?>" />
+                                <input type="text" id="form-field-1"  class="col-xs-10 col-sm-6 SysConfigValue" name="index_intro" value="<?= isset($res['index_intro'][0])?$res['index_intro'][1]:''?>" />
+                                <span style="color:red">请输入对应的文章ID</span>
                             </div>
                         </div> 
                     </div>
                     <div class="profile-activity clearfix config">
                         <div class="form-group" style="margin-top:15px;">
-                            <label class="col-sm-2 control-label no-padding-right" for="form-field-1">配置3: </label>
+                            <label class="col-sm-2 control-label no-padding-right" for="form-field-1">首页新闻公告: </label>
                             <div class="col-sm-9">
-                                <input type="text" id="form-field-1"  class="col-xs-10 col-sm-6 SysConfigValue" name="sysname3" value="<?= isset($res['sysname3'][0])?$res['sysname3'][1]:''?>" />
+                                <input type="text" id="form-field-1"  class="col-xs-10 col-sm-6 SysConfigValue" name="index_notice" value="<?= isset($res['index_notice'][0])?$res['index_notice'][1]:''?>" />
+                                <span style="color:red">请输入新闻公告对应的分类ID</span>
                             </div>
                         </div> 
                     </div>
                     <div class="profile-activity clearfix config">
                         <div class="form-group" style="margin-top:15px;">
-                            <label class="col-sm-2 control-label no-padding-right" for="form-field-1">配置4: </label>
+                            <label class="col-sm-2 control-label no-padding-right" for="form-field-1">首页banner图配置1: </label>
                             <div class="col-sm-9">
-                                <textarea type="text" name="sysname4" class="col-xs-10 col-sm-6 SysConfigValue" id="form-field-1"><?= isset($res['sysname4'][0])?$res['sysname4'][1]:''?></textarea>
+                                <textarea type="text" name="index_banner1" class="col-xs-10 col-sm-6 SysConfigValue" id="form-field-1"><?= isset($res['index_banner1'][0])?$res['index_banner1'][1]:''?></textarea>
+                                <span style="color:red">此配置和资讯对应(优先于配置2)</span>
                             </div>
-                        </div> 
-                    </div>                                       
+
+                        </div>
+                         
+                    </div>
+                    <div class="profile-activity clearfix config">
+                        <div class="form-group" style="margin-top:15px;">
+                            <label class="col-sm-2 control-label no-padding-right" for="form-field-1">首页banner图配置2: </label>
+                            <div class="col-sm-9">
+                                <textarea type="text" name="index_banner2" class="col-xs-10 col-sm-6 SysConfigValue" id="form-field-1"><?= isset($res['index_banner2'][0])?$res['index_banner2'][1]:''?></textarea>
+                                <span style="color:red">此配置和图片对应</span> 
+                            </div>
+                            
+                        </div>
+                         
+                    </div>                                        
                 </div>
   
                 <div id="tabs-2">
@@ -93,9 +110,9 @@ $this->params['breadcrumbs'][] = $this->title;
                             <div class="row line">
                                 <div class="col-xs-10 deploy">
                                     <label class="col-xs-10">
-                                        <input name="start_config1" value="" class="ace ace-switch ace-switch-3" type="checkbox" <?php if(isset($res['start_config1'][1]) && $res['start_config1'][1] == 1) echo 'checked';?> />
+                                        <input name="index_accept" value="" class="ace ace-switch ace-switch-3" type="checkbox" <?php if(isset($res['index_accept'][1]) && $res['index_accept'][1] == 1) echo 'checked';?> />
                                         <span class="lbl">
-                                            <i class="ace-icon fa fa-arrow-right icon-on-right switch"></i>是否开启配置1
+                                            <i class="ace-icon fa fa-arrow-right icon-on-right switch"></i>是否开启录取查询
                                         </span>
                                     </label>
                                 </div>

@@ -16,7 +16,7 @@ if(YII_ENV_PROD){
             'class' => 'yii\db\Connection',
             'dsn' => 'mysql:host=123.59.57.129;dbname=bibt',
             'username' => 'root',
-            'password' => 'GAEA123!@#',
+            'password' => 'gaeamobile',
             'charset' => 'utf8',
             //'enableSchemaCache' => true, 
             //'schemaCacheDuration' => 3600, 

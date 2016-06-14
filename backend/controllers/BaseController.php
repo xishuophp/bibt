@@ -25,26 +25,25 @@ class BaseController extends Controller
         if(Yii::$app->request->isAjax){
             $this->enableCsrfValidation = false;
         }
-
-        $this->admin_user = Yii::$app->params['systemAdmin'];
         //权限验证
-        @$route = $_GET['r'];
-        $routeArr = explode('/',$route);
-        $controller = !empty($routeArr[0]) ? $routeArr[0] : 'welcome';
-        $ac = !empty($routeArr[1]) ? $routeArr[1] : 'index';
-        $permission = strtolower($controller.'_'.$ac);
-        if(!in_array(Yii::$app->user->identity->username, $this->admin_user) && YII_ENV_PROD){
-            if(!in_array($permission,$this->default_permission)){
-                if(!YiiForum::checkAccess($permission)){
-                    if(Yii::$app->request->isAjax){
-                        echo json_encode(['status'=>1,'content'=>'You do not have permission']);
-                        exit;
-                    }else{
-                        return $this->redirect(['/site/sys-error']);
-                    }    
-                } 
-            }
-        }
+        // $this->admin_user = Yii::$app->params['systemAdmin'];
+        // @$route = $_GET['r'];
+        // $routeArr = explode('/',$route);
+        // $controller = !empty($routeArr[0]) ? $routeArr[0] : 'welcome';
+        // $ac = !empty($routeArr[1]) ? $routeArr[1] : 'index';
+        // $permission = strtolower($controller.'_'.$ac);
+        // if(!in_array(Yii::$app->user->identity->username, $this->admin_user) && YII_ENV_PROD){
+        //     if(!in_array($permission,$this->default_permission)){
+        //         if(!YiiForum::checkAccess($permission)){
+        //             if(Yii::$app->request->isAjax){
+        //                 echo json_encode(['status'=>1,'content'=>'You do not have permission']);
+        //                 exit;
+        //             }else{
+        //                 return $this->redirect(['/site/sys-error']);
+        //             }    
+        //         } 
+        //     }
+        // }
     }
 
 }

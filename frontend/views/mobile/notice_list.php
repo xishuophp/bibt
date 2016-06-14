@@ -8,38 +8,52 @@ use yii\helpers\Url;
 	<ul class="new_list" id="notice_list">
 		
 	</ul>
+    <div id="nextPage" dis="0" class="ico_arrow" rel="1"><span></span></div>
 </div>
-<div style="display:none;" id="next_page">1</div>
+<div id="loading" class="loading hide">
+    <span class="rotate"></span>
+    <h1>loading</h1>
+</div>
 <?php $this->beginBlock('notice_cms') ?>
 	$(document).ready(function(){
-		var next_page = $('#next_page').html();
-		load_article(next_page);
+		load_article();
+
+        $("#nextPage").click(function() {
+            load_article();   
+        });
 	});
+
 	function load_article(next_page)
 	{
+        var dis = $('#nextPage').attr('dis');
+        if(dis == 1){
+            return false;
+        }
 		var url = '<?=Url::to(['mobile/get-notice-list'])?>';
-
+        var next_page = $('#nextPage').attr('rel');
 		$.ajax({
             url: url + '&page=' + next_page,
             type:'POST',
             dataType: 'JSON',
             data : {<?=Yii::$app->request->csrfParam ?> : '<?=Yii::$app->request->getCsrfToken()?>'},
             beforeSend: function(){
-                //spinner.spin($('body').get(0));
+                $("#loading").css({
+                    "top": $(window).scrollTop() + 200
+                });
+
+                $('#loading').show();
+
             },
             success: function(data){
                 $('#notice_list').append(data.rows);
-                $('#next_page').html(data.nextPage);
-            },
-            error:function(e, xhr, settings) {
-                spinner.spin();
-                if(e.status == 401){
-                    bootbox.alert("对不起，您现在还没获此操作的权限", function() {
-                    });
-                }else{
-                    bootbox.alert("登录超时,请重新<a href='"+'<?=Url::to(['site/login'])?>'+"'>登录</a>", function() {
-                    });
+                $('#nextPage').attr('rel',data.nextPage);
+                $('#loading').hide();
+                if(data.nextPage == 0){
+                    $('#nextPage').attr('dis', 1);
                 }
+            },
+            error:function() {
+                $('#loading').hide();
             }
         });
 	}

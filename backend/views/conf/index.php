@@ -72,6 +72,15 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                     <div class="profile-activity clearfix config">
                         <div class="form-group" style="margin-top:15px;">
+                            <label class="col-sm-2 control-label no-padding-right" for="form-field-1"><?=Yii::t('app','Index Job')?>: </label>
+                            <div class="col-sm-9">
+                                <input type="text" id="form-field-1"  class="col-xs-10 col-sm-6 SysConfigValue" name="index_job" value="<?= isset($res['index_job'][0])?$res['index_job'][1]:''?>" />
+                                <span style="color:red">请输入对应的文章ID</span>
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="profile-activity clearfix config">
+                        <div class="form-group" style="margin-top:15px;">
                             <label class="col-sm-2 control-label no-padding-right" for="form-field-1">首页新闻公告: </label>
                             <div class="col-sm-9">
                                 <input type="text" id="form-field-1"  class="col-xs-10 col-sm-6 SysConfigValue" name="index_notice" value="<?= isset($res['index_notice'][0])?$res['index_notice'][1]:''?>" />

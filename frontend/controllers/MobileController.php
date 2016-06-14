@@ -78,6 +78,19 @@ class MobileController extends Controller
         return $this->render('article_detail', ['model'=>$postModel]);        
     }
     /**
+     * 就业风采
+     */
+    public function actionJob()
+    {
+        $configModel = SysConfig::findOne(['config_name'=>'index_job']);
+        $postid = $configModel ? (int)$configModel->config_value : 0;
+        $postModel = null;
+        if($postid > 0){
+            $postModel = Article::findOne($postid);
+        }
+        return $this->render('article_detail', ['model'=>$postModel]);        
+    }
+    /**
      * 新闻公告
      * @return [type] [description]
      */
@@ -100,7 +113,7 @@ class MobileController extends Controller
             'article_category' => $cateid,
         ];
         $config = [
-                'pageSize' => 10,
+                'pageSize' => 2,
                 'where'=>$searchArr,
                 'urlWhere'=>$searchUrlArr,
                 'order' => 'article_id desc',
@@ -114,7 +127,7 @@ class MobileController extends Controller
         ];
         $page = Yii::$app->request->get('page');
         $total = $locals['pages']->totalCount;
-        if( $total > $page ){
+        if( $total > $page+1 ){
             $nextPage = $page + 1;
         }else{
             $nextPage = 0;

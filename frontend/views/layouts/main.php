@@ -41,7 +41,6 @@ AppAsset::register($this);
 <script src="/static/js/nova_polyfills.1.0.1.js"></script>
 <script src="/static/js/nova.1.0.1.js"></script>
 <script src="/static/js/nova-tab.1.0.5.js"></script>
-<script src="/static/js/index.js"></script>
 <?php $this->endBody() ?>
 </body>
 </html>

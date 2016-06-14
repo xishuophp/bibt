@@ -71,4 +71,18 @@ use yii\helpers\Url;
 			<p>录取查询</p>
 		</a>
 	</div>
+	<div class="thumb t08">
+		<a href="<?=Url::to(['mobile/job'])?>">
+			<div class="box"><img src="/static/images/pic08.jpg"></div>
+			<p>就业风采</p>
+		</a>
+	</div>
+
+	<div class="thumb t09">
+		<a href="javascript:alert('暂未开启')">
+			<div class="box"><img src="/static/images/pic09.jpg"></div>
+			<p>课表查询</p>
+		</a>
+	</div>
 </div>
+<script src="/static/js/index.js"></script>

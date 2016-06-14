@@ -189,6 +189,7 @@ return [
     'Senior Config' => '高级配置',
     'Index Campus' => '首页校园风光',
     'Index Intro' => '首页学院概况',
+    'Index Job' => '首页就业风采',
 
     'Please enter verifyCode' => '请输入验证码',
     'This is wrong verifyCode' => '验证码错误',

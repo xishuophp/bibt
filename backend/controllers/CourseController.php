@@ -152,6 +152,7 @@ class CourseController extends BaseController
                     }else{
                         $arr[$v] = (string)$data;  
                     }
+                    unset($data);
                 }
                 $resArr[] = $arr;
             }

@@ -130,6 +130,7 @@ class AdmissionController extends BaseController
                 foreach ($columnArr as $k=>$v) {
                     $data = $objPHPExcel->getActiveSheet()->getCell($k.$i)->getFormattedValue();
                     $arr[$v] = (string)$data;
+                    unset($data);
                 }
                 $resArr[] = $arr;
             }

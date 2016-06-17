@@ -13,7 +13,7 @@ use yii\helpers\Url;
 	</section>
 	<?php endforeach;?>
 	<?php endif;?>
-	<section class="lead">
+	<!-- <section class="lead">
 		<h2>民航商务学院</h2>
 		<p>&nbsp;&nbsp;&nbsp;&nbsp;旅游管理系坚持面向旅游产业，以就业需求为导向，以服务社会和经济建设为宗旨，重点培养适应全球化经济环境，适应中国旅游、酒店、会展业、民航旅游、空 港服务管理发展需求，德才兼备的中、高级管理及高技能人才。在办学过程中紧密联系实际，开展校企合作，产学研结合，强调职业技能，强化职业素质训练，迄今 已与国内多家著名旅游、酒店、民航空港企业建立了合作关系。</p>
 		<p class="tr"><a href="details.html" class="more">详细介绍</a></p>
@@ -37,20 +37,20 @@ use yii\helpers\Url;
 		<h2>文化与传媒学院</h2>
 		<p>&nbsp;&nbsp;&nbsp;&nbsp;基础教育系现开设商务英语、商务英语（学前英语方向）、体育服务与管理等专业。基础教育依托“多元双优”教师团队，为企事业单位培养具有国际视野、艺术气质、创新思维、高素质、应用型高技能人才。</p>
 		<p class="tr"><a href="details.html" class="more">详细介绍</a></p>
-	</section>
+	</section> -->
 	
 </div>
 
 <div class="yx_area">
-	<p class="yx_air"><img src="images/yx_air.png"></p>
-	<p class="yx_sun"><img src="images/yx_sun.png"></p>
-	<p class="yx_tree01"><img src="images/yx_tree01.png"></p>
-	<p class="yx_tree02"><img src="images/yx_tree02.png"></p>
-	<p class="yx_tree03"><img src="images/yx_tree01.png"></p>
-	<p class="yx_tree04"><img src="images/yx_tree03.png"></p>
-	<p class="yx_tree05"><img src="images/yx_tree04.png"></p>
-	<p class="yx_tree06"><img src="images/yx_tree03.png"></p>
-	<p class="yx_ta01"><img src="images/yx_ta.png"></p>
-	<p class="yx_ta02"><img src="images/yx_ta.png"></p>
-	<p class="yx_ta03"><img src="images/yx_ta.png"></p>
+	<p class="yx_air"><img src="/static/images/yx_air.png"></p>
+	<p class="yx_sun"><img src="/static/images/yx_sun.png"></p>
+	<p class="yx_tree01"><img src="/static/images/yx_tree01.png"></p>
+	<p class="yx_tree02"><img src="/static/images/yx_tree02.png"></p>
+	<p class="yx_tree03"><img src="/static/images/yx_tree01.png"></p>
+	<p class="yx_tree04"><img src="/static/images/yx_tree03.png"></p>
+	<p class="yx_tree05"><img src="/static/images/yx_tree04.png"></p>
+	<p class="yx_tree06"><img src="/static/images/yx_tree03.png"></p>
+	<p class="yx_ta01"><img src="/static/images/yx_ta.png"></p>
+	<p class="yx_ta02"><img src="/static/images/yx_ta.png"></p>
+	<p class="yx_ta03"><img src="/static/images/yx_ta.png"></p>
 </div>

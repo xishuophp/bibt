@@ -695,7 +695,7 @@ AppAsset::register($this);
                     <div class="footer-content">
                         <span class="bigger-120">
                             <span class="blue bolder">CMS</span>
-                             &copy; 2014-<?=date('Y')?>
+                             &copy;北京经济技术职业学院 2014-<?=date('Y')?>
                         </span>
                         <!--<span class="action-buttons">
                             <a href="#">

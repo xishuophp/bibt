@@ -1,7 +1,7 @@
 <?php
 $params = [
     'adminEmail' => 'admin@example.com',
-    'systemAdmin'=>['junjie.feng','haiwy','xiaoling'],
+    'systemAdmin'=>['admin','mingyu.yue','xiaoling'],
     'languageArr' => ['zh-CN', 'en'],
     'pageSize' => 20,
     'userStatus'=>[

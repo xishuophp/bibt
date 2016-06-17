@@ -5,40 +5,37 @@ use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
-use backend\models\Admission;
+use common\models\Course;
 use backend\models\YiiForum;
 use backend\models\ResetPasswordForm;
 use yii\web\NotFoundHttpException;
 
 
-class AdmissionController extends BaseController
-{
-	//录取列表
+class CourseController extends BaseController
+{ 
+	//课程列表
 	public function actionList(){
-		$query =  Admission::find();
+		$query =  Course::find();
 		$searchUrlArr = [];
         $searchArr = $this->_getSearchCondition($searchUrlArr);
         $config = [
                 'pageSize' => Yii::$app->params['pageSize'],
                 'where'=>$searchArr,
                 'urlWhere'=>$searchUrlArr,
-                'order' => 'admission_id desc',
+                'order' => 'course_id ASC',
             ];
         $locals = YiiForum::getPagedRows($query,$config);
 		return $this->render('list',$locals);
 	}
 
-    //新增录取
+    //创建课程信息
     public function actionCreate()
     {
-        $model = new Admission();
+        $model = new Course();
         if ($model->load(Yii::$app->request->post()))
         {
-            $model->create_time = date('Y-m-d H:i:s');
             if($model->save()){
-                return $this->redirect([
-                        'list' 
-                ]);             
+                return $this->redirect(['list']);             
             }else{
                 return $this->render('create', [
                         'model' => $model,
@@ -52,53 +49,69 @@ class AdmissionController extends BaseController
         }
     }
 
-    //修改录取信息
+    //修改课程信息
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
         if ($model->load(Yii::$app->request->post()))
         {
             if($model->save()){
-                return $this->redirect([
-                        'list' 
-                ]);                
+                return $this->redirect(['list']);                
             }else{
-                return $this->render('update', [
-                        'model' => $model,
-                ]);                
+                return $this->render('update', ['model' => $model]);                
             }
 
         }else{
-            return $this->render('update', [
-                    'model' => $model,
-            ]);
+            return $this->render('update', ['model' => $model]);
         }
     }
 
-    //查看录取信息
+    //查看课程信息
     public function actionView($id){
         $model = $this->findModel($id);
         return $this->render('view',['model'=>$model]);
     }
 
+    //删除课程
+    public function actionDelete()
+    {
+        $id = Yii::$app->request->post('id');
+        $model = $this->findModel($id);
+        if($model->delete()){
+            return json_encode(['errno'=>0,'errmsg'=>'删除成功']);
+        }else{
+            return json_encode(['errno'=>1,'errmsg'=>'删除失败']);
+        }
+    }
+
+    protected function findModel($id)
+    {
+        if (($model = Course::findOne($id)) !== null)
+        {
+            return $model;
+        }
+        else
+        {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
+
     public function actionImport(){
-        $fileType = $_FILES['admission']['type'];
+        $fileType = $_FILES['course']['type'];
         if($fileType!='text/csv'){
             return json_encode(['errno'=>2,'errmsg'=>'文件格式不正确']);
         }
-        $uploadInfo = YiiForum::uploadFiles('admission');
+        $uploadInfo = YiiForum::uploadFiles('course');
         if($uploadInfo['errno']==0){
             $fileUrl = $uploadInfo['fileInfo'][0]['fileUrl'];
-            $admissions = $this->formatAdmission('.'.$fileUrl);
+            $admissions = $this->formatCourse('.'.$fileUrl);
             if($admissions){
                 foreach ($admissions as $key => $value) {
-                    $model = new Admission();
+                    $model = new Course();
                     $model->attributes = $value;
-                    $model->create_time = date('Y-m-d H:i:s');
-                    $model->accept_year = (int)date('Y');
                     $ret = $model->save();
                     if(!$ret){
-                        Yii::error('insert admission faild,insertArr='.json_encode($value).',error='.json_encode($model->getErrors()));
+                        Yii::error('insert course faild,insertArr='.json_encode($value).',error='.json_encode($model->getErrors()));
                     }
                 }
             }
@@ -109,7 +122,7 @@ class AdmissionController extends BaseController
     }
 
 
-    public function formatAdmission($fileUrl)
+    public function formatCourse($fileUrl)
     {
         if(!file_exists($fileUrl))
             return [];
@@ -117,19 +130,28 @@ class AdmissionController extends BaseController
         $reader->setReadDataOnly(true);
         $objPHPExcel = $reader->load($fileUrl);
         $all = $objPHPExcel->getActiveSheet()->getHighestRow();
+        //var_dump($sheetData);
         if($all>0){
             $columnArr = [
-                'A' => 'real_name',
-                'B' => 'exam_number',
-                'C' => 'identity_card',
-                'D' => 'accept_major',
+                'A' => 'course_name',
+                'B' => 'class_room',
+                'C' => 'teacher',
+                'D' => 'section',
+                'E' => 'class_name',
+                'F' => 'academic_year',
+                'G' => 'week_day',
+                'H' => 'note',
             ];
             $resArr = [];
             foreach ($this->xrange(2, $all) as $i) {
                 $arr = [];
                 foreach ($columnArr as $k=>$v) {
                     $data = $objPHPExcel->getActiveSheet()->getCell($k.$i)->getFormattedValue();
-                    $arr[$v] = (string)$data;
+                    if(in_array($v, ['academic_year','week_day'])){
+                        $arr[$v] = (int)$data;
+                    }else{
+                        $arr[$v] = (string)$data;  
+                    }
                 }
                 $resArr[] = $arr;
             }
@@ -144,31 +166,6 @@ class AdmissionController extends BaseController
             yield $i;
         }
     }
-    
-    //删除录取信息
-    public function actionDelete()
-    {
-        $id = Yii::$app->request->post('id');
-        $model = $this->findModel($id);
-        if($model->delete()){
-            return json_encode(['errno'=>0,'errmsg'=>'删除成功']);
-        }else{
-            return json_encode(['errno'=>1,'errmsg'=>'删除失败']);
-        }
-    }
-
-    protected function findModel($id)
-    {
-        // var_dump(User::findOne($id));die;
-        if (($model = Admission::findOne($id)) !== null)
-        {
-            return $model;
-        }
-        else
-        {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
-    }
 
 	/**
      * 封装搜索条件
@@ -176,19 +173,14 @@ class AdmissionController extends BaseController
     private function _getSearchCondition(&$searchUrlArr)
     {
         $arr = ['and',];
-        $real_name = Yii::$app->request->post('real_name') ? Yii::$app->request->post('real_name') : Yii::$app->request->get('real_name');
-        if($real_name){
-            $arr[] = ['like', 'real_name', $real_name];
-            $searchUrlArr['real_name'] = $real_name;
+
+        $class_name = Yii::$app->request->post('class_name') ? Yii::$app->request->post('class_name') : Yii::$app->request->get('class_name');
+        if($class_name){
+            $arr[] = "class_name='{$class_name}'";
+            $searchUrlArr['class_name'] = $class_name;
         }
 
-        $accept_major = Yii::$app->request->post('accept_major') ? Yii::$app->request->post('accept_major') : Yii::$app->request->get('accept_major');
-        if($accept_major){
-            $arr[] = ['like', 'accept_major', $accept_major];
-            $searchUrlArr['accept_major'] = $accept_major;
-        }
-
-        return count($arr) > 1 ? $arr : [];    
+        return count($arr) > 1 ? $arr : [];   
     }
 
 }

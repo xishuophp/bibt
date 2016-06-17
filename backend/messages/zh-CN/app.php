@@ -173,6 +173,21 @@ return [
     'Update Admission'=> '修改录取信息',
     'Admission Import'=> '导入录取信息',
 
+    //课程管理
+    'Course Manage' => '课程管理',
+    'Course List' => '课程列表',
+    'Create Course' => '新增课程',
+    'Update Course' => '修改课程信息',
+    'Class Name' => '班级名称',
+    'Course Name' => '课程名称',
+    'Class Room' => '教室',
+    'Teacher' => '教师',
+    'Week Day' => '上课日',
+    'Section' => '节',
+    'Note' => '备注',
+    'Academic Year' => '学年',
+    'Course Import' => '导入课程信息',
+
     //导航管理
     'Nav Manage'=>'导航管理',
     'Nav List'=>'导航列表',

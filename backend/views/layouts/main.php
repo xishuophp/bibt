@@ -194,6 +194,7 @@ AppAsset::register($this);
                             'staff' => ['staff_list','staff_create'],
                             'apply-online' => ['apply-online_list'],
                             'admission' => ['admission_list','admission_create'],
+                            'course' => ['course_list','course_create'],
                             'conf' => ['conf_index'],
                             'auth' => [
                                 'role' => ['role_user-index','role_index','role_create'],
@@ -327,7 +328,7 @@ AppAsset::register($this);
                     <?php if(!empty($leftNav['article'])):?>
                     <li class="<?php if(strtolower($routeArr[0]) == 'article') echo 'active open' ?>">
                         <a href="#" class="dropdown-toggle">
-                            <i class="menu-icon fa fa-file-o"></i>
+                            <i class="menu-icon fa fa-file-text"></i>
                             <span class="menu-text"><?=Yii::t('app','Article Manage')?></span>
 
                             <b class="arrow fa fa-angle-down"></b>
@@ -499,6 +500,39 @@ AppAsset::register($this);
                                 <a href="<?= Url::to(['admission/create'])?>">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     <?=Yii::t('app','Create Admission')?>
+                                </a>
+                                <b class="arrow"></b>
+                            </li>
+                            <?php endif;?>                 
+                        </ul>
+                    </li>
+                    <?php endif;?>
+                    <?php if(!empty($leftNav['course'])):?>
+                    <li class="<?php if(strtolower($routeArr[0]) == 'course') echo 'active open' ?>">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-list-alt"></i>
+                            <span class="menu-text"><?=Yii::t('app','Course Manage')?></span>
+
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
+
+                        <b class="arrow"></b>
+
+                        <ul class="submenu">
+                            <?php if(in_array('course_list',$leftNav['course'])):?>
+                            <li class="<?php if(strtolower($routeArr[0]) == 'course' && (in_array(strtolower($routeArr[1]),['list','update']))) echo 'active' ?>">
+                                <a href="<?= Url::to(['course/list'])?>">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    <?=Yii::t('app','Course List')?>
+                                </a>
+                                <b class="arrow"></b>
+                            </li>
+                            <?php endif;?>
+                            <?php if(in_array('course_create',$leftNav['course'])):?>
+                            <li class="<?php if(strtolower($routeArr[0]) == 'course' && strtolower($routeArr[1])=='create') echo 'active' ?>">
+                                <a href="<?= Url::to(['course/create'])?>">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    <?=Yii::t('app','Create Course')?>
                                 </a>
                                 <b class="arrow"></b>
                             </li>

@@ -113,7 +113,7 @@ class MobileController extends Controller
             'article_category' => $cateid,
         ];
         $config = [
-                'pageSize' => 2,
+                'pageSize' => 10,
                 'where'=>$searchArr,
                 'urlWhere'=>$searchUrlArr,
                 'order' => 'article_id desc',

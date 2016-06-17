@@ -17,10 +17,10 @@ use yii\helpers\Url;
 </div>
 
 <div class="gk_area">
-	<p class="sz_02"><img src="images/sz02.png"></p>
-	<p class="sz_03"><img src="images/sz03.png"></p>
-	<p class="sz_04"><img src="images/sz04.png"></p>
-	<p class="sz_06"><img src="images/sz06.png"></p>
-	<p class="sz_05"><img src="images/sz05.png"></p>
-	<p class="sz_01"><img src="images/sz01.png"></p>
+	<p class="sz_02"><img src="/static/images/sz02.png"></p>
+	<p class="sz_03"><img src="/static/images/sz03.png"></p>
+	<p class="sz_04"><img src="/static/images/sz04.png"></p>
+	<p class="sz_06"><img src="/static/images/sz06.png"></p>
+	<p class="sz_05"><img src="/static/images/sz05.png"></p>
+	<p class="sz_01"><img src="/static/images/sz01.png"></p>
 </div>

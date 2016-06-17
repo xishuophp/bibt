@@ -211,12 +211,14 @@ AppAsset::register($this);
                                         if(is_array($node2)){
                                             foreach($node2 as $k3=>&$node3){
                                                 $check = $AuthManagerModel->checkAccess($userid,$node3);
+                                                $check = true;
                                                 if(!$check&&YII_ENV_PROD)//YII_ENV_PROD
                                                     unset($node2[$k3]);
                                             }
                                             
                                         }else{
                                             $check = $AuthManagerModel->checkAccess($userid,$node2);
+                                            $check = true;
                                             if(!$check&&YII_ENV_PROD)
                                                 unset($node[$k2]);
                                         }

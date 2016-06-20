@@ -67,7 +67,7 @@ use yii\helpers\Url;
 	</div>
 	<div class="thumb t07">
 		<a href="<?=Url::to(['mobile/accept'])?>">
-			<div class="box"><img src="/static/images/pic06.jpg"></div>
+			<div class="box"><img src="/static/images/luqu.jpg"></div>
 			<p>录取查询</p>
 		</a>
 	</div>

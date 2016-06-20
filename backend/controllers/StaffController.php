@@ -33,7 +33,7 @@ class StaffController extends BaseController
                 'pageSize' => Yii::$app->params['pageSize'],
                 'where'=>$searchArr,
                 'urlWhere'=>$searchUrlArr,
-                'order' => 'dept_id desc',
+                'order' => 'staff_id desc',
             ];
         $locals = YiiForum::getPagedRows($query,$config);
 		return $this->render('list',$locals);

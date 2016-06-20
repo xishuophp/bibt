@@ -42,6 +42,7 @@ class ServiceDepartment extends Model
     }
 
     private function getDeparmentTree($departments,$info=[],$em=''){
+        $info = [];
         foreach ($departments as $key => $value) {
             $value['em'] = $em;
             if($value['child']){

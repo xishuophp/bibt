@@ -211,12 +211,14 @@ AppAsset::register($this);
                                         if(is_array($node2)){
                                             foreach($node2 as $k3=>&$node3){
                                                 $check = $AuthManagerModel->checkAccess($userid,$node3);
+                                                $check = true;
                                                 if(!$check&&YII_ENV_PROD)//YII_ENV_PROD
                                                     unset($node2[$k3]);
                                             }
                                             
                                         }else{
                                             $check = $AuthManagerModel->checkAccess($userid,$node2);
+                                            $check = true;
                                             if(!$check&&YII_ENV_PROD)
                                                 unset($node[$k2]);
                                         }
@@ -695,7 +697,7 @@ AppAsset::register($this);
                     <div class="footer-content">
                         <span class="bigger-120">
                             <span class="blue bolder">CMS</span>
-                             &copy; 2014-<?=date('Y')?>
+                             &copy;北京经济技术职业学院 2014-<?=date('Y')?>
                         </span>
                         <!--<span class="action-buttons">
                             <a href="#">

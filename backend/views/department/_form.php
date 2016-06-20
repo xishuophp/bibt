@@ -35,7 +35,7 @@ use yii\widgets\ActiveForm;
         
         <div class="col-sm-8 col-xs-12" style="width:66%">
 
-            <?=Html::dropDownList("Department[dept_leader]",$model->dept_leader,Yii::$app->cache->get(Yii::$app->params['staffList']),['class'=>'chosen-select','prompt'=>'请选择']) ?>
+            <?php //echoHtml::dropDownList("Department[dept_leader]",$model->dept_leader,Yii::$app->cache->get(Yii::$app->params['staffList']),['class'=>'chosen-select','prompt'=>'请选择']) ?>
         </div>
     </div>
     

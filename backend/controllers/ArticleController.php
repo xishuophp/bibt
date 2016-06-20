@@ -45,6 +45,10 @@ class ArticleController extends BaseController
         $ServiceArticleModel = new ServiceArticle();
         $categorys = $ServiceArticleModel->getCategoryList();
         if($model->load(Yii::$app->request->post())){
+            if(empty($model->article_content)){
+                $model->addError('article_content','文章内容不能为空。');
+                return $this->render('create',['model'=>$model,'categorys'=>$categorys]);
+            }
             $attachment = YiiForum::uploadFiles('attachment');
             if($attachment['errno']==0){
                 $model->article_attachment = json_encode($attachment['fileInfo']);
@@ -54,6 +58,8 @@ class ArticleController extends BaseController
             if($article_logo['errno']==0){
                 $model->article_logo = json_encode($article_logo['fileInfo']);
             }
+
+            if(!$model->publish_date){$model->publish_date = date('Y-m-d H:i:s');}
 
             $model->create_time = date('Y-m-d H:i:s');
 
@@ -81,6 +87,10 @@ class ArticleController extends BaseController
         $categorys = $ServiceArticleModel->getCategoryList();
         $article_category = $model->article_category;
         if($model->load(Yii::$app->request->post())){
+            if(empty($model->article_content)){
+                $model->addError('article_content','文章内容不能为空。');
+                return $this->render('create',['model'=>$model,'categorys'=>$categorys]);
+            }
             $attachment = YiiForum::uploadFiles('attachment');
             $attachment2 = [];
             if(isset($_POST['attachment2'])){
@@ -100,6 +110,8 @@ class ArticleController extends BaseController
             if($article_logo['errno']==0){
                 $model->article_logo = json_encode($article_logo['fileInfo']);
             }
+
+            if(!$model->publish_date){$model->publish_date = date('Y-m-d H:i:s');}
             
             $model->update_time = date('Y-m-d H:i:s');
 

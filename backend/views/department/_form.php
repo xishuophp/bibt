@@ -59,7 +59,7 @@ use yii\widgets\ActiveForm;
         </div>
     </div>
 
-    <?= $form->field($model, 'dept_intro')->textarea(['class' => 'col-xs-12 col-sm-12','rows'=>4]) ?>
+    <?= $form->field($model,'dept_intro')->widget('pjkui\kindeditor\KindEditor',['clientOptions'=>['class'=>'col-sm-8 col-xs-12','allowFileManager'=>'true','allowUpload'=>'true']]) ?>
 
     <?= $form->field($model,'dept_details')->widget('pjkui\kindeditor\KindEditor',['clientOptions'=>['class'=>'col-sm-8 col-xs-12','allowFileManager'=>'true','allowUpload'=>'true']]) ?>
     <div class="clearfix form-actions">

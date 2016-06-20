@@ -109,7 +109,7 @@ $this->params['breadcrumbs'][] = $this->title;
         bootbox.confirm("您确定要删除此项吗?", function(result) {
             if(result) {
                 $.ajax({
-                    url: "<?=Url::to(['enroll-online/delete'])?>",
+                    url: "<?=Url::to(['apply-online/delete'])?>",
                     type:'POST',
                     dataType: 'JSON',
                     data : {<?=Yii::$app->request->csrfParam ?> : '<?=Yii::$app->request->getCsrfToken()?>',id:id},

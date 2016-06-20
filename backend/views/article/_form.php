@@ -66,7 +66,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'article_status')->dropDownList(Yii::$app->params['articleStatus'],['class'=>'col-xs-12']) ?>
     
-    <?php if(!$model->publish_date){$model->publish_date = '';} ?>
+    <?php if(!$model->publish_date){$model->publish_date = date('Y-m-d H:i:s');} ?>
     <?= $form->field($model, 'publish_date')->textInput(['class'=>'col-xs-12 laydate-icon','style'=>'height:30px;list-style:none','onClick'=>"laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})"]) ?>
 
     <?= $form->field($model,'article_content')->widget('pjkui\kindeditor\KindEditor',['clientOptions'=>['class'=>'col-sm-8 col-xs-12','allowFileManager'=>'true','allowUpload'=>'true']]) ?>

@@ -13,9 +13,12 @@ class ServiceStaff extends Model
     {
         $staff = Staff::find()->asArray()->all();
         $staffList = [];
+        $deptStaffList = [];
         foreach ($staff as $key => $value) {
             $staffList[$value['staff_id']] = $value['real_name'];
+            $deptStaffList[$value['dept_id']][$value['staff_id']] = $value['real_name'];
         }
         Yii::$app->cache->set(Yii::$app->params['staffList'], $staffList);
+        Yii::$app->cache->set(Yii::$app->params['deptStaffList'], $deptStaffList);
     }
 }

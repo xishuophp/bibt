@@ -30,15 +30,27 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'parent_id')->dropDownList($departments,['class'=>'col-xs-12','prompt'=>'无上级部门'])->label(Yii::t('app','Parent Dept')) ?>
 
     <?= $form->field($model, 'dept_phone')->textInput(['class'=>'col-xs-12']) ?>
+
+    <?php if(!$model->isNewRecord){?>
     <div class="form-group">
         <label class="col-sm-2 control-label no-padding-right"><?=Yii::t('app','Dept Leader')?></label>
         
         <div class="col-sm-8 col-xs-12" style="width:66%">
 
-            <?php //echoHtml::dropDownList("Department[dept_leader]",$model->dept_leader,Yii::$app->cache->get(Yii::$app->params['staffList']),['class'=>'chosen-select','prompt'=>'请选择']) ?>
+            <?php 
+
+                $deptStaffList = Yii::$app->cache->get(Yii::$app->params['deptStaffList']);
+                if(isset($deptStaffList[$model->dept_id])){
+                    $staffList = $deptStaffList[$model->dept_id];
+                }else{
+                    $staffList = [];
+                }
+             ?>
+            <?= Html::dropDownList("Department[dept_leader]",$model->dept_leader,$staffList,['class'=>'chosen-select','prompt'=>'请选择']) ?>
         </div>
     </div>
-    
+    <?php } ?>
+
     <?php if($model->isNewRecord){$model->order_no=100;} ?>
     <?= $form->field($model, 'order_no')->textInput(['class'=>'form-control']) ?>
 

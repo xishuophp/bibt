@@ -64,6 +64,8 @@ $params = [
     ],
     //员工的缓存文件名
     'staffList'=>'staff_list',
+    //部门员工的缓存文件
+    'deptStaffList'=>'dept_staff_list',
 
     'academicYear' => [
         1=>'第一学年上学期',

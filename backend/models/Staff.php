@@ -36,7 +36,7 @@ class Staff extends \yii\db\ActiveRecord
     {
         return [
             [['sex', 'dept_id', 'is_index', 'order_no', 'staff_type'], 'integer'],
-            [['real_name', 'dept_id'], 'required'],
+            [['real_name'], 'required'],
             [['intro', 'details'], 'string'],
             [['real_name', 'staff_title'], 'string', 'max' => 100],
             [['logo'], 'string', 'max' => 300],

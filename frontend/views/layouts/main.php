@@ -32,6 +32,9 @@ AppAsset::register($this);
 
     <footer>
         <p>© 北京经济技术职业学院</p>
+        <span style="display:none;">
+        <script src="http://s4.cnzz.com/z_stat.php?id=1259670038&web_id=1259670038" language="JavaScript"></script>
+        </span>
     </footer>
 
 </div>

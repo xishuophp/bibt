@@ -83,7 +83,7 @@ class AdmissionController extends BaseController
 
     public function actionImport(){
         $fileType = $_FILES['admission']['type'];
-        if($fileType!='text/csv'){
+        if($fileType!='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'){
             return json_encode(['errno'=>2,'errmsg'=>'文件格式不正确']);
         }
         $uploadInfo = YiiForum::uploadFiles('admission');

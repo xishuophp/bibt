@@ -127,7 +127,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         </div>
                     </div>
                 </div>
-                <div style="color:red;margin-top: 30px">数据格式必须是后缀为.xlsx的文件,表格的四列的数据依次为:姓名、准考证号、身份证号、录取专业</div>
+                <div style="color:red;margin-top: 30px">数据格式必须是后缀为.xlsx的文件,表格的四列的数据依次为:考生号、姓名、准考证号、身份证号、录取专业</div>
             </div>
             <div class="modal-footer" id="game_category">
                 <button class="btn btn-sm" data-dismiss="modal">

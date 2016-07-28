@@ -34,6 +34,11 @@ class AdmissionController extends BaseController
         $model = new Admission();
         if ($model->load(Yii::$app->request->post()))
         {
+            $user = Admission::findOne(['identity_card'=>$model->identity_card]);
+            if($user){
+                $model->addError('identity_card','此学生信息已存在');
+                return $this->render('create', ['model' => $model,]);
+            }
             $model->create_time = date('Y-m-d H:i:s');
             if($model->save()){
                 return $this->redirect([
@@ -92,6 +97,10 @@ class AdmissionController extends BaseController
             $admissions = $this->formatAdmission('.'.$fileUrl);
             if($admissions){
                 foreach ($admissions as $key => $value) {
+                    $user = Admission::findOne(['identity_card'=>$value['identity_card']]);
+                    if($user){
+                        continue;
+                    }
                     $model = new Admission();
                     $model->attributes = $value;
                     $model->create_time = date('Y-m-d H:i:s');

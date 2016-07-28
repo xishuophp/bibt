@@ -58,6 +58,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <thead>
                     <tr>
                         <th ><?=Yii::t('app', 'ID') ?></th>
+                        <th ><?=Yii::t('app', 'Other Number') ?></th>
                         <th ><?=Yii::t('app', 'Real Name') ?></th>
                         <th ><?=Yii::t('app', 'Exam Number') ?></th>
                         <th ><?=Yii::t('app', 'Identity Card') ?></th>
@@ -73,6 +74,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 ?>
                     <tr>
                         <td><?= $row['admission_id'] ?></td>
+                        <td><?= $row['other_number'] ?></td>
                         <td><?= $row['real_name'] ?></td>
                         <td><?= $row['exam_number'] ?></td>
                         <td><?= $row['identity_card'] ?></td>

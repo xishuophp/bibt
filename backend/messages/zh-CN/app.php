@@ -172,6 +172,7 @@ return [
     'Create Admission'=> '新增录取',
     'Update Admission'=> '修改录取信息',
     'Admission Import'=> '导入录取信息',
+    'Other Number' => '考生号',
 
     //课程管理
     'Course Manage' => '课程管理',

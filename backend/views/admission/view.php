@@ -19,6 +19,13 @@ $this->params['breadcrumbs'][] = $this->title;
 	<div class="row">
 		<div class="col-xs-12">
 		    <div class="form-horizontal">
+		    	<div class="form-group">
+					<label class="col-sm-2 control-label no-padding-right"><?= Yii::t('app','Other Number')?></label>
+					<div class="col-sm-8 col-xs-12">
+						<div class="form-control"><?= $model->other_number?></div>
+					</div>
+				</div>
+				
 				<div class="form-group">
 					<label class="col-sm-2 control-label no-padding-right"><?= Yii::t('app','Real Name')?></label>
 					<div class="col-sm-8 col-xs-12">

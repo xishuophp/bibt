@@ -119,6 +119,7 @@ class AdmissionController extends BaseController
         $all = $objPHPExcel->getActiveSheet()->getHighestRow();
         if($all>0){
             $columnArr = [
+                'A' => 'other_number',
                 'B' => 'real_name',
                 'C' => 'exam_number',
                 'D' => 'identity_card',

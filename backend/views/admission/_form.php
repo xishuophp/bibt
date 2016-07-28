@@ -20,8 +20,12 @@ use yii\widgets\ActiveForm;
                 'labelOptions' => ['class'=>'col-sm-2 control-label no-padding-right'],
             ],
     ]); ?>
+
+    <?= $form->field($model, 'other_number')->textInput(['class'=>'col-xs-12']) ?>
         
     <?= $form->field($model, 'real_name')->textInput(['class'=>'col-xs-12']) ?>
+    
+    <?= $form->field($model, 'accept_year')->textInput(['class'=>'col-xs-12']) ?>
 
     <?= $form->field($model, 'exam_number')->textInput(['class'=>'col-xs-12']) ?>
 

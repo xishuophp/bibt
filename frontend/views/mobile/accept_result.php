@@ -15,7 +15,7 @@ use yii\widgets\ActiveForm;
             <div class="fill">
                 <label>考生号</label>
                 <div class="input_box">
-                    <p><?=$model->exam_number?></p>
+                    <p><?=$model->other_number?></p>
                 </div>
             </div>
             <div class="fill">

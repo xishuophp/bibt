@@ -237,7 +237,7 @@ class MobileController extends Controller
             //执行查询操作
             $where = [
                 'real_name' => trim($model->real_name),
-                'exam_number' => trim($model->exam_number),
+                'other_number' => trim($model->exam_number),
                 'identity_card' => trim($model->identity_card),
             ];
             $acceptModel = \backend\models\Admission::findOne($where);

@@ -98,15 +98,15 @@ class CourseController extends BaseController
 
     public function actionImport(){
         $fileType = $_FILES['course']['type'];
-        if($fileType!='text/csv'){
+        if($fileType!='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'){
             return json_encode(['errno'=>2,'errmsg'=>'文件格式不正确']);
         }
         $uploadInfo = YiiForum::uploadFiles('course');
         if($uploadInfo['errno']==0){
             $fileUrl = $uploadInfo['fileInfo'][0]['fileUrl'];
-            $admissions = $this->formatCourse('.'.$fileUrl);
-            if($admissions){
-                foreach ($admissions as $key => $value) {
+            $courses = $this->formatCourse('.'.$fileUrl);
+            if($courses){
+                foreach ($courses as $key => $value) {
                     $model = new Course();
                     $model->attributes = $value;
                     $ret = $model->save();

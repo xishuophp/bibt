@@ -79,20 +79,8 @@ $this->params['breadcrumbs'][] = $this->title;
                         <td><?= $row['teacher'] ?></td>
                         <td><?= $row['section'] ?></td>
                         <td><?= $row['class_name'] ?></td>
-                        <td>
-                            <?php
-                                if(isset($academicYearArr[$row['academic_year']])){
-                                    echo $academicYearArr[$row['academic_year']];
-                                }
-                             ?>
-                        </td>
-                        <td>
-                            <?php
-                                if(isset($weekDayArr[$row['week_day']])){
-                                    echo $weekDayArr[$row['week_day']];
-                                }
-                             ?>
-                        </td>
+                        <td><?= $row['academic_year'] ?></td>
+                        <td><?= $row['week_day'] ?></td>
                         <td><?= $row['note'] ?></td>
                         <td>
                             <a class="btn btn-xs btn-purple"  href="<?php echo Url::to(['course/update','id'=>$row['course_id']]); ?>">

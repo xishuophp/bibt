@@ -8,12 +8,12 @@ use Yii;
  * This is the model class for table "course".
  *
  * @property string $course_id
- * @property integer $academic_year
+ * @property string $academic_year
  * @property string $class_room
  * @property string $class_name
  * @property string $course_name
  * @property string $teacher
- * @property integer $week_day
+ * @property string $week_day
  * @property string $section
  * @property string $note
  */
@@ -33,12 +33,10 @@ class Course extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['academic_year', 'week_day'], 'integer'],
-            [['class_name', 'course_name', 'teacher', 'week_day', 'section'], 'required'],
+            [['class_name', 'course_name', 'teacher', 'section'], 'required'],
             [['note'], 'string'],
-            [['class_room', 'course_name', 'section'], 'string', 'max' => 100],
-            [['class_name'], 'string', 'max' => 255],
-            [['teacher'], 'string', 'max' => 50],
+            [['academic_year', 'class_room', 'class_name', 'course_name', 'teacher', 'week_day'], 'string', 'max' => 255],
+            [['section'], 'string', 'max' => 100],
         ];
     }
 

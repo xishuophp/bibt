@@ -147,11 +147,7 @@ class CourseController extends BaseController
                 $arr = [];
                 foreach ($columnArr as $k=>$v) {
                     $data = $objPHPExcel->getActiveSheet()->getCell($k.$i)->getFormattedValue();
-                    if(in_array($v, ['academic_year','week_day'])){
-                        $arr[$v] = (int)$data;
-                    }else{
-                        $arr[$v] = (string)$data;  
-                    }
+                    $arr[$v] = (string)$data;
                     unset($data);
                 }
                 $resArr[] = $arr;

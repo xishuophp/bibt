@@ -183,10 +183,10 @@ return [
     'Course Name' => '课程名称',
     'Class Room' => '教室',
     'Teacher' => '教师',
-    'Week Day' => '上课日',
-    'Section' => '节',
+    'Week Day' => '星期几',
+    'Section' => '节/时间',
     'Note' => '备注',
-    'Academic Year' => '学年',
+    'Academic Year' => '学期',
     'Course Import' => '导入课程信息',
 
     //导航管理

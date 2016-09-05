@@ -33,9 +33,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'class_name')->textInput(['class'=>'col-xs-12']) ?>
 
-    <?= $form->field($model, 'academic_year')->dropdownList(Yii::$app->params['academicYear'],['class'=>'form-control']) ?>
+    <?= $form->field($model, 'academic_year')->textInput(['class'=>'col-xs-12']) ?>
 
-    <?= $form->field($model, 'week_day')->dropdownList(Yii::$app->params['weekDay'],['class'=>'form-control']) ?>
+    <?= $form->field($model, 'week_day')->textInput(['class'=>'col-xs-12']) ?>
 
     <?= $form->field($model, 'note')->textarea(['class' => 'col-xs-12 col-sm-12','rows'=>4]) ?>
     <div class="clearfix form-actions">

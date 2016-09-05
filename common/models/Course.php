@@ -14,6 +14,7 @@ use Yii;
  * @property string $course_name
  * @property string $teacher
  * @property string $week_day
+ * @property string $class_time
  * @property string $section
  * @property string $note
  */
@@ -33,9 +34,9 @@ class Course extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['class_name', 'course_name', 'teacher', 'section'], 'required'],
+            [['class_name', 'course_name', 'teacher', 'class_time', 'section'], 'required'],
             [['note'], 'string'],
-            [['academic_year', 'class_room', 'class_name', 'course_name', 'teacher', 'week_day'], 'string', 'max' => 255],
+            [['academic_year', 'class_room', 'class_name', 'course_name', 'teacher', 'week_day', 'class_time'], 'string', 'max' => 255],
             [['section'], 'string', 'max' => 100],
         ];
     }
@@ -53,6 +54,7 @@ class Course extends \yii\db\ActiveRecord
             'course_name' => Yii::t('app', 'Course Name'),
             'teacher' => Yii::t('app', 'Teacher'),
             'week_day' => Yii::t('app', 'Week Day'),
+            'class_time' => Yii::t('app', 'Class Time'),
             'section' => Yii::t('app', 'Section'),
             'note' => Yii::t('app', 'Note'),
         ];

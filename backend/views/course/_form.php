@@ -31,6 +31,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'section')->textInput(['class'=>'col-xs-12','placeholder'=>'多节课之间用英文,隔开如:1,2,3']) ?>
 
+    <?= $form->field($model, 'class_time')->textInput(['class'=>'col-xs-12']) ?>
+
     <?= $form->field($model, 'class_name')->textInput(['class'=>'col-xs-12']) ?>
 
     <?= $form->field($model, 'academic_year')->textInput(['class'=>'col-xs-12']) ?>

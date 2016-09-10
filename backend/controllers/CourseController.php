@@ -159,8 +159,16 @@ class CourseController extends BaseController
             $resArr = [];
             foreach ($this->xrange(2, $all) as $i) {
                 $arr = [];
+                $flag = false;
                 foreach ($columnArr as $k=>$v) {
                     $data = $objPHPExcel->getActiveSheet()->getCell($k.$i)->getFormattedValue();
+                    if($v!='note'&&empty($data)){
+                        $flag = true;
+                        break;
+                    }
+                    if($flag){
+                        continue;
+                    }
                     $arr[$v] = (string)$data;
                     unset($data);
                 }

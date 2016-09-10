@@ -251,6 +251,29 @@ class MobileController extends Controller
             ]);
     }
 
+    public function actionCourse()
+    {
+        $class_name = Yii::$app->request->post('class_name', '');
+        if($class_name){
+            $sql = "select * from course where class_name=:class_name order by week_day asc,class_time asc";
+            $command = Yii::$app->db->createCommand($sql);
+            $command->bindValue(':class_name', $class_name);
+            $courseArr = $command->queryAll();
+            return $this->render('select_course', [
+                    'courseArr' => $courseArr
+                ]);
+        }else{
+            $sql = "select class_name from course group by class_name";
+            $classArr = Yii::$app->db->createCommand($sql)->queryAll();
+            //var_dump($classArr);die();
+            return $this->render('course',[
+                    'classArr' => $classArr
+                ]);
+        }
+        
+    }
+
+
 
     public function sysError($errorMsg)
     {

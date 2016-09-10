@@ -79,7 +79,7 @@ use yii\helpers\Url;
 	</div>
 
 	<div class="thumb t09">
-		<a href="javascript:alert('暂未开启')">
+		<a href="<?=Url::to(['mobile/course'])?>">
 			<div class="box"><img src="/static/images/pic09.jpg"></div>
 			<p>课表查询</p>
 		</a>

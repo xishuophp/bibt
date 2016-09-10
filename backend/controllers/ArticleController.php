@@ -232,6 +232,17 @@ class ArticleController extends BaseController
         }
     }
 
+    //删除文章分类
+    public function actionCategoryDelete(){
+        $id = Yii::$app->request->post('id');
+        $model = ArticleCategory::findOne($id);
+        if($model->delete()){
+            return json_encode(['errno'=>0,'errmsg'=>'删除成功']);
+        }else{
+            return json_encode(['errno'=>1,'errmsg'=>'删除失败']);
+        }
+    }
+
 	/**
      * 封装搜索条件
      */

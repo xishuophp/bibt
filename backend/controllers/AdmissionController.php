@@ -118,7 +118,7 @@ class AdmissionController extends BaseController
     }
 
 
-    public function formatAdmission($fileUrl)
+    private function formatAdmission($fileUrl)
     {
         if(!file_exists($fileUrl))
             return [];

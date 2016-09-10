@@ -135,7 +135,7 @@ class CourseController extends BaseController
     }
 
 
-    public function formatCourse($fileUrl)
+    private function formatCourse($fileUrl)
     {
         if(!file_exists($fileUrl))
             return [];

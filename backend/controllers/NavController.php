@@ -61,7 +61,7 @@ class NavController extends BaseController
         }
     }
 
-    //修改部门信息
+    //修改导航信息
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
@@ -88,7 +88,7 @@ class NavController extends BaseController
         }
     }
 
-    //删除部门
+    //删除导航
     public function actionDelete()
     {
         $id = Yii::$app->request->post('id');

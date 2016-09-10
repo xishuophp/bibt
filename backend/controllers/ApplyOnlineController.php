@@ -75,7 +75,7 @@ class ApplyOnlineController extends BaseController
     }
 
     //生成excel文件
-    public function makeExcle($data)
+    private function makeExcle($data)
     {
 
             $insert = [

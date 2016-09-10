@@ -84,6 +84,19 @@ class CourseController extends BaseController
         }
     }
 
+    //清空课程
+    public function actionDeleteAll()
+    {
+        $total  = Course::find()->count();
+        if($total>0){
+            $count = Course::deleteAll();
+            if($count==0){
+                return json_encode(['errno'=>1,'errmsg'=>'清空失败']);
+            }
+        }
+        return json_encode(['errno'=>0,'errmsg'=>'清空成功']);
+    }
+
     protected function findModel($id)
     {
         if (($model = Course::findOne($id)) !== null)

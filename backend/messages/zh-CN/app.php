@@ -189,6 +189,7 @@ return [
     'Note' => '备注',
     'Academic Year' => '学期',
     'Course Import' => '导入课程信息',
+    'Clear'=>'清除',
 
     //导航管理
     'Nav Manage'=>'导航管理',

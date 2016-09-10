@@ -43,6 +43,9 @@ $this->params['breadcrumbs'][] = $this->title;
                             <a style="margin-left:30px;" class="btn btn-sm btn-info" href="#modal-form1" data-toggle="modal" >
                                 <i class="ace-icon fa fa-print  align-top bigger-125 icon-on-right"></i><?=Yii::t('app', 'Import') ?>
                             </a>
+                            <a style="margin-left:30px;" class="btn btn-sm btn-danger" onClick="del_all()" href="javascript:void(0)"  >
+                                <?=Yii::t('app', 'Clear') ?>
+                            </a>
                             <a style="float:right" href="<?= Url::to(['course/create']) ?>" class="btn btn-sm btn-success">
                                 <i class=" ace-icon glyphicon glyphicon-plus"></i>
                                 <?= Yii::t('app', 'Create Course') ?>
@@ -153,6 +156,40 @@ $this->params['breadcrumbs'][] = $this->title;
                     type:'POST',
                     dataType: 'JSON',
                     data : {<?=Yii::$app->request->csrfParam ?> : '<?=Yii::$app->request->getCsrfToken()?>',id:id},
+                    beforeSend: function(){
+                        spinner.spin($('body').get(0));
+                    },
+                    success: function(data){
+                        spinner.spin();
+                        if(data.errno != 0){
+                            bootbox.alert(data.errmsg);
+                        }else{
+                            // location.href = reload();
+                            location.reload();
+                        }
+                    },
+                    error:function(e, xhr, settings) {
+                        spinner.spin();
+                        if(e.status == 401){
+                            bootbox.alert("对不起，您现在还没获此操作的权限", function() {
+                            });
+                        }else{
+                            bootbox.alert("登录超时,请重新<a href='"+'<?=Url::to(['site/login'])?>'+"'>登录</a>", function() {
+                            });
+                        }
+                    }
+                });
+            }
+        });
+    }
+    function del_all(){
+        bootbox.confirm("您确定要清空课程信息吗?", function(result) {
+            if(result) {
+                $.ajax({
+                    url: "<?=Url::to(['course/delete-all'])?>",
+                    type:'POST',
+                    dataType: 'JSON',
+                    data : {<?=Yii::$app->request->csrfParam ?> : '<?=Yii::$app->request->getCsrfToken()?>'},
                     beforeSend: function(){
                         spinner.spin($('body').get(0));
                     },

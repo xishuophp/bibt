@@ -93,7 +93,7 @@ class MobileController extends Controller
 
     public function actionEmploy()
     {
-        $configModel = SysConfig::findOne(['config_name'=>'index_emply']);
+        $configModel = SysConfig::findOne(['config_name'=>'index_employ']);
         $postid = $configModel ? (int)$configModel->config_value : 0;
         $postModel = null;
         if($postid > 0){

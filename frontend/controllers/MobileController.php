@@ -254,23 +254,40 @@ class MobileController extends Controller
     public function actionCourse()
     {
         $class_name = Yii::$app->request->post('class_name', '');
+        $class_grade = Yii::$app->request->post('class_grade', '');
         if($class_name){
-            $sql = "select * from course where class_name=:class_name order by week_day asc,class_time asc";
-            $command = Yii::$app->db->createCommand($sql);
-            $command->bindValue(':class_name', $class_name);
+            $sql = "select * from course where class_name=:class_name and class_grade=:class_grade order by week_day asc,class_time asc";
+            $command = Yii::$app->db->createCommand($sql,[':class_name'=>$class_name, ':class_grade'=>$class_grade]);
             $courseArr = $command->queryAll();
             return $this->render('select_course', [
                     'courseArr' => $courseArr
                 ]);
         }else{
-            $sql = "select class_name from course group by class_name";
-            $classArr = Yii::$app->db->createCommand($sql)->queryAll();
+            $sql = "select class_grade from course group by class_grade order by class_grade";
+            $gradeArr = Yii::$app->db->createCommand($sql)->queryAll();
             //var_dump($classArr);die();
             return $this->render('course',[
-                    'classArr' => $classArr
+                    'gradeArr' => $gradeArr
                 ]);
         }
         
+    }
+
+    public function actionClass()
+    {
+        $this->layout = false;
+        $class_grade = Yii::$app->request->get('grade_name', '');
+        if(!$class_grade){
+            return json_encode(['status'=>1, 'content'=>'']);
+        }
+        $sql = 'select class_name from course where class_grade=:class_grade group by class_name';
+        $classArr = Yii::$app->db->createCommand($sql)->bindValue(':class_grade', $class_grade)->queryAll();
+        $html = '';
+        foreach($classArr as $class){
+            $html .='<option value="'.$class['class_name'].'">'.$class['class_name'].'</option>';
+        }
+
+        return json_encode(['status'=>0,'content'=>$html]);
     }
 
 

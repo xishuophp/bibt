@@ -90,6 +90,26 @@ class MobileController extends Controller
         }
         return $this->render('article_detail', ['model'=>$postModel]);        
     }
+
+    public function actionEmploy()
+    {
+        $configModel = SysConfig::findOne(['config_name'=>'index_emply']);
+        $postid = $configModel ? (int)$configModel->config_value : 0;
+        $postModel = null;
+        if($postid > 0){
+            $postModel = Article::findOne($postid);
+        }
+        return $this->render('article_detail', ['model'=>$postModel]);        
+    }
+
+    /**
+     * 就业风采列表
+     */
+    public function actionJobList()
+    {
+        return $this->render('job_list');
+    }
+
     /**
      * 新闻公告
      * @return [type] [description]
@@ -196,6 +216,8 @@ class MobileController extends Controller
             ]);
     }
 
+
+
     /**
      * 在线报名
      */
@@ -250,7 +272,10 @@ class MobileController extends Controller
                 'model' => $model,
             ]);
     }
-
+    /**
+     * 课表查询
+     * @return [type] [description]
+     */
     public function actionCourse()
     {
         $class_name = Yii::$app->request->post('class_name', '');

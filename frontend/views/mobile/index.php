@@ -72,7 +72,7 @@ use yii\helpers\Url;
 		</a>
 	</div>
 	<div class="thumb t08">
-		<a href="<?=Url::to(['mobile/job'])?>">
+		<a href="<?=Url::to(['mobile/job-list'])?>">
 			<div class="box"><img src="/static/images/pic08.jpg"></div>
 			<p>就业风采</p>
 		</a>

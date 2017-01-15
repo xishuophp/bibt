@@ -61,20 +61,15 @@ use yii\widgets\ActiveForm;
                 	<select name="ApplyOnline[apply_major]" id="major">
                         <option value="">---请选择报考专业---</option>
                         <option value="金融管理">金融管理</option>
-                        <option value="会计">会计</option>
-                        <option value="商务英语(学前英语)">商务英语(学前英语)</option>
-                        <option value="广告设计与制作专业(UI/UE设计)">广告设计与制作专业(UI/UE设计)</option>
-                        <option value="体育运营与管理(休闲体育项目)">体育运营与管理(休闲体育项目)</option>
-                        <option value="空中乘务">空中乘务</option>
-                        <option value="物流管理(航空物流)">物流管理(航空物流)</option>
+                        <option value="会计(芸豆会计订单班)">会计(芸豆会计订单班)</option>
+                        <option value="广告设计与制作专业">广告设计与制作专业</option>
+                        <option value="体育运营与管理">体育运营与管理</option>
+                        <option value="空中乘务(空乘、地勤、民航空中安全保卫)">空中乘务(空乘、地勤、民航空中安全保卫)</option>
+                        <option value="软件技术(多媒体交互设计工程师、java电商软件开发工程师)">软件技术(多媒体交互设计工程师、java电商软件开发工程师)</option>
                         <option value="酒店管理(首都大酒店订单班)">酒店管理(首都大酒店订单班)</option>
-                        <option value="计算机应用技术(Java电商软件开发工程师)">计算机应用技术(Java电商软件开发工程师)</option>
-                        <option value="计算机应用技术(移动互联网开发工程师)">计算机应用技术(移动互联网开发工程师)</option>
-                        <option value="计算机应用技术(PHP软件开发工程师)">计算机应用技术(PHP软件开发工程师)</option>
-                        <option value="计算机应用技术(手机游戏开发工程师)">计算机应用技术(手机游戏开发工程师)</option>
-                        <option value="计算机应用技术(数据中心IT工程师)">计算机应用技术(数据中心IT工程师)</option>
-                        <option value="电子商务">电子商务</option>
-                        <option value="市场营销">市场营销</option>
+                        <option value="电子商务(跨境电商运营、数字化新媒体运营)">电子商务(跨境电商运营、数字化新媒体运营)</option>
+                        <option value="幼儿发展与健康管理">幼儿发展与健康管理</option>
+
                 	</select>
 				</p>
 				<p class="tips t15">* 请选择报考专业</p>

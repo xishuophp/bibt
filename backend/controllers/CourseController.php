@@ -152,9 +152,10 @@ class CourseController extends BaseController
                 'D' => 'section',
                 'E' => 'class_time',
                 'F' => 'class_name',
-                'G' => 'academic_year',
-                'H' => 'week_day',
-                'I' => 'note',
+                'G' => 'class_grade',
+                'H' => 'academic_year',
+                'I' => 'week_day',
+                'J' => 'note',
             ];
             $resArr = [];
             foreach ($this->xrange(2, $all) as $i) {

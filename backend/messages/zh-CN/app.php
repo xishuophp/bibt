@@ -180,6 +180,7 @@ return [
     'Create Course' => '新增课程',
     'Update Course' => '修改课程信息',
     'Class Name' => '班级名称',
+    'Class Grade' => '年级',
     'Course Name' => '课程名称',
     'Class Room' => '教室',
     'Teacher' => '教师',

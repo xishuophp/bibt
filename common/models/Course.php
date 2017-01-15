@@ -10,6 +10,7 @@ use Yii;
  * @property string $course_id
  * @property string $academic_year
  * @property string $class_room
+ * @property string $class_grade
  * @property string $class_name
  * @property string $course_name
  * @property string $teacher
@@ -36,7 +37,7 @@ class Course extends \yii\db\ActiveRecord
         return [
             [['class_name', 'course_name', 'teacher', 'class_time', 'section'], 'required'],
             [['note'], 'string'],
-            [['academic_year', 'class_room', 'class_name', 'course_name', 'teacher', 'week_day', 'class_time'], 'string', 'max' => 255],
+            [['academic_year', 'class_room', 'class_grade', 'class_name', 'course_name', 'teacher', 'week_day', 'class_time'], 'string', 'max' => 255],
             [['section'], 'string', 'max' => 100],
         ];
     }
@@ -50,6 +51,7 @@ class Course extends \yii\db\ActiveRecord
             'course_id' => Yii::t('app', 'Course ID'),
             'academic_year' => Yii::t('app', 'Academic Year'),
             'class_room' => Yii::t('app', 'Class Room'),
+            'class_grade' => Yii::t('app', 'Class Grade'),
             'class_name' => Yii::t('app', 'Class Name'),
             'course_name' => Yii::t('app', 'Course Name'),
             'teacher' => Yii::t('app', 'Teacher'),

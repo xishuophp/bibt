@@ -66,7 +66,7 @@ use yii\widgets\ActiveForm;
                         <option value="空中乘务(空乘、地勤、民航空中安全保卫)">空中乘务(空乘、地勤、民航空中安全保卫)</option>
                         <option value="酒店管理(首都大酒店订单班)">酒店管理(首都大酒店订单班)</option>
                         <option value="广告设计与制作">广告设计与制作</option>
-                        <option value="体育运营与管理">体育运营与管理</option>
+                        <option value="体育运营与管理(休闲体育)">体育运营与管理(休闲体育)</option>
                         <option value="软件技术(多媒体交互设计工程师、java电商软件开发工程师)">软件技术(多媒体交互设计工程师、java电商软件开发工程师)</option>
                         <option value="电子商务(跨境电商运营、数字化新媒体运营)">电子商务(跨境电商运营、数字化新媒体运营)</option>
 

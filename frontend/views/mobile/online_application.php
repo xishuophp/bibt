@@ -22,7 +22,7 @@ use yii\widgets\ActiveForm;
 		<div class="fill">
 			<label>考生号</label>
 			<div class="input_box">
-				<p><input type="text" id="exam_number" name="ApplyOnline['exam_number']" value="" class="input_skin"></p>
+				<p><input type="text" id="exam_number" name="ApplyOnline[exam_number]" value="" class="input_skin"></p>
 				<p class="tips t11">* 请输入考生号</p>
 			</div>
 		</div>
@@ -36,7 +36,7 @@ use yii\widgets\ActiveForm;
 		<div class="fill">
 			<label>联系电话</label>
 			<div class="input_box">
-				<p><input type="text" id="phone" name="ApllyOnline[phone]" value="" class="input_skin"></p>
+				<p><input type="text" id="phone" name="ApplyOnline[phone]" value="" class="input_skin"></p>
 				<p class="tips t13">* 请输入联系电话</p>
 			</div>
 		</div>
@@ -44,7 +44,7 @@ use yii\widgets\ActiveForm;
 			<label>性别</label>
 			<div class="input_box">
 				<p>
-					<select name="type" id="sex">
+					<select name="ApplyOnline[sex]" id="sex">
                         <option value="0">---请选择性别---</option>
                         <option value="1">男</option>
                         <option value="2">女</option>

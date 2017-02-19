@@ -120,7 +120,7 @@ use yii\widgets\ActiveForm;
 			<label>毕业学校</label>
 			<div class="input_box">
 				<p><input type="text" id="graduate_school" name="ApplyOnline[graduate_school]" value="" class="input_skin"></p>
-				<p class="tips t17">* 请输入必须学校</p>
+				<p class="tips t17">* 请输入毕业学校</p>
 			</div>
 		</div>
 

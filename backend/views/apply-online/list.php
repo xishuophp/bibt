@@ -69,7 +69,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 ?>
                     <tr>
                         <td><?= $row['real_name'] ?></td>
-                        <td><?= $row['sex'] ?></td>
+                        <td><?php if(isset(Yii::$app->params['sex'][$row['sex']])){echo Yii::$app->params['sex'][$row['sex']];} ?></td>
                         <td><?= $row['exam_number'] ?></td>
                         <td><?= $row['identity_card'] ?></td>
                         <td><?= $row['apply_major'] ?></td>

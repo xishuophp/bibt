@@ -60,16 +60,18 @@ use yii\widgets\ActiveForm;
 				<p>
                 	<select name="ApplyOnline[apply_major]" id="major">
                         <option value="">---请选择报考专业---</option>
-                        <option value="金融管理">金融管理</option>
+                        <option value="空中乘务(空乘、地勤)">空中乘务(空乘、地勤)</option>
+                        <option value="学前教育">学前教育</option>
                         <option value="会计(芸豆会计订单班)">会计(芸豆会计订单班)</option>
-                        <option value="幼儿发展与健康管理">幼儿发展与健康管理</option>
-                        <option value="空中乘务(空乘、地勤、民航空中安全保卫)">空中乘务(空乘、地勤、民航空中安全保卫)</option>
-                        <option value="酒店管理(首都大酒店订单班)">酒店管理(首都大酒店订单班)</option>
-                        <option value="广告设计与制作">广告设计与制作</option>
-                        <option value="体育运营与管理(休闲体育)">体育运营与管理(休闲体育)</option>
-                        <option value="软件技术(多媒体交互设计工程师、java电商软件开发工程师)">软件技术(多媒体交互设计工程师、java电商软件开发工程师)</option>
-                        <option value="电子商务(跨境电商运营、数字化新媒体运营)">电子商务(跨境电商运营、数字化新媒体运营)</option>
-
+                        <option value="金融管理">金融管理</option>
+                        <option value="计算机应用技术(Java大数据)">计算机应用技术(Java大数据)</option>
+                        <option value="软件技术(VR虚拟现实)">软件技术(VR虚拟现实)</option>
+                        <option value="电子商务(互联网金融-小马金融订单班)">电子商务(互联网金融-小马金融订单班)</option>
+                        <option value="老年服务与管理(适老环境评估与设计)">老年服务与管理(适老环境评估与设计)</option>
+                        <option value="老年服务与管理(高端社区养老机构运营管理)">老年服务与管理(高端社区养老机构运营管理)</option>
+                        <option value="老年服务与管理(老年康复)">老年服务与管理(老年康复)</option>
+                        <option value="酒店管理(订单班)">酒店管理(订单班)</option>
+                        <option value="休闲体育(户外运动)">休闲体育(户外运动)</option>
                 	</select>
 				</p>
 				<p class="tips t15">* 请选择报考专业</p>
